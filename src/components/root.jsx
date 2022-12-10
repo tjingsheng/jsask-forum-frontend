@@ -1,14 +1,8 @@
 import React from "react";
-import { Link, Outlet, useLoaderData } from "react-router-dom";
-import { getContacts } from "../pages/contacts.jsx";
-
-export async function loader() {
-  const contacts = await getContacts();
-  return { contacts };
-}
+import { Link, Outlet } from "react-router-dom";
+import contacts from "../pages/contacts";
 
 export default function NavBar() {
-  const { contacts } = useLoaderData();
   return (
     <>
       <div id="navBar">
@@ -63,11 +57,9 @@ export default function NavBar() {
         <nav>
           <ul>
             <li>
-              {/* <a href={`/contacts/1`}>Your Name</a> */}
               <Link to={`/contacts/1`}>Your Name</Link>
             </li>
             <li>
-              {/* <a href={`/contacts/2`}>Your Friend</a> */}
               <Link to={`/contacts/2`}>Your Friend</Link>
             </li>
           </ul>
