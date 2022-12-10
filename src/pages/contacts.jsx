@@ -1,6 +1,10 @@
 import React from "react";
 import { Form } from "react-router-dom";
 
+export async function getContacts() {
+  return {}
+}
+
 export default function Contact() {
   const contact = {
     first: "Your",
