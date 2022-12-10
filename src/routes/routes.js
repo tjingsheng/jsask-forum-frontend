@@ -1,24 +1,17 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import NavBar from "../components/root";
-import Contact from "../pages/contacts";
-import ErrorPage from "../pages/error";
-
-
+import ErrorMessage from "../components/ErrorMessage";
 
 const routes = createBrowserRouter([
     {
-      path: "/home",
-      element:  < NavBar />,
-      errorElement: < ErrorPage />,
-      children: [
-        {
-          path: "contacts/:contactId",
-          element: < Contact />,
-          
-        },
-      ],
-    }
+      path: "/",
+      element:  <div> hi </div>,
+      errorElement: < ErrorMessage />
+    },
+    {
+      path: "home",
+      element: <div> hihome </div>, //< Header />,
+    },
   ]);
   
 export default routes;
