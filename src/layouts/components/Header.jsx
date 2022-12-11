@@ -2,36 +2,40 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Col, Input, Layout, Menu, Row } from "antd";
 import React from "react";
 
-const {  useState  } = React;
+const { useState } = React;
 const { Search } = Input;
 const { Header } = Layout;
 const headerHeight = 60;
 
-const Logo = () =>{
+const Logo = () => {
   return (
     <>
-      <img src="..\LogoYellow.svg" alt="LogoYellow"
+      <img
+        src="..\LogoYellow.svg"
+        alt="LogoYellow"
         style={{
           float: "left",
           height: headerHeight,
-          padding: "8px 0 8px 0",
-          
-        }}/>
-      <img src="..\LogoWord.svg"  alt="LogoWord"
+          padding: "8px 0px",
+        }}
+      />
+      <img
+        src="..\LogoWord.svg"
+        alt="LogoWord"
         style={{
           float: "left",
           height: headerHeight,
-          padding: "16px 0px 10px 0px",
-        }}/>
+          padding: "16px 0px 10px",
+        }}
+      />
     </>
-  )
-}  
+  );
+};
 
-
-const SearchBox = () =>{
+const SearchBox = () => {
   const onSearch = (value) => console.log(value);
   return (
-    <Search 
+    <Search
       size="large"
       placeholder="Search Jsask"
       allowClear
@@ -39,48 +43,46 @@ const SearchBox = () =>{
       style={{
         float: "left",
         height: headerHeight,
-        padding: "10px 0px 10px 0px",
-        background: "rgba(255, 255, 255, 0.2)",
+        padding: "10px 0px",
       }}
     />
-  )
-}  
-
+  );
+};
 
 const AvatarIcon = () => {
   return (
-  <Avatar 
-        size= "large"
-        icon={<UserOutlined />} 
-        shape= "square"
-        style={{
-          float: "right",
-          margin: "10px 0px 10px 0px",
-        }}  
-      />
-  )
-}
-
+    <Avatar
+      size="large"
+      icon={<UserOutlined />}
+      shape="square"
+      style={{
+        float: "right",
+        margin: "10px 0px 10px 0px",
+      }}
+    />
+  );
+};
 
 const ProfileMenu = () => {
   const [current, setCurrent] = useState("mail");
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
-  }
+  };
   const items = [
     {
       label: "Bobby Lee",
       key: "Menu",
       children: [
         {
-          label: "Profile"
+          label: "Profile",
         },
         {
-          label: "Logout"
+          label: "Logout",
         },
       ],
-    }];
+    },
+  ];
 
   return (
     <Menu
@@ -91,10 +93,10 @@ const ProfileMenu = () => {
       style={{
         float: "left",
         height: headerHeight,
-      }} />
-  )
+      }}
+    />
+  );
 };
-
 
 const HeaderComponent = () => {
   return (
@@ -104,22 +106,26 @@ const HeaderComponent = () => {
         top: 0,
         zIndex: 1,
         height: headerHeight,
-        width: "100%",
         padding: "0px 20px 0px 20px",
         backgroundColor: "white",
       }}
     >
-
-    <Row>
-      <Col span={8}><Logo /></Col>
-      <Col span={8}><SearchBox /></Col>
-      <Col span={6}><AvatarIcon /></Col>
-      <Col span={2}><ProfileMenu /></Col>
-    </Row>
-
+      <Row>
+        <Col span={8}>
+          <Logo />
+        </Col>
+        <Col span={8}>
+          <SearchBox />
+        </Col>
+        <Col span={6}>
+          <AvatarIcon />
+        </Col>
+        <Col span={2}>
+          <ProfileMenu />
+        </Col>
+      </Row>
     </Header>
   );
 };
 
 export default HeaderComponent;
-

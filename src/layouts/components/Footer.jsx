@@ -7,7 +7,7 @@ const FooterComponent = () => {
   return (
     <Footer
       style={{
-        textAlign: 'center',
+        textAlign: "center",
       }}
     >
       Jsask ©2022 Created by Tan Jing Sheng
