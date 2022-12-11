@@ -5,7 +5,52 @@ import ErrorMessage from "../components/ErrorMessage";
 const routes = createBrowserRouter([
     {
       path: "/",
-      element:  <div> hi </div>,
+      element:  <div       style={{
+        backgroundColor: "#DAE0E6"
+      }}>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      hi <br/>
+                      </div>,
       errorElement: < ErrorMessage />
     },
     {
