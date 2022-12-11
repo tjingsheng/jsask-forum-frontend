@@ -5,7 +5,7 @@ import React from "react";
 const AvatarIcon = () => {
   return (
     <Avatar
-      size="large"
+      size={32}
       icon={<UserOutlined />}
       shape="square"
       style={{
