@@ -1,9 +1,11 @@
+import { FireOutlined, HistoryOutlined, StarOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row } from "antd";
 import React from "react";
 
 const SortNewButton = () => {
   return (
     <Button
+      icon={<StarOutlined />}
       style={{
         width: "75px",
         margin: "10px 0px 10px 10px",
@@ -14,9 +16,24 @@ const SortNewButton = () => {
   );
 };
 
+const SortOldButton = () => {
+  return (
+    <Button
+      icon={<HistoryOutlined />}
+      style={{
+        width: "75px",
+        margin: "10px 0px 10px 10px",
+      }}
+    >
+      Old
+    </Button>
+  );
+};
+
 const SortBestButton = () => {
   return (
     <Button
+      icon={<FireOutlined />}
       style={{
         width: "75px",
         margin: "10px 0px 10px 10px",
@@ -27,7 +44,7 @@ const SortBestButton = () => {
   );
 };
 
-const SortingCard = ({ width, height }) => {
+const SortPostCard = ({ width, height }) => {
   return (
     <Card
       style={{
@@ -47,9 +64,12 @@ const SortingCard = ({ width, height }) => {
         <Col>
           <SortNewButton />
         </Col>
+        <Col>
+          <SortOldButton />
+        </Col>
       </Row>
     </Card>
   );
 };
 
-export default SortingCard;
+export default SortPostCard;
