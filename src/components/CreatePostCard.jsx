@@ -20,7 +20,6 @@ const CreatePostInput = () => {
     <Input
       placeholder="Create Post"
       style={{
-        width: "max",
         height: "auto",
       }}
     />
@@ -41,14 +40,11 @@ const CreatePostButton = () => {
   );
 };
 
-const CreatePostCard = ({ width, height }) => {
-  const onSearch = (value) => console.log(value);
+const CreatePostCard = ({ width }) => {
   return (
     <Card
       style={{
-        size: "small",
         margin: "10px auto",
-        height: height,
         width: width,
       }}
       bodyStyle={{
