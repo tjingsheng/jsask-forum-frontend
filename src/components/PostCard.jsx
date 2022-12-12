@@ -134,7 +134,7 @@ const PostFooter = () => {
             padding: "10px",
           }}
         >
-          Posted by Bobby 12 December 2022, 16:40
+          Posted by Bobby Lee 12 December 2022, 16:40
         </Title>
       </Col>
     </Row>

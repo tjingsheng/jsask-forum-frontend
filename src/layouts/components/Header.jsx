@@ -1,6 +1,8 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Col, Input, Layout, Menu, Row } from "antd";
+import { Avatar, Button, Col, Input, Layout, Menu, Modal, Row } from "antd";
 import React from "react";
+import LogoutContent from "../../components/LogoutContent";
+import ProfileContent from "../../components/ProfileContent";
 
 const { useState } = React;
 const { Search } = Input;
@@ -64,11 +66,32 @@ const AvatarIcon = () => {
 };
 
 const ProfileMenu = () => {
-  const [current, setCurrent] = useState("mail");
-  const onClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
+  const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
+  const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
+
+  const setAllStateFalse = () => {
+    setIsLogoutModalVisible(false);
+    setIsProfileModalVisible(false);
   };
+
+  const showModal = (e) => {
+    if (e["key"] === "profile") {
+      setIsProfileModalVisible(true);
+    } else if (e["key"] === "logout") {
+      setIsLogoutModalVisible(true);
+    } else {
+      setAllStateFalse();
+    }
+  };
+
+  const handleOk = () => {
+    setAllStateFalse();
+  };
+
+  const handleCancel = () => {
+    setAllStateFalse();
+  };
+
   const items = [
     {
       label: "Bobby Lee",
@@ -76,25 +99,54 @@ const ProfileMenu = () => {
       children: [
         {
           label: "Profile",
+          key: "profile",
         },
         {
           label: "Logout",
+          key: "logout",
         },
       ],
     },
   ];
 
   return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode="horizontal"
-      items={items}
-      style={{
-        float: "left",
-        height: headerHeight,
-      }}
-    />
+    <>
+      <Menu
+        onClick={showModal}
+        mode="horizontal"
+        items={items}
+        style={{
+          float: "left",
+          height: headerHeight,
+        }}
+      />
+      <Modal
+        title="Your Profile"
+        open={isProfileModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="Ok" onClick={handleOk}>
+            Ok
+          </Button>,
+        ]}
+      >
+        <ProfileContent />
+      </Modal>
+      <Modal
+        title="You have logout"
+        open={isLogoutModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="Ok" onClick={handleOk}>
+            Ok
+          </Button>,
+        ]}
+      >
+        <LogoutContent />
+      </Modal>
+    </>
   );
 };
 

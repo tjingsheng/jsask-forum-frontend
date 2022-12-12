@@ -5,15 +5,14 @@ import HomeLayout from "../layouts/HomeLayout";
 import HomePage from "../pages/home";
 
 const routes = createBrowserRouter([
-    {
-      path: "/",
-      errorElement: < ErrorMessage />
-    },
-    {
-      path: "home",
-      element: <HomeLayout content={<HomePage/>} />,
-      errorElement: < ErrorMessage />
-    },
-  ]);
-  
+  {
+    path: "/",
+    errorElement: <ErrorMessage />,
+  },
+  {
+    path: "home",
+    element: <HomeLayout content={<HomePage />} />,
+  },
+]);
+
 export default routes;
