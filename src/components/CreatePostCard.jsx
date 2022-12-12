@@ -3,45 +3,39 @@ import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
 import React, { useState } from "react";
 import CreatePostForm from "./CreatePostForm";
 
-const AvatarIcon = () => {
-  return (
-    <Avatar
-      size={32}
-      icon={<UserOutlined />}
-      shape="square"
-      style={{
-        marginRight: "10px",
-      }}
-    />
-  );
-};
+const AvatarIcon = () => (
+  <Avatar
+    size={32}
+    icon={<UserOutlined />}
+    shape="square"
+    style={{
+      marginRight: "10px",
+    }}
+  />
+);
 
-const CreatePostInput = ({ handleOnClick }) => {
-  return (
-    <Input
-      onClick={() => handleOnClick(true)}
-      placeholder="Create Post"
-      style={{
-        height: "auto",
-      }}
-    />
-  );
-};
+const CreatePostInput = ({ handleOnClick }) => (
+  <Input
+    onClick={() => handleOnClick(true)}
+    placeholder="Create Post"
+    style={{
+      height: "auto",
+    }}
+  />
+);
 
-const CreatePostButton = ({ handleOnClick }) => {
-  return (
-    <Button
-      onClick={() => handleOnClick(true)}
-      type="primary"
-      style={{
-        width: "75px",
-        marginLeft: "10px",
-      }}
-    >
-      Post
-    </Button>
-  );
-};
+const CreatePostButton = ({ handleOnClick }) => (
+  <Button
+    onClick={() => handleOnClick(true)}
+    type="primary"
+    style={{
+      width: "75px",
+      marginLeft: "10px",
+    }}
+  >
+    Post
+  </Button>
+);
 
 const CreatePostCard = ({ width }) => {
   const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(

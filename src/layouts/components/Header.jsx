@@ -9,30 +9,28 @@ const { Search } = Input;
 const { Header } = Layout;
 const headerHeight = 60;
 
-const Logo = () => {
-  return (
-    <>
-      <img
-        src="..\LogoYellow.svg"
-        alt="LogoYellow"
-        style={{
-          float: "left",
-          height: headerHeight,
-          padding: "8px 0px",
-        }}
-      />
-      <img
-        src="..\LogoWord.svg"
-        alt="LogoWord"
-        style={{
-          float: "left",
-          height: headerHeight,
-          padding: "16px 0px 10px",
-        }}
-      />
-    </>
-  );
-};
+const Logo = () => (
+  <>
+    <img
+      src="..\LogoYellow.svg"
+      alt="LogoYellow"
+      style={{
+        float: "left",
+        height: headerHeight,
+        padding: "8px 0px",
+      }}
+    />
+    <img
+      src="..\LogoWord.svg"
+      alt="LogoWord"
+      style={{
+        float: "left",
+        height: headerHeight,
+        padding: "16px 0px 10px",
+      }}
+    />
+  </>
+);
 
 const SearchBox = () => {
   const onSearch = (value) => console.log(value);
@@ -51,19 +49,17 @@ const SearchBox = () => {
   );
 };
 
-const AvatarIcon = () => {
-  return (
-    <Avatar
-      size="large"
-      icon={<UserOutlined />}
-      shape="square"
-      style={{
-        float: "right",
-        margin: "10px 0px 10px 0px",
-      }}
-    />
-  );
-};
+const AvatarIcon = () => (
+  <Avatar
+    size="large"
+    icon={<UserOutlined />}
+    shape="square"
+    style={{
+      float: "right",
+      margin: "10px 0px 10px 0px",
+    }}
+  />
+);
 
 const ProfileMenu = () => {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);

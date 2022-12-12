@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import HomeLayout from "../layouts/HomeLayout";
 import HomePage from "../pages/home";
 import NotFoundPage from "../pages/notfound";
+import PostPage from "../pages/post";
 
 const routes = createBrowserRouter([
   {
@@ -11,7 +11,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "home",
-    element: <HomeLayout content={<HomePage />} />,
+    element: <HomePage />,
+  },
+  {
+    path: "post",
+    element: <PostPage />,
   },
 ]);
 
