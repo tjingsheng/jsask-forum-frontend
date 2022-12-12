@@ -1,5 +1,5 @@
 import { FireOutlined, HistoryOutlined, StarOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Row } from "antd";
+import { Button, Card, Col, Row, Select } from "antd";
 import React from "react";
 
 const SortNewButton = () => {
@@ -44,6 +44,19 @@ const SortBestButton = () => {
   );
 };
 
+const SelectTag = () => {
+  return (
+    <Select
+      mode="tags"
+      placeholder="Sort by Tags"
+      style={{
+        width: "100%",
+        padding: "10px",
+      }}
+    />
+  );
+};
+
 const SortPostCard = ({ width, height }) => {
   return (
     <Card
@@ -66,6 +79,9 @@ const SortPostCard = ({ width, height }) => {
         </Col>
         <Col>
           <SortOldButton />
+        </Col>
+        <Col flex="auto">
+          <SelectTag />
         </Col>
       </Row>
     </Card>
