@@ -1,5 +1,5 @@
 import { FireOutlined, HistoryOutlined, StarOutlined } from "@ant-design/icons";
-import { Button, Card, Col, Row, Select } from "antd";
+import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 
 const SortNewButton = () => {
@@ -8,7 +8,6 @@ const SortNewButton = () => {
       icon={<StarOutlined />}
       style={{
         width: "75px",
-        margin: "10px 0px 10px 10px",
       }}
     >
       New
@@ -22,7 +21,6 @@ const SortOldButton = () => {
       icon={<HistoryOutlined />}
       style={{
         width: "75px",
-        margin: "10px 0px 10px 10px",
       }}
     >
       Old
@@ -36,7 +34,6 @@ const SortBestButton = () => {
       icon={<FireOutlined />}
       style={{
         width: "75px",
-        margin: "10px 0px 10px 10px",
       }}
     >
       Hot
@@ -51,7 +48,6 @@ const SelectTag = () => {
       placeholder="Sort by Tags"
       style={{
         width: "100%",
-        padding: "10px",
       }}
     />
   );
@@ -63,6 +59,7 @@ const SortPostCard = ({ width, height }) => {
       style={{
         size: "small",
         margin: "10px auto",
+        padding: "10px",
         height: height,
         width: width,
       }}
@@ -72,13 +69,16 @@ const SortPostCard = ({ width, height }) => {
     >
       <Row align="middle">
         <Col>
-          <SortBestButton />
-        </Col>
-        <Col>
-          <SortNewButton />
-        </Col>
-        <Col>
-          <SortOldButton />
+          <Space
+            size={10}
+            style={{
+              margin: "0px 10px 0px 0px",
+            }}
+          >
+            <SortBestButton />
+            <SortNewButton />
+            <SortOldButton />
+          </Space>
         </Col>
         <Col flex="auto">
           <SelectTag />

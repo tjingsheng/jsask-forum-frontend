@@ -10,7 +10,7 @@ const AvatarIcon = () => {
       icon={<UserOutlined />}
       shape="square"
       style={{
-        margin: "10px",
+        marginRight: "10px",
       }}
     />
   );
@@ -35,7 +35,7 @@ const CreatePostButton = ({ handleOnClick }) => {
       type="primary"
       style={{
         width: "75px",
-        margin: "10px",
+        marginLeft: "10px",
       }}
     >
       Post
@@ -52,6 +52,7 @@ const CreatePostCard = ({ width }) => {
     <Card
       style={{
         margin: "10px auto",
+        padding: "10px",
         width: width,
       }}
       bodyStyle={{
