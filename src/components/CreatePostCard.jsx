@@ -1,6 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Col, Input, Row } from "antd";
-import React from "react";
+import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
+import React, { useState } from "react";
+import CreatePostForm from "./CreatePostForm";
 
 const AvatarIcon = () => {
   return (
@@ -15,9 +16,10 @@ const AvatarIcon = () => {
   );
 };
 
-const CreatePostInput = () => {
+const CreatePostInput = ({ handleOnClick }) => {
   return (
     <Input
+      onClick={() => handleOnClick(true)}
       placeholder="Create Post"
       style={{
         height: "auto",
@@ -26,9 +28,10 @@ const CreatePostInput = () => {
   );
 };
 
-const CreatePostButton = () => {
+const CreatePostButton = ({ handleOnClick }) => {
   return (
     <Button
+      onClick={() => handleOnClick(true)}
       type="primary"
       style={{
         width: "75px",
@@ -41,6 +44,10 @@ const CreatePostButton = () => {
 };
 
 const CreatePostCard = ({ width }) => {
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
+    false
+  );
+
   return (
     <Card
       style={{
@@ -56,12 +63,21 @@ const CreatePostCard = ({ width }) => {
           <AvatarIcon />
         </Col>
         <Col flex="auto">
-          <CreatePostInput />
+          <CreatePostInput handleOnClick={setIsCreatePostModalVisible} />
         </Col>
         <Col>
-          <CreatePostButton />
+          <CreatePostButton handleOnClick={setIsCreatePostModalVisible} />
         </Col>
       </Row>
+      <Modal
+        title="Create Post"
+        open={isCreatePostModalVisible}
+        onOk={() => setIsCreatePostModalVisible(false)}
+        onCancel={() => setIsCreatePostModalVisible(false)}
+        footer={[]}
+      >
+        <CreatePostForm />
+      </Modal>
     </Card>
   );
 };
