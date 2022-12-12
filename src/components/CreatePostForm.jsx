@@ -36,7 +36,7 @@ const CreatePostForm = () => {
       </Form.Item>
 
       <Form.Item label="Tags" name="tag">
-        <Select mode="tags" placeholder="add tags (Recommended)" />
+        <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Form.Item>
 
       <Form.Item label="Content">
