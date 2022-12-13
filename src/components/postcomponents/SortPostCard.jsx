@@ -1,10 +1,15 @@
-import { FireOutlined, HistoryOutlined, StarOutlined } from "@ant-design/icons";
+import {
+  FireOutlined,
+  HistoryOutlined,
+  RiseOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const SortPostCard = ({ width, height }) => {
-  const buttonWidth = "75px";
+  const buttonWidth = "100px";
   const goto = useNavigate();
   return (
     <Card
@@ -35,6 +40,15 @@ const SortPostCard = ({ width, height }) => {
               }}
             >
               Hot
+            </Button>
+            <Button
+              icon={<RiseOutlined />}
+              onClick={() => goto(`/home/?sort=rising`)}
+              style={{
+                width: buttonWidth,
+              }}
+            >
+              Rising
             </Button>
             <Button
               icon={<StarOutlined />}
