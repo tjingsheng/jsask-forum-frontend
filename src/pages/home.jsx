@@ -60,7 +60,7 @@ const HomePageContent = () => {
       />
       <SortPostCard width={PageWidth} />
       {FROMBACKEND.map((post) => (
-        <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+        <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
       ))}
     </>
   );
