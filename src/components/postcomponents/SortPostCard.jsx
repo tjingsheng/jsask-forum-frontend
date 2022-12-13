@@ -12,6 +12,9 @@ import sortKeyEnums from "../../utils/enums";
 const SortPostCard = ({ width, height, sortKey }) => {
   const buttonWidth = "100px";
   const goto = useNavigate();
+  const buttonSelectedType = "primary";
+  const buttonUnselectedType = "default";
+
   return (
     <Card
       style={{
@@ -35,7 +38,11 @@ const SortPostCard = ({ width, height, sortKey }) => {
           >
             <Button
               icon={<FireOutlined />}
-              type={sortKey === sortKeyEnums.hot ? "primary" : "default"}
+              type={
+                sortKey === sortKeyEnums.hot
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
               onClick={() => goto(`/home/?sort=${sortKeyEnums.hot}`)}
               style={{
                 width: buttonWidth,
@@ -45,7 +52,11 @@ const SortPostCard = ({ width, height, sortKey }) => {
             </Button>
             <Button
               icon={<RiseOutlined />}
-              type={sortKey === sortKeyEnums.rising ? "primary" : "default"}
+              type={
+                sortKey === sortKeyEnums.rising
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
               onClick={() => goto(`/home/?sort=${sortKeyEnums.rising}`)}
               style={{
                 width: buttonWidth,
@@ -55,7 +66,11 @@ const SortPostCard = ({ width, height, sortKey }) => {
             </Button>
             <Button
               icon={<StarOutlined />}
-              type={sortKey === sortKeyEnums.new ? "primary" : "default"}
+              type={
+                sortKey === sortKeyEnums.new
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
               onClick={() => goto(`/home/?sort=${sortKeyEnums.new}`)}
               style={{
                 width: buttonWidth,
@@ -65,7 +80,11 @@ const SortPostCard = ({ width, height, sortKey }) => {
             </Button>
             <Button
               icon={<HistoryOutlined />}
-              type={sortKey === sortKeyEnums.old ? "primary" : "default"}
+              type={
+                sortKey === sortKeyEnums.old
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
               onClick={() => goto(`/home/?sort=${sortKeyEnums.old}`)}
               style={{
                 width: buttonWidth,
