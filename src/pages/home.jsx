@@ -84,7 +84,7 @@ const HomePageContent = ({ sortKey }) => {
         This is the value of sort taken from the URL is: {sortKey}
       </div>
       {/* <--- FOR TESTING */}
-      <SortPostCard width={PageWidth} />
+      <SortPostCard width={PageWidth} sortKey={sortKey} />
       {FROMBACKEND.sort(sortComparators[sortKey]).map((post) => (
         <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
       ))}
