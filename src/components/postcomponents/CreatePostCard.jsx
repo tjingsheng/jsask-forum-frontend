@@ -3,40 +3,6 @@ import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
 import React, { useState } from "react";
 import CreatePostForm from "./CreatePostForm";
 
-const AvatarIcon = () => (
-  <Avatar
-    size={32}
-    icon={<UserOutlined />}
-    shape="square"
-    style={{
-      marginRight: "10px",
-    }}
-  />
-);
-
-const CreatePostInput = ({ handleOnClick, text = "placeholder" }) => (
-  <Input
-    onClick={() => handleOnClick(true)}
-    placeholder={text}
-    style={{
-      height: "auto",
-    }}
-  />
-);
-
-const CreatePostButton = ({ handleOnClick, text = "button" }) => (
-  <Button
-    onClick={() => handleOnClick(true)}
-    type="primary"
-    style={{
-      width: "100px",
-      marginLeft: "10px",
-    }}
-  >
-    {text}
-  </Button>
-);
-
 const CreatePostCard = ({
   width,
   inputPlaceholder,
@@ -87,5 +53,39 @@ const CreatePostCard = ({
     </Card>
   );
 };
+
+const AvatarIcon = () => (
+  <Avatar
+    size={32}
+    icon={<UserOutlined />}
+    shape="square"
+    style={{
+      marginRight: "10px",
+    }}
+  />
+);
+
+const CreatePostInput = ({ handleOnClick, text = "placeholder" }) => (
+  <Input
+    onClick={() => handleOnClick(true)}
+    placeholder={text}
+    style={{
+      height: "auto",
+    }}
+  />
+);
+
+const CreatePostButton = ({ handleOnClick, text = "button" }) => (
+  <Button
+    onClick={() => handleOnClick(true)}
+    type="primary"
+    style={{
+      width: "100px",
+      marginLeft: "10px",
+    }}
+  >
+    {text}
+  </Button>
+);
 
 export default CreatePostCard;

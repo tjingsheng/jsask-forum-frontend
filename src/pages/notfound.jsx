@@ -1,25 +1,17 @@
-import Icon from "@ant-design/icons";
 import { Button, Result } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as LogoBlueSvg } from "../assets/LogoBlue.svg";
+import JsaskLogo from "../assets/JsaskLogo";
 
 const NotFoundPage = () => {
   let goto = useNavigate();
   return (
     <Result
-      icon={
-        <Icon
-          component={LogoBlueSvg}
-          style={{
-            fontSize: "300px",
-          }}
-        />
-      }
+      icon={<JsaskLogo size={300} bulb="yellow" />}
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={
-        <Button type="primary" onClick={() => goto("home")}>
+        <Button type="primary" onClick={() => goto("/home")}>
           Home
         </Button>
       }

@@ -4,6 +4,40 @@ import PostFooter from "./PostFooter";
 
 const { Title, Paragraph } = Typography;
 
+const PostCard = ({
+  width,
+  isCommentButtonVisible,
+
+  postTitle,
+  tags,
+  postContent,
+
+  ...props
+}) => (
+  <Card
+    style={{
+      margin: "10px auto",
+      width: width,
+    }}
+    bodyStyle={{
+      padding: "0",
+    }}
+  >
+    <Row>
+      <PostTitle postTitle={postTitle} />
+    </Row>
+    <Row>
+      <PostTags tags={tags} />
+    </Row>
+    <Row>
+      <PostContent postContent={postContent} />
+    </Row>
+    <Row>
+      <PostFooter isCommentButtonVisible={isCommentButtonVisible} {...props} />
+    </Row>
+  </Card>
+);
+
 const PostTitle = ({ postTitle }) => (
   <Title
     level={3}
@@ -33,48 +67,6 @@ const PostContent = ({ postContent }) => (
   >
     {postContent}
   </Paragraph>
-);
-
-const PostCard = ({
-  width,
-  isCommentButtonVisible,
-
-  postTitle,
-  postContent,
-
-  tags,
-
-  commentCount,
-  username,
-  datetime,
-}) => (
-  <Card
-    style={{
-      margin: "10px auto",
-      width: width,
-    }}
-    bodyStyle={{
-      padding: "0",
-    }}
-  >
-    <Row>
-      <PostTitle postTitle={postTitle} />
-    </Row>
-    <Row>
-      <PostTags tags={tags} />
-    </Row>
-    <Row>
-      <PostContent postContent={postContent} />
-    </Row>
-    <Row>
-      <PostFooter
-        isCommentButtonVisible={isCommentButtonVisible}
-        commentCount={commentCount}
-        username={username}
-        datetime={datetime}
-      />
-    </Row>
-  </Card>
 );
 
 export default PostCard;

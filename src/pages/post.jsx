@@ -4,6 +4,10 @@ import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
 import HomeLayout from "../layouts/HomeLayout";
 
+const FROMUSERINFO = {
+  username: "Bobby Lee",
+};
+
 const FROMBACKEND = {
   post: {
     postTitle: "This is my first forum post",
@@ -15,28 +19,40 @@ const FROMBACKEND = {
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
   consequat.`,
+    isLikeSelected: true,
+    isDislikeSelected: false,
   },
   comments: [
     {
       username: "Marry Poppins",
       datetime: "12 December 16:40",
       commentContent: "You are wrong",
+      isLikeSelected: true,
+      isDislikeSelected: false,
     },
     {
       username: "Poppins Harry",
       datetime: "12 December 17:40",
       commentContent: "You are right",
+      isLikeSelected: false,
+      isDislikeSelected: true,
     },
     {
       username: "Harry Marry",
       datetime: "15 December 17:40",
       commentContent: "You are all stupid",
+      isLikeSelected: false,
+      isDislikeSelected: false,
     },
   ],
 };
 
-const PageWidth = "50%";
+const PostPage = () => (
+  <HomeLayout content={<PostPageContent />} username={FROMUSERINFO.username} />
+);
+
 const PostPageContent = () => {
+  const PageWidth = "50%";
   const { post, comments } = FROMBACKEND;
 
   return (
@@ -54,7 +70,5 @@ const PostPageContent = () => {
     </>
   );
 };
-
-const PostPage = () => <HomeLayout content={<PostPageContent />} />;
 
 export default PostPage;

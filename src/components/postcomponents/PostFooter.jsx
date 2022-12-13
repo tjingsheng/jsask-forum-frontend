@@ -1,5 +1,7 @@
 import {
+  DislikeFilled,
   DislikeOutlined,
+  LikeFilled,
   LikeOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
@@ -13,8 +15,11 @@ const PostFooter = ({
   datetime = "",
   commentCount = "Unknown",
   isCommentButtonVisible = true,
+  isLikeSelected = false,
+  isDislikeSelected = false,
 }) => {
   const footerHeight = "30px";
+
   return (
     <Row
       style={{
@@ -28,16 +33,35 @@ const PostFooter = ({
             padding: "10px",
           }}
         >
-          <LikeOutlined
-            style={{
-              fontSize: footerHeight,
-            }}
-          />
-          <DislikeOutlined
-            style={{
-              fontSize: footerHeight,
-            }}
-          />
+          {isLikeSelected ? (
+            <LikeFilled
+              style={{
+                color: "green",
+                fontSize: footerHeight,
+              }}
+            />
+          ) : (
+            <LikeOutlined
+              style={{
+                fontSize: footerHeight,
+              }}
+            />
+          )}
+          {isDislikeSelected ? (
+            <DislikeFilled
+              style={{
+                color: "red",
+                fontSize: footerHeight,
+              }}
+            />
+          ) : (
+            <DislikeOutlined
+              style={{
+                fontSize: footerHeight,
+              }}
+            />
+          )}
+
           {isCommentButtonVisible && (
             <>
               <MessageOutlined

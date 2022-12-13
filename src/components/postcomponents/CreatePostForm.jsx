@@ -1,6 +1,7 @@
 import { Button, Form, Input, Select } from "antd";
 import React from "react";
 const { TextArea } = Input;
+const { Item } = Form;
 
 const CreatePostForm = () => {
   const onFinish = (values) => {
@@ -22,7 +23,7 @@ const CreatePostForm = () => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <Form.Item
+      <Item
         label="Title"
         name="title"
         rules={[
@@ -33,22 +34,22 @@ const CreatePostForm = () => {
         ]}
       >
         <Input />
-      </Form.Item>
+      </Item>
 
-      <Form.Item label="Tags" name="tag">
+      <Item label="Tags" name="tag">
         <Select mode="tags" placeholder="Add Tags (Recommended)" />
-      </Form.Item>
+      </Item>
 
-      <Form.Item label="Content">
+      <Item label="Content">
         <TextArea
           placeholder="Text (Optional)"
           showCount
           rows={5}
           maxLength={25}
         />
-      </Form.Item>
+      </Item>
 
-      <Form.Item
+      <Item
         wrapperCol={{
           flex: "auto",
         }}
@@ -60,7 +61,7 @@ const CreatePostForm = () => {
         >
           Post
         </Button>
-      </Form.Item>
+      </Item>
     </Form>
   );
 };

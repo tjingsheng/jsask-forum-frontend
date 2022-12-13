@@ -5,24 +5,7 @@ import PostFooter from "./PostFooter";
 
 const { Paragraph, Text } = Typography;
 
-const AvatarIcon = ({
-  userIcon = <UserOutlined />,
-  username = "Unknown User",
-}) => (
-  <div style={{ padding: "10px" }}>
-    <Avatar
-      size={32}
-      icon={userIcon}
-      shape="square"
-      style={{
-        marginRight: "10px",
-      }}
-    />
-    <Text>{username}</Text>
-  </div>
-);
-
-const CommentCard = ({ width, datetime, username, commentContent }) => (
+const CommentCard = ({ width, username, commentContent, ...props }) => (
   <>
     <Card
       style={{
@@ -42,13 +25,26 @@ const CommentCard = ({ width, datetime, username, commentContent }) => (
       >
         {commentContent}
       </Paragraph>
-      <PostFooter
-        isCommentButtonVisible={false}
-        username={username}
-        datetime={datetime}
-      />
+      <PostFooter isCommentButtonVisible={false} {...props} />
     </Card>
   </>
+);
+
+const AvatarIcon = ({
+  userIcon = <UserOutlined />,
+  username = "Unknown User",
+}) => (
+  <div style={{ padding: "10px" }}>
+    <Avatar
+      size={32}
+      icon={userIcon}
+      shape="square"
+      style={{
+        marginRight: "10px",
+      }}
+    />
+    <Text>{username}</Text>
+  </div>
 );
 
 export default CommentCard;
