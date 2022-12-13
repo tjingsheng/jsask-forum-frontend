@@ -11,15 +11,13 @@ const FROMUSERINFO = {
 
 const FROMBACKEND = {
   post: {
+    postId: 1,
     postTitle: "This is my first forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: "10",
-    postContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat.`,
+    commentCount: 10,
+    postContent: `The url param for this post is idk`,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
