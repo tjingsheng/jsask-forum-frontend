@@ -1,4 +1,5 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import CommentCard from "../components/postcomponents/CommentCard";
 import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
@@ -54,10 +55,19 @@ const PostPage = () => (
 const PostPageContent = () => {
   const PageWidth = "50%";
   const { post, comments } = FROMBACKEND;
+  const [queryParams] = useSearchParams(window.location.search);
+  const TEST = queryParams.get("postId");
 
   return (
     <>
       <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        This is the value of postId taken from the URL is: {TEST}
+      </div>
       <CreatePostCard
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
