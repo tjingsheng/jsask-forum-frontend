@@ -7,7 +7,7 @@ import {
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import sortKeyEnums from "../../utils/enums";
+import sortKeyEnums from "../../utils/enums.js";
 
 const SortPostCard = ({ width, height, sortKey }) => {
   const buttonWidth = "100px";
