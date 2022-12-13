@@ -48,22 +48,22 @@ const HomePage = () => (
   <HomeLayout content={<HomePageContent />} username={FROMUSERINFO.username} />
 );
 
-const PageWidth = "50%";
-const HomePageContent = () => (
-  <>
-    <CreatePostCard
-      width={PageWidth}
-      inputPlaceholder="Create Post"
-      buttonText="Post"
-      isCreatePost
-    />
-    <SortPostCard width={PageWidth} />
-    {FROMBACKEND.map((post) => (
-      <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
-    ))}
-  </>
-);
-
-
+const HomePageContent = () => {
+  const PageWidth = "50%";
+  return (
+    <>
+      <CreatePostCard
+        width={PageWidth}
+        inputPlaceholder="Create Post"
+        buttonText="Post"
+        isCreatePost
+      />
+      <SortPostCard width={PageWidth} />
+      {FROMBACKEND.map((post) => (
+        <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+      ))}
+    </>
+  );
+};
 
 export default HomePage;
