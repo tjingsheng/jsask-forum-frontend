@@ -4,7 +4,7 @@ import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
-import sortKeyEnums from "../utils/enums";
+import sortKeyEnums from "../utils/enums.js";
 
 const FROMUSERINFO = {
   username: "Bobby Lee",
@@ -16,7 +16,7 @@ const FROMBACKEND = [
     postTitle: "This is my first forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
-    tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
+    tags: ["tag 1", "tag 3"],
     commentCount: 15,
     postContent: "This is life",
     isLikeSelected: true,
@@ -38,8 +38,19 @@ const FROMBACKEND = [
     postTitle: "This is my 3rd forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
-    tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
+    tags: ["tag 3"],
     commentCount: 12,
+    postContent: "ni hao ni hao",
+    isLikeSelected: false,
+    isDislikeSelected: false,
+  },
+  {
+    postId: 4,
+    postTitle: "This is my 4th forum post",
+    username: "Sussy Lee",
+    datetime: "12 May 16:40",
+    tags: ["tag 2", "tag 4"],
+    commentCount: 17,
     postContent: "ni hao ni hao",
     isLikeSelected: false,
     isDislikeSelected: false,
