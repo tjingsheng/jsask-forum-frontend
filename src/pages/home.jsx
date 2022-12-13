@@ -4,6 +4,10 @@ import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
 
+const FROMUSERINFO = {
+  username: "Bobby Lee",
+};
+
 const FROMBACKEND = [
   {
     postTitle: "This is my first forum post",
