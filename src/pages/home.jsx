@@ -35,6 +35,10 @@ const FROMBACKEND = [
   },
 ];
 
+const HomePage = () => (
+  <HomeLayout content={<HomePageContent />} username={FROMUSERINFO.username} />
+);
+
 const PageWidth = "50%";
 const HomePageContent = () => (
   <>
@@ -51,6 +55,6 @@ const HomePageContent = () => (
   </>
 );
 
-const HomePage = () => <HomeLayout content={<HomePageContent />} />;
+
 
 export default HomePage;
