@@ -44,13 +44,17 @@ const FROMBACKEND = [
   },
 ];
 
-const HomePage = () => (
-  <HomeLayout content={<HomePageContent />} username={FROMUSERINFO.username} />
-);
+const HomePage = () => {
+  const [queryParams] = useSearchParams(window.location.search);
+  const sortKey = queryParams.get("sort");
+  return (
+    <HomeLayout
+      content={<HomePageContent sortKey={sortKey} />}
+      username={FROMUSERINFO.username}
+    />
+  );
 
-const HomePageContent = () => {
-  const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
-  const TEST = queryParams.get("sort"); //FOR TESTING
+const HomePageContent = ({ sortKey }) => {
   const PageWidth = "50%";
   return (
     <>
@@ -66,7 +70,7 @@ const HomePageContent = () => {
           textAlign: "center",
         }}
       >
-        This is the value of sort taken from the URL is: {TEST}
+        This is the value of sort taken from the URL is: {sortKey}
       </div>
       {/* <--- FOR TESTING */}
       <SortPostCard width={PageWidth} />
