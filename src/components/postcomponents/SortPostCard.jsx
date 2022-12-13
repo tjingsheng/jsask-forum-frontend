@@ -7,7 +7,7 @@ const SortPostCard = ({ width, height }) => {
   const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
   const TEST = queryParams.get("sort"); //FOR TESTING
   const buttonWidth = "75px";
-  let goto = useNavigate();
+  const goto = useNavigate();
   return (
     <>
       {/* FOR TESTING ---> */}

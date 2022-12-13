@@ -21,7 +21,7 @@ const PostFooter = ({
   isDislikeSelected = false,
 }) => {
   const footerHeight = "30px";
-  let goto = useNavigate();
+  const goto = useNavigate();
   return (
     <Row
       style={{

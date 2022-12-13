@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import JsaskLogo from "../assets/JsaskLogo";
 
 const NotFoundPage = () => {
-  let goto = useNavigate();
+  const goto = useNavigate();
   return (
     <Result
       icon={<JsaskLogo size={300} bulb="yellow" />}
