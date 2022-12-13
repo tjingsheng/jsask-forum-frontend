@@ -5,11 +5,9 @@ import Logo from "./headercomponents/HeaderLogo";
 import ProfileMenu from "./headercomponents/HeaderProfileMenu";
 import SearchBox from "./headercomponents/HeaderSearchBox";
 
-const { useState } = React;
-const { Search } = Input;
 const { Header } = Layout;
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ username }) => {
   return (
     <Header
       style={{
@@ -32,7 +30,7 @@ const HeaderComponent = () => {
           <AvatarIcon />
         </Col>
         <Col span={2}>
-          <ProfileMenu />
+          <ProfileMenu username={username} />
         </Col>
       </Row>
     </Header>
