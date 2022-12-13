@@ -53,12 +53,13 @@ const PostPage = () => (
 const PostPageContent = () => {
   const PageWidth = "50%";
   const { post, comments } = FROMBACKEND;
-  const [queryParams] = useSearchParams(window.location.search);
-  const TEST = queryParams.get("postId");
+  const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
+  const TEST = queryParams.get("postId"); //FOR TESTING
 
   return (
     <>
       <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+      {/* FOR TESTING ---> */}
       <div
         style={{
           textAlign: "center",
@@ -66,6 +67,7 @@ const PostPageContent = () => {
       >
         This is the value of postId taken from the URL is: {TEST}
       </div>
+      {/* <--- FOR TESTING */}
       <CreatePostCard
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
