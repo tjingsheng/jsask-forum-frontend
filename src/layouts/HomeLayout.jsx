@@ -6,7 +6,7 @@ import HeaderComponent from "./components/Header";
 
 const HomeLayout = ({ content, username, ...props }) => (
   <Layout>
-    <HeaderComponent />
+    <HeaderComponent username={username} />
     <ContentComponent children={content} />
     <FooterComponent />
   </Layout>
