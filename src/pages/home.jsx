@@ -10,6 +10,7 @@ const FROMUSERINFO = {
 
 const FROMBACKEND = [
   {
+    postId: 1,
     postTitle: "This is my first forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
@@ -20,6 +21,7 @@ const FROMBACKEND = [
     isDislikeSelected: false,
   },
   {
+    postId: 2,
     postTitle: "This is my 2nd forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
@@ -30,6 +32,7 @@ const FROMBACKEND = [
     isDislikeSelected: true,
   },
   {
+    postId: 3,
     postTitle: "This is my 3rd forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
