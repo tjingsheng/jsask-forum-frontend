@@ -1,15 +1,60 @@
 import React from "react";
-import CreatePostCard from "../components/CreatePostCard";
-import PostCard from "../components/PostCard";
+import CommentCard from "../components/postcomponents/CommentCard";
+import CreatePostCard from "../components/postcomponents/CreatePostCard";
+import PostCard from "../components/postcomponents/PostCard";
 import HomeLayout from "../layouts/HomeLayout";
 
-const PageWidth = "50%";
-const HomePageContent = () => (
-  <div>
-    <CreatePostCard width={PageWidth} />
-    <PostCard width={PageWidth} />
-  </div>
-);
-const HomePage = () => <HomeLayout content={<HomePageContent />} />;
+const FROMBACKEND = {
+  post: {
+    postTitle: "This is my first forum post",
+    username: "Bobby Lee",
+    datetime: "12 December 16:40",
+    tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
+    commentCount: "10",
+    postContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat.`,
+  },
+  comments: [
+    {
+      username: "Marry Poppins",
+      datetime: "12 December 16:40",
+      commentContent: "You are wrong",
+    },
+    {
+      username: "Poppins Harry",
+      datetime: "12 December 17:40",
+      commentContent: "You are right",
+    },
+    {
+      username: "Harry Marry",
+      datetime: "15 December 17:40",
+      commentContent: "You are all stupid",
+    },
+  ],
+};
 
-export default HomePage;
+const PageWidth = "50%";
+const PostPageContent = () => {
+  const { post, comments } = FROMBACKEND;
+
+  return (
+    <>
+      <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+      <CreatePostCard
+        width={PageWidth}
+        inputPlaceholder="What are your thoughts?"
+        buttonText="Comment"
+        isPost={false}
+      />
+      {comments.map((comment) => (
+        <CommentCard width={PageWidth} {...comment} />
+      ))}
+    </>
+  );
+};
+
+const PostPage = () => <HomeLayout content={<PostPageContent />} />;
+
+export default PostPage;

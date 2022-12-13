@@ -56,7 +56,7 @@ const CreatePostForm = () => {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ width: "75px", float: "right" }}
+          style={{ width: "100px", float: "right" }}
         >
           Post
         </Button>

@@ -14,30 +14,35 @@ const AvatarIcon = () => (
   />
 );
 
-const CreatePostInput = ({ handleOnClick }) => (
+const CreatePostInput = ({ handleOnClick, text = "placeholder" }) => (
   <Input
     onClick={() => handleOnClick(true)}
-    placeholder="Create Post"
+    placeholder={text}
     style={{
       height: "auto",
     }}
   />
 );
 
-const CreatePostButton = ({ handleOnClick }) => (
+const CreatePostButton = ({ handleOnClick, text = "button" }) => (
   <Button
     onClick={() => handleOnClick(true)}
     type="primary"
     style={{
-      width: "75px",
+      width: "100px",
       marginLeft: "10px",
     }}
   >
-    Post
+    {text}
   </Button>
 );
 
-const CreatePostCard = ({ width }) => {
+const CreatePostCard = ({
+  width,
+  inputPlaceholder,
+  buttonText,
+  isCreatePost,
+}) => {
   const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
     false
   );
@@ -58,15 +63,21 @@ const CreatePostCard = ({ width }) => {
           <AvatarIcon />
         </Col>
         <Col flex="auto">
-          <CreatePostInput handleOnClick={setIsCreatePostModalVisible} />
+          <CreatePostInput
+            handleOnClick={setIsCreatePostModalVisible}
+            text={inputPlaceholder}
+          />
         </Col>
         <Col>
-          <CreatePostButton handleOnClick={setIsCreatePostModalVisible} />
+          <CreatePostButton
+            handleOnClick={setIsCreatePostModalVisible}
+            text={buttonText}
+          />
         </Col>
       </Row>
       <Modal
         title="Create Post"
-        open={isCreatePostModalVisible}
+        open={isCreatePostModalVisible && isCreatePost}
         onOk={() => setIsCreatePostModalVisible(false)}
         onCancel={() => setIsCreatePostModalVisible(false)}
         footer={[]}

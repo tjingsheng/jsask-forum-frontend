@@ -65,27 +65,25 @@ const ProfileMenu = () => {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
-  const setAllStateFalse = () => {
-    setIsLogoutModalVisible(false);
-    setIsProfileModalVisible(false);
-  };
-
   const showModal = (e) => {
     if (e["key"] === "profile") {
       setIsProfileModalVisible(true);
     } else if (e["key"] === "logout") {
       setIsLogoutModalVisible(true);
     } else {
-      setAllStateFalse();
+      setIsLogoutModalVisible(false);
+      setIsProfileModalVisible(false);
     }
   };
 
   const handleOk = () => {
-    setAllStateFalse();
+    setIsLogoutModalVisible(false);
+    setIsProfileModalVisible(false);
   };
 
   const handleCancel = () => {
-    setAllStateFalse();
+    setIsLogoutModalVisible(false);
+    setIsProfileModalVisible(false);
   };
 
   const items = [
