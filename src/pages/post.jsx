@@ -71,6 +71,4 @@ const PostPageContent = () => {
   );
 };
 
-const PostPage = () => <HomeLayout content={<PostPageContent />} />;
-
 export default PostPage;
