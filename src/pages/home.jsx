@@ -15,7 +15,7 @@ const FROMBACKEND = [
     username: "Bobby Lee",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: 10,
+    commentCount: 15,
     postContent: "This is life",
     isLikeSelected: true,
     isDislikeSelected: false,
@@ -26,7 +26,7 @@ const FROMBACKEND = [
     username: "Bobby Lee",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: 10,
+    commentCount: 3,
     postContent: "what is 1 + 1?",
     isLikeSelected: false,
     isDislikeSelected: true,
@@ -37,7 +37,7 @@ const FROMBACKEND = [
     username: "Bobby Lee",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: 10,
+    commentCount: 12,
     postContent: "ni hao ni hao",
     isLikeSelected: false,
     isDislikeSelected: false,
@@ -53,9 +53,20 @@ const HomePage = () => {
       username={FROMUSERINFO.username}
     />
   );
+};
 
 const HomePageContent = ({ sortKey }) => {
   const PageWidth = "50%";
+
+  // NEED TO FIX -->
+  const sortComparators = {
+    hot: (a, b) => a.commentCount - b.commentCount,
+    rising: (a, b) => b.commentCount - a.commentCount,
+    new: (a, b) => b.postId - a.postId,
+    old: (a, b) => b.commentCount - a.commentCount,
+  };
+  // <-- NEED TO FIX
+
   return (
     <>
       <CreatePostCard
@@ -74,7 +85,7 @@ const HomePageContent = ({ sortKey }) => {
       </div>
       {/* <--- FOR TESTING */}
       <SortPostCard width={PageWidth} />
-      {FROMBACKEND.map((post) => (
+      {FROMBACKEND.sort(sortComparators[sortKey]).map((post) => (
         <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
       ))}
     </>
