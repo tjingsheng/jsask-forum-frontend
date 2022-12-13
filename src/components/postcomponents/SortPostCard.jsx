@@ -9,7 +9,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums.js";
 
-const SortPostCard = ({ width, height, sortKey }) => {
+const SortPostCard = ({ width, height, sortKey, handleChange }) => {
   const buttonWidth = "100px";
   const goto = useNavigate();
   const buttonSelectedType = "primary";
@@ -97,10 +97,11 @@ const SortPostCard = ({ width, height, sortKey }) => {
         <Col flex="auto">
           <Select
             mode="tags"
-            placeholder="Sort by Tags"
+            placeholder="Filter by Tags"
             style={{
               width: "100%",
             }}
+            onChange={handleChange}
           />
         </Col>
       </Row>

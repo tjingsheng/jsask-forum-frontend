@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
@@ -71,6 +71,17 @@ const HomePage = () => {
 const HomePageContent = ({ sortKey }) => {
   const PageWidth = "50%";
 
+  const [filterByTagsArray, setFilterByTagsArray] = useState([]);
+
+  const postTagsContainsTagsPredicate = (tagsA, tagsB) => {
+    const newTagsA = new Set(tagsA);
+    const newTagsB = new Set(tagsB);
+    return (
+      newTagsA.size + newTagsB.size !==
+        new Set([...newTagsA, ...newTagsB]).size || !tagsB.length
+    );
+  };
+
   // NEED TO FIX -->
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => a.commentCount - b.commentCount,
@@ -88,10 +99,18 @@ const HomePageContent = ({ sortKey }) => {
         buttonText="Post"
         isCreatePost
       />
-      <SortPostCard width={PageWidth} sortKey={sortKey} />
-      {FROMBACKEND.sort(sortComparators[sortKey]).map((post) => (
-        <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
-      ))}
+      <SortPostCard
+        width={PageWidth}
+        sortKey={sortKey}
+        handleChange={setFilterByTagsArray}
+      />
+      {FROMBACKEND.filter((post) =>
+        postTagsContainsTagsPredicate(post.tags, filterByTagsArray)
+      )
+        .sort(sortComparators[sortKey])
+        .map((post) => (
+          <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
+        ))}
     </>
   );
 };
