@@ -4,6 +4,8 @@ import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
+import sortKeyEnums from "../utils/enums";
+
 const FROMUSERINFO = {
   username: "Bobby Lee",
 };
@@ -60,10 +62,10 @@ const HomePageContent = ({ sortKey }) => {
 
   // NEED TO FIX -->
   const sortComparators = {
-    hot: (a, b) => a.commentCount - b.commentCount,
-    rising: (a, b) => b.commentCount - a.commentCount,
-    new: (a, b) => b.postId - a.postId,
-    old: (a, b) => b.commentCount - a.commentCount,
+    [sortKeyEnums.hot]: (a, b) => a.commentCount - b.commentCount,
+    [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
+    [sortKeyEnums.new]: (a, b) => b.postId - a.postId,
+    [sortKeyEnums.old]: (a, b) => b.commentCount - a.commentCount,
   };
   // <-- NEED TO FIX
 
