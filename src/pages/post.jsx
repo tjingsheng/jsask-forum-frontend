@@ -47,13 +47,12 @@ const FROMBACKEND = {
   ],
 };
 
-const PageWidth = "50%";
-
 const PostPage = () => (
   <HomeLayout content={<PostPageContent />} username={FROMUSERINFO.username} />
 );
 
 const PostPageContent = () => {
+  const PageWidth = "50%";
   const { post, comments } = FROMBACKEND;
 
   return (
