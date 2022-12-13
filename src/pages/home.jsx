@@ -1,9 +1,9 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
-
 const FROMUSERINFO = {
   username: "Bobby Lee",
 };
@@ -49,6 +49,8 @@ const HomePage = () => (
 );
 
 const HomePageContent = () => {
+  const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
+  const TEST = queryParams.get("sort"); //FOR TESTING
   const PageWidth = "50%";
   return (
     <>
@@ -58,6 +60,15 @@ const HomePageContent = () => {
         buttonText="Post"
         isCreatePost
       />
+      {/* FOR TESTING ---> */}
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        This is the value of sort taken from the URL is: {TEST}
+      </div>
+      {/* <--- FOR TESTING */}
       <SortPostCard width={PageWidth} />
       {FROMBACKEND.map((post) => (
         <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />

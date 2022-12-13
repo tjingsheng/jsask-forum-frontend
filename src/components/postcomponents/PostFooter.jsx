@@ -7,19 +7,21 @@ import {
 } from "@ant-design/icons";
 import { Col, Row, Space, Typography } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 const PostFooter = ({
   username = "Unknown User",
   datetime = "",
+  postId = 0,
   commentCount = "Unknown",
   isCommentButtonVisible = true,
   isLikeSelected = false,
   isDislikeSelected = false,
 }) => {
   const footerHeight = "30px";
-
+  const goto = useNavigate();
   return (
     <Row
       style={{
@@ -65,6 +67,7 @@ const PostFooter = ({
           {isCommentButtonVisible && (
             <>
               <MessageOutlined
+                onClick={() => goto(`/post/?postId=${postId}`)}
                 style={{
                   fontSize: footerHeight,
                 }}
