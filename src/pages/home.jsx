@@ -4,6 +4,7 @@ import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
+import hasCommonElements from "../utils";
 import sortKeyEnums from "../utils/enums.js";
 
 const FROMUSERINFO = {
@@ -73,15 +74,6 @@ const HomePageContent = ({ sortKey }) => {
 
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
 
-  const postTagsContainsTagsPredicate = (tagsA, tagsB) => {
-    const newTagsA = new Set(tagsA);
-    const newTagsB = new Set(tagsB);
-    return (
-      newTagsA.size + newTagsB.size !==
-        new Set([...newTagsA, ...newTagsB]).size || !tagsB.length
-    );
-  };
-
   // NEED TO FIX -->
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => a.commentCount - b.commentCount,
@@ -105,7 +97,7 @@ const HomePageContent = ({ sortKey }) => {
         handleChange={setFilterByTagsArray}
       />
       {FROMBACKEND.filter((post) =>
-        postTagsContainsTagsPredicate(post.tags, filterByTagsArray)
+        hasCommonElements(post.tags, filterByTagsArray)
       )
         .sort(sortComparators[sortKey])
         .map((post) => (
