@@ -36,7 +36,7 @@ const SortPostCard = ({ width, height, sortKey }) => {
             <Button
               icon={<FireOutlined />}
               type={sortKey === sortKeyEnums.hot ? "primary" : "default"}
-              onClick={() => goto(`/home/?sort=hot`)}
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.hot}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -46,7 +46,7 @@ const SortPostCard = ({ width, height, sortKey }) => {
             <Button
               icon={<RiseOutlined />}
               type={sortKey === sortKeyEnums.rising ? "primary" : "default"}
-              onClick={() => goto(`/home/?sort=rising`)}
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.rising}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -56,7 +56,7 @@ const SortPostCard = ({ width, height, sortKey }) => {
             <Button
               icon={<StarOutlined />}
               type={sortKey === sortKeyEnums.new ? "primary" : "default"}
-              onClick={() => goto(`/home/?sort=new`)}
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.new}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -66,7 +66,7 @@ const SortPostCard = ({ width, height, sortKey }) => {
             <Button
               icon={<HistoryOutlined />}
               type={sortKey === sortKeyEnums.old ? "primary" : "default"}
-              onClick={() => goto(`/home/?sort=old`)}
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.old}`)}
               style={{
                 width: buttonWidth,
               }}
