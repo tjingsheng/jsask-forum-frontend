@@ -7,8 +7,9 @@ import {
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import sortKeyEnums from "../../utils/enums";
 
-const SortPostCard = ({ width, height }) => {
+const SortPostCard = ({ width, height, sortKey }) => {
   const buttonWidth = "100px";
   const goto = useNavigate();
   return (
@@ -34,6 +35,7 @@ const SortPostCard = ({ width, height }) => {
           >
             <Button
               icon={<FireOutlined />}
+              type={sortKey === sortKeyEnums.hot ? "primary" : "default"}
               onClick={() => goto(`/home/?sort=hot`)}
               style={{
                 width: buttonWidth,
@@ -43,6 +45,7 @@ const SortPostCard = ({ width, height }) => {
             </Button>
             <Button
               icon={<RiseOutlined />}
+              type={sortKey === sortKeyEnums.rising ? "primary" : "default"}
               onClick={() => goto(`/home/?sort=rising`)}
               style={{
                 width: buttonWidth,
@@ -52,6 +55,7 @@ const SortPostCard = ({ width, height }) => {
             </Button>
             <Button
               icon={<StarOutlined />}
+              type={sortKey === sortKeyEnums.new ? "primary" : "default"}
               onClick={() => goto(`/home/?sort=new`)}
               style={{
                 width: buttonWidth,
@@ -61,6 +65,7 @@ const SortPostCard = ({ width, height }) => {
             </Button>
             <Button
               icon={<HistoryOutlined />}
+              type={sortKey === sortKeyEnums.old ? "primary" : "default"}
               onClick={() => goto(`/home/?sort=old`)}
               style={{
                 width: buttonWidth,
