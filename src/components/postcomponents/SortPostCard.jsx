@@ -1,11 +1,20 @@
-import { FireOutlined, HistoryOutlined, StarOutlined } from "@ant-design/icons";
+import {
+  FireOutlined,
+  HistoryOutlined,
+  RiseOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import sortKeyEnums from "../../utils/enums.js";
 
-const SortPostCard = ({ width, height }) => {
-  const buttonWidth = "75px";
+const SortPostCard = ({ width, height, sortKey, handleChange }) => {
+  const buttonWidth = "100px";
   const goto = useNavigate();
+  const buttonSelectedType = "primary";
+  const buttonUnselectedType = "default";
+
   return (
     <Card
       style={{
@@ -29,7 +38,12 @@ const SortPostCard = ({ width, height }) => {
           >
             <Button
               icon={<FireOutlined />}
-              onClick={() => goto(`/home/?sort=hot`)}
+              type={
+                sortKey === sortKeyEnums.hot
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.hot}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -37,8 +51,27 @@ const SortPostCard = ({ width, height }) => {
               Hot
             </Button>
             <Button
+              icon={<RiseOutlined />}
+              type={
+                sortKey === sortKeyEnums.rising
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.rising}`)}
+              style={{
+                width: buttonWidth,
+              }}
+            >
+              Rising
+            </Button>
+            <Button
               icon={<StarOutlined />}
-              onClick={() => goto(`/home/?sort=new`)}
+              type={
+                sortKey === sortKeyEnums.new
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.new}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -47,7 +80,12 @@ const SortPostCard = ({ width, height }) => {
             </Button>
             <Button
               icon={<HistoryOutlined />}
-              onClick={() => goto(`/home/?sort=old`)}
+              type={
+                sortKey === sortKeyEnums.old
+                  ? buttonSelectedType
+                  : buttonUnselectedType
+              }
+              onClick={() => goto(`/home/?sort=${sortKeyEnums.old}`)}
               style={{
                 width: buttonWidth,
               }}
@@ -59,10 +97,11 @@ const SortPostCard = ({ width, height }) => {
         <Col flex="auto">
           <Select
             mode="tags"
-            placeholder="Sort by Tags"
+            placeholder="Filter by Tags"
             style={{
               width: "100%",
             }}
+            onChange={handleChange}
           />
         </Col>
       </Row>
