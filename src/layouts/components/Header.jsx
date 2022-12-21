@@ -1,6 +1,5 @@
 import { Col, Layout, Row } from "antd";
 import React from "react";
-import AvatarIcon from "./headercomponents/HeaderAvatarIcon";
 import Logo from "./headercomponents/HeaderLogo";
 import ProfileMenu from "./headercomponents/HeaderProfileMenu";
 import SearchBox from "./headercomponents/HeaderSearchBox";
@@ -17,6 +16,7 @@ const HeaderComponent = ({ username }) => {
         height: headerHeight,
         padding: "0px 20px 0px 20px",
         backgroundColor: "white",
+        overflow: "hidden",
       }}
     >
       <Row>
@@ -26,10 +26,7 @@ const HeaderComponent = ({ username }) => {
         <Col span={8}>
           <SearchBox />
         </Col>
-        <Col span={6}>
-          <AvatarIcon />
-        </Col>
-        <Col span={2}>
+        <Col span={8}>
           <ProfileMenu username={username} />
         </Col>
       </Row>

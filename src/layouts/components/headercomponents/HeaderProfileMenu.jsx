@@ -1,9 +1,10 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Button, Menu, Modal } from "antd";
+import { Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
 import { headerHeight } from "../Header";
+import AvatarIcon from "./HeaderAvatarIcon";
 
 const ProfileMenu = ({ username }) => {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
@@ -48,17 +49,21 @@ const ProfileMenu = ({ username }) => {
   ];
 
   return (
-    <>
-      <Menu
-        onClick={showModal}
-        mode="horizontal"
-        items={items}
-        overflowedIndicator={<DownOutlined />}
-        style={{
-          float: "left",
-          height: headerHeight,
-        }}
-      />
+    <Row justify="end">
+      <Col align="middle">
+        <AvatarIcon />
+      </Col>
+      <Col>
+        <Menu
+          onClick={showModal}
+          mode="horizontal"
+          items={items}
+          overflowedIndicator={<DownOutlined />}
+          style={{
+            height: headerHeight,
+          }}
+        />
+      </Col>
       <Modal
         title="Your Profile"
         open={isProfileModalVisible}
@@ -85,7 +90,7 @@ const ProfileMenu = ({ username }) => {
       >
         <LogoutContent />
       </Modal>
-    </>
+    </Row>
   );
 };
 
