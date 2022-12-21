@@ -25,7 +25,11 @@ const CommentCard = ({ width, username, commentContent, ...props }) => (
       >
         {commentContent}
       </Paragraph>
-      <PostFooter isCommentButtonVisible={false} {...props} />
+      <PostFooter
+        isCommentButtonVisible={false}
+        username={username}
+        {...props}
+      />
     </Card>
   </>
 );
