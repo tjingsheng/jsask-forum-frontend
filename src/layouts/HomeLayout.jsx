@@ -1,13 +1,18 @@
 import { Layout } from "antd";
 import React from "react";
 import ContentComponent from "./components/Content";
-import FooterComponent from "./components/Footer";
-import HeaderComponent from "./components/Header";
+import FooterComponent, { footerHeight } from "./components/Footer";
+import HeaderComponent, { headerHeight } from "./components/Header";
 
 const HomeLayout = ({ content, username, ...props }) => (
   <Layout>
     <HeaderComponent username={username} />
-    <ContentComponent children={content} />
+    <ContentComponent
+      style={{
+        minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`,
+      }}
+      children={content}
+    />
     <FooterComponent />
   </Layout>
 );
