@@ -6,7 +6,7 @@ const { Footer } = Layout;
 const FooterComponent = () => (
   <Footer
     style={{
-      height: "60px",
+      height: footerHeight,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -16,4 +16,5 @@ const FooterComponent = () => (
   </Footer>
 );
 
+export const footerHeight = 60;
 export default FooterComponent;
