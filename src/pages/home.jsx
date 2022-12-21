@@ -15,7 +15,7 @@ const FROMBACKEND = [
   {
     postId: 1,
     postTitle: "This is my first forum post",
-    username: "Bobby Lee",
+    username: "Bobby Lee One",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 3"],
     commentCount: 15,
@@ -26,7 +26,7 @@ const FROMBACKEND = [
   {
     postId: 2,
     postTitle: "This is my 2nd forum post",
-    username: "Bobby Lee",
+    username: "Bobby Lee Two",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
     commentCount: 3,
@@ -37,7 +37,7 @@ const FROMBACKEND = [
   {
     postId: 3,
     postTitle: "This is my 3rd forum post",
-    username: "Bobby Lee",
+    username: "Bobby Lee Three",
     datetime: "12 December 16:40",
     tags: ["tag 3"],
     commentCount: 12,
