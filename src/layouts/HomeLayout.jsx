@@ -4,7 +4,7 @@ import ContentComponent from "./components/Content";
 import FooterComponent, { footerHeight } from "./components/Footer";
 import HeaderComponent, { headerHeight } from "./components/Header";
 
-const HomeLayout = ({ content, username, ...props }) => (
+const HomeLayout = ({ content, username }) => (
   <Layout>
     <HeaderComponent username={username} />
     <ContentComponent
