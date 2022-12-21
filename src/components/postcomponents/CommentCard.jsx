@@ -5,7 +5,7 @@ import PostFooter from "./PostFooter";
 
 const { Paragraph, Text } = Typography;
 
-const CommentCard = ({ width, username, commentContent, ...props }) => (
+const CommentCard = ({ width, commentContent, ...props }) => (
   <>
     <Card
       style={{
@@ -16,7 +16,7 @@ const CommentCard = ({ width, username, commentContent, ...props }) => (
         padding: "0",
       }}
     >
-      <AvatarIcon userIcon={<UserOutlined />} username={username} />
+      <AvatarIcon userIcon={<UserOutlined />} {...props} />
       <Paragraph
         style={{
           margin: "0px",
@@ -25,11 +25,7 @@ const CommentCard = ({ width, username, commentContent, ...props }) => (
       >
         {commentContent}
       </Paragraph>
-      <PostFooter
-        isCommentButtonVisible={false}
-        username={username}
-        {...props}
-      />
+      <PostFooter isCommentButtonVisible={false} {...props} />
     </Card>
   </>
 );
