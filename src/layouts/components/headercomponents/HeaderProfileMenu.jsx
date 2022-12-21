@@ -1,3 +1,4 @@
+import { DownOutlined } from "@ant-design/icons";
 import { Button, Menu, Modal } from "antd";
 import React, { useState } from "react";
 import LogoutContent from "../../../components/LogoutContent";
@@ -52,6 +53,7 @@ const ProfileMenu = ({ username }) => {
         onClick={showModal}
         mode="horizontal"
         items={items}
+        overflowedIndicator={<DownOutlined />}
         style={{
           float: "left",
           height: headerHeight,

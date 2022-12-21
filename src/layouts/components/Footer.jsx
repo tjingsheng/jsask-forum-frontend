@@ -6,11 +6,15 @@ const { Footer } = Layout;
 const FooterComponent = () => (
   <Footer
     style={{
-      textAlign: "center",
+      height: footerHeight,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     }}
   >
-    Jsask ©2022 Created by Tan Jing Sheng
+    Jsask © 2022 Created by Tan Jing Sheng
   </Footer>
 );
 
+export const footerHeight = 60;
 export default FooterComponent;
