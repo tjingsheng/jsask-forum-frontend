@@ -6,7 +6,7 @@ const { Content } = Layout;
 const ContentComponent = ({ children }) => (
   <Content
     style={{
-      minHeight: "calc(100vh - 127px)",
+      minHeight: "calc(100vh - 120px)",
     }}
   >
     {children}
