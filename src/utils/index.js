@@ -1,9 +1,10 @@
 const hasCommonElements = (arrA, arrB) => {
-  const newArrA = new Set(arrA);
-  const newArrB = new Set(arrB);
+  const setA = new Set(arrA);
+  const setB = new Set(arrB);
   return (
-    newArrA.size + newArrB.size !== new Set([...newArrA, ...newArrB]).size ||
-    !arrB.length
+    !arrA.length ||
+    !arrB.length ||
+    setA.size + setB.size !== new Set([...setA, ...setB]).size
   );
 };
 
