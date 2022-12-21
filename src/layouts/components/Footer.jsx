@@ -12,7 +12,7 @@ const FooterComponent = () => (
       alignItems: "center",
     }}
   >
-    Jsask ©2022 Created by Tan Jing Sheng
+    Jsask © 2022 Created by Tan Jing Sheng
   </Footer>
 );
 
