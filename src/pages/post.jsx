@@ -1,4 +1,5 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import CommentCard from "../components/postcomponents/CommentCard";
 import CreatePostCard from "../components/postcomponents/CreatePostCard";
 import PostCard from "../components/postcomponents/PostCard";
@@ -10,15 +11,13 @@ const FROMUSERINFO = {
 
 const FROMBACKEND = {
   post: {
+    postId: 1,
     postTitle: "This is my first forum post",
     username: "Bobby Lee",
     datetime: "12 December 16:40",
     tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: "10",
-    postContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat.`,
+    commentCount: 10,
+    postContent: `The url param for this post is idk`,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
@@ -54,10 +53,21 @@ const PostPage = () => (
 const PostPageContent = () => {
   const PageWidth = "50%";
   const { post, comments } = FROMBACKEND;
+  const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
+  const TEST = queryParams.get("postId"); //FOR TESTING
 
   return (
     <>
       <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
+      {/* FOR TESTING ---> */}
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        This is the value of postId taken from the URL is: {TEST}
+      </div>
+      {/* <--- FOR TESTING */}
       <CreatePostCard
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
