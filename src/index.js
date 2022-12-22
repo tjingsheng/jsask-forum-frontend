@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
-import rootReducer from "./Redux/reducers";
+import rootReducer from "./redux/reducers";
 
 const store = configureStore({
   reducer: rootReducer,
