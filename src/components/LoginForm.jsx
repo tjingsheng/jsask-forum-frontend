@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authenticationAction, userIdAction } from "../Redux/actions";
+import { authenticationAction, userIdAction } from "../redux/actions";
 
 const { Item } = Form;
 

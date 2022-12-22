@@ -23,6 +23,8 @@ const FROMBACKEND = {
     username: "Bobby Lee One",
 
     commentCount: 23,
+
+    likes: 20,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
@@ -40,6 +42,8 @@ const FROMBACKEND = {
       username: "Harry Potter One",
 
       commentCount: 5,
+
+      likes: 10,
       isLikeSelected: false,
       isDislikeSelected: true,
     },
@@ -56,6 +60,8 @@ const FROMBACKEND = {
       username: "Harry Potter Two",
 
       commentCount: 5,
+
+      likes: 999,
       isLikeSelected: false,
       isDislikeSelected: false,
     },
@@ -72,6 +78,8 @@ const FROMBACKEND = {
       username: "Harry Potter One",
 
       commentCount: 5,
+
+      likes: 8,
       isLikeSelected: true,
       isDislikeSelected: false,
     },
@@ -88,6 +96,8 @@ const FROMBACKEND = {
       username: "Harry Potter Two",
 
       commentCount: 5,
+
+      likes: 6,
       isLikeSelected: false,
       isDislikeSelected: false,
     },

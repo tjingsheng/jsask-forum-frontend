@@ -12,13 +12,14 @@ import { useNavigate } from "react-router-dom";
 const { Title } = Typography;
 
 const PostFooter = ({
+  postId = -1,
+  isLikeSelected = false,
+  likes = -1,
+  isDislikeSelected = false,
+  commentCount = "Unknown",
   username = "Unknown User",
   datetime = "",
-  postId = 0,
-  commentCount = "Unknown",
   isCommentButtonVisible = true,
-  isLikeSelected = false,
-  isDislikeSelected = false,
 }) => {
   const footerHeight = "30px";
   const goto = useNavigate();
@@ -49,6 +50,16 @@ const PostFooter = ({
               }}
             />
           )}
+          <Title
+            level={5}
+            style={{
+              margin: "0px",
+              textAlign: "center",
+              minWidth: "16px",
+            }}
+          >
+            {likes}
+          </Title>
           {isDislikeSelected ? (
             <DislikeFilled
               style={{
@@ -63,7 +74,6 @@ const PostFooter = ({
               }}
             />
           )}
-
           {isCommentButtonVisible && (
             <>
               <MessageOutlined

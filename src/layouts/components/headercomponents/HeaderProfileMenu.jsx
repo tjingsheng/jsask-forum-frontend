@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
-import { authenticationAction } from "../../../Redux/actions";
+import { authenticationAction } from "../../../redux/actions";
 
 import { headerHeight } from "../Header";
 
