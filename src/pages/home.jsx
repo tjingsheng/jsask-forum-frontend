@@ -8,51 +8,88 @@ import hasCommonElements from "../utils";
 import sortKeyEnums from "../utils/enums.js";
 
 const FROMUSERINFO = {
-  username: "Bobby Lee",
+  userId: 1,
+  username: "Bobby Lee One",
 };
 
 const FROMBACKEND = [
   {
-    postId: 1,
-    postTitle: "This is my first forum post",
-    username: "Bobby Lee One",
+    postId: 5,
+    userId: 1,
     datetime: "12 December 16:40",
+    postTitle: "This is my fifth forum post",
+    postContent: "This is life 5 by one",
+    parent: -1,
+
     tags: ["tag 1", "tag 3"],
-    commentCount: 15,
-    postContent: "This is life",
+
+    username: "Bobby Lee One",
+
+    commentCount: 23,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
   {
-    postId: 2,
-    postTitle: "This is my 2nd forum post",
-    username: "Bobby Lee Two",
-    datetime: "12 December 16:40",
-    tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: 3,
-    postContent: "what is 1 + 1?",
-    isLikeSelected: false,
-    isDislikeSelected: true,
-  },
-  {
-    postId: 3,
-    postTitle: "This is my 3rd forum post",
+    postId: 4,
+    userId: 3,
+    datetime: "11 December 15:40",
+    postTitle: "This is my fourth forum post",
+    postContent: "This is life 4 by three",
+    parent: -1,
+
+    tags: ["tag 2", "tag 4"],
+
     username: "Bobby Lee Three",
-    datetime: "12 December 16:40",
-    tags: ["tag 3"],
-    commentCount: 12,
-    postContent: "ni hao ni hao",
+
+    commentCount: 63,
     isLikeSelected: false,
     isDislikeSelected: false,
   },
   {
-    postId: 4,
-    postTitle: "This is my 4th forum post",
-    username: "Sussy Lee",
-    datetime: "12 May 16:40",
-    tags: ["tag 2", "tag 4"],
-    commentCount: 17,
-    postContent: "ni hao ni hao",
+    postId: 3,
+    userId: 2,
+    datetime: "10 December 13:40",
+    postTitle: "This is my third forum post",
+    postContent: "This is life 3 by two",
+    parent: -1,
+
+    tags: ["tag 1", "tag 2", "tag 3", "tag 4", "tag 5"],
+
+    username: "Bobby Lee Two",
+
+    commentCount: 14,
+    isLikeSelected: false,
+    isDislikeSelected: true,
+  },
+  {
+    postId: 2,
+    userId: 1,
+    datetime: "4 December 12:40",
+    postTitle: "This is my second forum post",
+    postContent: "This is life 2 by one",
+    parent: -1,
+
+    tags: ["tag 2", "tag 1", "tag 3"],
+
+    username: "Bobby Lee One",
+
+    commentCount: 7,
+    isLikeSelected: false,
+    isDislikeSelected: false,
+  },
+  {
+    postId: 1,
+    userId: 5,
+    datetime: "1 December 12:40",
+    postTitle: "This is my first forum post",
+    postContent: "This is life 1 by five",
+    parent: -1,
+
+    tags: ["tag 4", "tag 2"],
+
+    username: "Bobby Lee Five",
+
+    commentCount: 12,
     isLikeSelected: false,
     isDislikeSelected: false,
   },
@@ -78,8 +115,8 @@ const HomePageContent = ({ sortKey }) => {
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => a.commentCount - b.commentCount,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) => b.postId - a.postId,
-    [sortKeyEnums.old]: (a, b) => b.commentCount - a.commentCount,
+    [sortKeyEnums.new]: (a, b) => b.datetime > a.datetime,
+    [sortKeyEnums.old]: (a, b) => a.datetime < b.datetime,
   };
   // <-- NEED TO FIX
 
