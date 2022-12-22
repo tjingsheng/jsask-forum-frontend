@@ -1,23 +1,25 @@
 import React from "react";
 import JsaskLogo from "../../../assets/JsaskLogo";
+import JsaskWord from "../../../assets/JsaskWord";
+
 import { headerHeight } from "../Header";
 
 const Logo = () => (
   <>
     <JsaskLogo
-      size={headerHeight}
+      height={headerHeight}
+      width={headerHeight * 0.5}
       style={{
         float: "left",
         padding: "8px 0px",
       }}
     />
-    <img
-      src="../LogoWord.svg"
-      alt="Jsask"
+    <JsaskWord
+      height={headerHeight}
+      width={headerHeight * 1.5}
       style={{
         float: "left",
-        height: headerHeight,
-        padding: "16px 0px 10px",
+        padding: "10px 0px",
       }}
     />
   </>
