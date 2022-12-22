@@ -1,7 +1,5 @@
 # Jing Sheng CVWO Winter Assignment
 
-B
-
 ## Background
 
 Computing for Voluntary Welfare Organisations (CVWO) is an initiative founded by Dr Ben Leong and spearheaded by undergraduates from the National University of Singapore (NUS) School of Computing (SoC). Our mission is to build IT systems that help our partner VWOs serve the community more effectively.
