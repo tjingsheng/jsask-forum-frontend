@@ -11,35 +11,83 @@ const FROMUSERINFO = {
 
 const FROMBACKEND = {
   post: {
-    postId: 1,
-    postTitle: "This is my first forum post",
-    username: "Bobby Lee",
+    postId: 5,
+    userId: 1,
     datetime: "12 December 16:40",
-    tags: ["tag 1", "tag 2", "tag 3", "tag 4"],
-    commentCount: 10,
-    postContent: `The url param for this post is idk`,
+    postTitle: "This is my fifth forum post",
+    postContent: "This is life 5 by one",
+    parent: -1,
+
+    tags: ["tag 1", "tag 3"],
+
+    username: "Bobby Lee One",
+
+    commentCount: 23,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
   comments: [
     {
-      username: "Marry Poppins",
-      datetime: "12 December 16:40",
-      commentContent: "You are wrong",
-      isLikeSelected: true,
-      isDislikeSelected: false,
-    },
-    {
-      username: "Poppins Harry",
+      postId: 6,
+      userId: 11,
       datetime: "12 December 17:40",
-      commentContent: "You are right",
+      postTitle: "NONE",
+      postContent: "1 Comment on this 5 by one",
+      parent: 5,
+
+      tags: "NONE",
+
+      username: "Harry Potter One",
+
+      commentCount: 5,
       isLikeSelected: false,
       isDislikeSelected: true,
     },
     {
-      username: "Harry Marry",
-      datetime: "15 December 17:40",
-      commentContent: "You are all stupid",
+      postId: 7,
+      userId: 12,
+      datetime: "12 December 18:40",
+      postTitle: "NONE",
+      postContent: "2 Comment on this 5 by one",
+      parent: 5,
+
+      tags: "NONE",
+
+      username: "Harry Potter Two",
+
+      commentCount: 5,
+      isLikeSelected: false,
+      isDislikeSelected: false,
+    },
+    {
+      postId: 8,
+      userId: 11,
+      datetime: "12 December 19:40",
+      postTitle: "NONE",
+      postContent: "3 Comment on this 5 by one",
+      parent: 5,
+
+      tags: "NONE",
+
+      username: "Harry Potter One",
+
+      commentCount: 5,
+      isLikeSelected: true,
+      isDislikeSelected: false,
+    },
+    {
+      postId: 9,
+      userId: 12,
+      datetime: "12 December 20:40",
+      postTitle: "NONE",
+      postContent: "4 Comment on this 5 by one",
+      parent: 5,
+
+      tags: "NONE",
+
+      username: "Harry Potter Two",
+
+      commentCount: 5,
       isLikeSelected: false,
       isDislikeSelected: false,
     },

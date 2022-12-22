@@ -5,7 +5,7 @@ import PostFooter from "./PostFooter";
 
 const { Paragraph, Text } = Typography;
 
-const CommentCard = ({ width, commentContent, ...props }) => (
+const CommentCard = ({ width, postContent, ...props }) => (
   <>
     <Card
       style={{
@@ -23,7 +23,7 @@ const CommentCard = ({ width, commentContent, ...props }) => (
           padding: "10px",
         }}
       >
-        {commentContent}
+        {postContent}
       </Paragraph>
       <PostFooter isCommentButtonVisible={false} {...props} />
     </Card>
