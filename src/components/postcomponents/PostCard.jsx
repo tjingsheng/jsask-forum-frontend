@@ -52,8 +52,8 @@ const PostTitle = ({ postTitle }) => (
 
 const PostTags = ({ tags }) => (
   <div style={{ padding: "0px 10px" }}>
-    {tags.map((tag) => (
-      <Tag>{tag}</Tag>
+    {tags.map((tag, idx) => (
+      <Tag key={idx}>{tag}</Tag>
     ))}
   </div>
 );

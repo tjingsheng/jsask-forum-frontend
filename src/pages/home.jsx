@@ -137,8 +137,13 @@ const HomePageContent = ({ sortKey }) => {
         hasCommonElements(post.tags, filterByTagsArray)
       )
         .sort(sortComparators[sortKey])
-        .map((post) => (
-          <PostCard width={PageWidth} isCommentButtonVisible={true} {...post} />
+        .map((post, idx) => (
+          <PostCard
+            key={idx}
+            width={PageWidth}
+            isCommentButtonVisible={true}
+            {...post}
+          />
         ))}
     </>
   );

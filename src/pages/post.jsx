@@ -122,8 +122,8 @@ const PostPageContent = () => {
         buttonText="Comment"
         isPost={false}
       />
-      {comments.map((comment) => (
-        <CommentCard width={PageWidth} {...comment} />
+      {comments.map((comment, idx) => (
+        <CommentCard key={idx} width={PageWidth} {...comment} />
       ))}
     </>
   );
