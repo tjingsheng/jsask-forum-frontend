@@ -52,21 +52,31 @@ const ProfileMenu = ({ username }) => {
   ];
 
   return (
-    <Row justify="end">
-      <Col align="middle">
-        <Avatar size="large" icon={<UserOutlined />} shape="square" />
-      </Col>
-      <Col>
-        <Menu
-          onClick={handleSubmenu}
-          mode="horizontal"
-          items={items}
-          overflowedIndicator={<DownOutlined />}
+    <>
+      <Row justify="end">
+        <Col
+          span={16}
           style={{
-            height: headerHeight,
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
           }}
-        />
-      </Col>
+          body
+        >
+          <Avatar size="large" icon={<UserOutlined />} shape="square" />
+        </Col>
+        <Col span={8}>
+          <Menu
+            onClick={handleSubmenu}
+            mode="horizontal"
+            items={items}
+            overflowedIndicator={<DownOutlined />}
+            style={{
+              height: headerHeight,
+            }}
+          />
+        </Col>
+      </Row>
       <Modal
         title="Your Profile"
         open={isProfileModalVisible}
@@ -92,7 +102,7 @@ const ProfileMenu = ({ username }) => {
       >
         <LogoutContent />
       </Modal>
-    </Row>
+    </>
   );
 };
 
