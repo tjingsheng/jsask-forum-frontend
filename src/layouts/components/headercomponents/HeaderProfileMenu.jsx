@@ -9,7 +9,7 @@ const ProfileMenu = ({ username }) => {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
-  const showModal = (e) => {
+  const handleSubmenu = (e) => {
     if (e["key"] === "profile") {
       setIsProfileModalVisible(true);
     } else if (e["key"] === "logout") {
@@ -54,7 +54,7 @@ const ProfileMenu = ({ username }) => {
       </Col>
       <Col>
         <Menu
-          onClick={showModal}
+          onClick={handleSubmenu}
           mode="horizontal"
           items={items}
           overflowedIndicator={<DownOutlined />}
