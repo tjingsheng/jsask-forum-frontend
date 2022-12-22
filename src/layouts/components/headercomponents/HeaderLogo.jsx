@@ -8,7 +8,7 @@ const Logo = () => (
   <>
     <JsaskLogo
       height={headerHeight}
-      width={headerHeight * 0.5}
+      width={headerHeight * 0.7}
       style={{
         float: "left",
         padding: "8px 0px",

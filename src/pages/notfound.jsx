@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   const goto = useNavigate();
   return (
     <Result
-      icon={<JsaskLogo size={300} bulb="yellow" />}
+      icon={<JsaskLogo height={300} bulb="yellow" />}
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={

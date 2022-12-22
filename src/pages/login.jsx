@@ -21,7 +21,7 @@ const LoginPageLogo = () => {
         justifyContent: "center",
       }}
     >
-      <JsaskLogo size={500} />
+      <JsaskLogo width={300} height={450} />
     </div>
   );
 };
