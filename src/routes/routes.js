@@ -5,7 +5,7 @@ import LoginPage from "../pages/login";
 import NotFoundPage from "../pages/notfound";
 import PostPage from "../pages/post";
 
-const routes = createBrowserRouter([
+export const privateRoutes = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
@@ -25,4 +25,12 @@ const routes = createBrowserRouter([
   },
 ]);
 
-export default routes;
+const publicRoutes = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginPage />,
+    errorElement: <LoginPage />,
+  },
+]);
+
+export default publicRoutes;

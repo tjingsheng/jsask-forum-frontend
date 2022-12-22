@@ -1,15 +1,19 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Button, Menu, Modal } from "antd";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
+import { authenticationAction } from "../../../Redux/actions";
+
 import { headerHeight } from "../Header";
 
 const ProfileMenu = ({ username }) => {
+  const dispatch = useDispatch();
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
-  const showModal = (e) => {
+  const handleSubmenu = (e) => {
     if (e["key"] === "profile") {
       setIsProfileModalVisible(true);
     } else if (e["key"] === "logout") {
@@ -48,21 +52,24 @@ const ProfileMenu = ({ username }) => {
   ];
 
   return (
-    <>
-      <Menu
-        onClick={showModal}
-        mode="horizontal"
-        items={items}
-        overflowedIndicator={<DownOutlined />}
-        style={{
-          float: "left",
-          height: headerHeight,
-        }}
-      />
+    <Row justify="end">
+      <Col align="middle">
+        <Avatar size="large" icon={<UserOutlined />} shape="square" />
+      </Col>
+      <Col>
+        <Menu
+          onClick={handleSubmenu}
+          mode="horizontal"
+          items={items}
+          overflowedIndicator={<DownOutlined />}
+          style={{
+            height: headerHeight,
+          }}
+        />
+      </Col>
       <Modal
         title="Your Profile"
         open={isProfileModalVisible}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button key="Ok" onClick={handleOk}>
@@ -73,9 +80,9 @@ const ProfileMenu = ({ username }) => {
         <ProfileContent />
       </Modal>
       <Modal
-        title="You have logout"
+        title="You have successfully logged out"
+        afterClose={() => dispatch(authenticationAction.logOut())}
         open={isLogoutModalVisible}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button key="Ok" onClick={handleOk}>
@@ -85,7 +92,7 @@ const ProfileMenu = ({ username }) => {
       >
         <LogoutContent />
       </Modal>
-    </>
+    </Row>
   );
 };
 

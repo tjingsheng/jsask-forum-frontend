@@ -1,10 +1,15 @@
 import "@fontsource/poppins/300.css";
 // import { ConfigProvider } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import routes from "./routes/routes";
+import publicRoutes, { privateRoutes } from "./routes/routes";
 
 function App() {
+  const isAuthenticated = useSelector(
+    (state) => state.authentication.isAuthenticated
+  );
+
   return (
     // <>
     //   <ConfigProvider
@@ -15,7 +20,7 @@ function App() {
     //       },
     //     }}
     //   >
-    <RouterProvider router={routes} />
+    <RouterProvider router={isAuthenticated ? privateRoutes : publicRoutes} />
     //   </ConfigProvider>
     // </>
   );
