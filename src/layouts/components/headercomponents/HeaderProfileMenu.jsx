@@ -91,7 +91,7 @@ const ProfileMenu = ({ username }) => {
       </Modal>
       <Modal
         title="You have successfully logged out"
-        afterClose={() => dispatch(authenticationAction.logOut())}
+        afterClose={() => dispatch(authenticationAction.logout())}
         open={isLogoutModalVisible}
         onCancel={handleCancel}
         footer={[

@@ -4,12 +4,12 @@ const InitialState = {
 
 const authenticationReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case "LOG_IN":
+    case "LOGIN":
       return {
         ...state,
         isAuthenticated: true,
       };
-    case "LOG_OUT":
+    case "LOGOUT":
       return {
         ...state,
         isAuthenticated: false,

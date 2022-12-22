@@ -80,7 +80,7 @@ const LoginForm = () => {
       >
         <Button
           onClick={() => {
-            dispatch(authenticationAction.logIn());
+            dispatch(authenticationAction.login());
             dispatch(userIdAction.setId(1));
             goto("/home");
           }}

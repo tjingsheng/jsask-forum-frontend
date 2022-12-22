@@ -1,9 +1,9 @@
 const authenticationAction = {
-  logIn: () => ({
-    type: "LOG_IN",
+  login: () => ({
+    type: "LOGIN",
   }),
-  logOut: () => ({
-    type: "LOG_OUT",
+  logout: () => ({
+    type: "LOGOUT",
   }),
 };
 
