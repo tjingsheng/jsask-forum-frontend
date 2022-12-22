@@ -1,10 +1,9 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Button, Col, Menu, Modal, Row } from "antd";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
 import { headerHeight } from "../Header";
-import AvatarIcon from "./HeaderAvatarIcon";
 
 const ProfileMenu = ({ username }) => {
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
@@ -51,7 +50,7 @@ const ProfileMenu = ({ username }) => {
   return (
     <Row justify="end">
       <Col align="middle">
-        <AvatarIcon />
+        <Avatar size="large" icon={<UserOutlined />} shape="square" />
       </Col>
       <Col>
         <Menu
