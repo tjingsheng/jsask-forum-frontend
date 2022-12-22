@@ -1,14 +1,22 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { authenticationAction, userIdAction } from "../Redux/actions";
+
 const { Item } = Form;
 
 const LoginForm = () => {
+  const goto = useNavigate();
+  const dispatch = useDispatch();
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <Form
       name="login"
@@ -37,7 +45,16 @@ const LoginForm = () => {
           flex: "auto",
         }}
       >
-        <Button type="primary" htmlType="submit" style={{ padding: "auto" }}>
+        <Button
+          onClick={() => {
+            dispatch(authenticationAction.logIn());
+            dispatch(userIdAction.setId(1));
+            goto("/home");
+          }}
+          type="primary"
+          htmlType="submit"
+          style={{ padding: "auto" }}
+        >
           Login
         </Button>
       </Item>

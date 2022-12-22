@@ -1,11 +1,15 @@
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
+import { authenticationAction } from "../../../Redux/actions";
+
 import { headerHeight } from "../Header";
 
 const ProfileMenu = ({ username }) => {
+  const dispatch = useDispatch();
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
@@ -66,7 +70,6 @@ const ProfileMenu = ({ username }) => {
       <Modal
         title="Your Profile"
         open={isProfileModalVisible}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button key="Ok" onClick={handleOk}>
@@ -77,9 +80,9 @@ const ProfileMenu = ({ username }) => {
         <ProfileContent />
       </Modal>
       <Modal
-        title="You have logout"
+        title="You have successfully logged out"
+        afterClose={() => dispatch(authenticationAction.logOut())}
         open={isLogoutModalVisible}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button key="Ok" onClick={handleOk}>
