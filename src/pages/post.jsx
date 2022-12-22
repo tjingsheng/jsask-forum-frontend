@@ -29,7 +29,7 @@ const FROMBACKEND = {
   comments: [
     {
       postId: 6,
-      userId: 11,
+      userId: 4,
       datetime: "12 December 17:40",
       postTitle: "NONE",
       postContent: "1 Comment on this 5 by one",
@@ -45,7 +45,7 @@ const FROMBACKEND = {
     },
     {
       postId: 7,
-      userId: 12,
+      userId: 6,
       datetime: "12 December 18:40",
       postTitle: "NONE",
       postContent: "2 Comment on this 5 by one",
@@ -61,7 +61,7 @@ const FROMBACKEND = {
     },
     {
       postId: 8,
-      userId: 11,
+      userId: 4,
       datetime: "12 December 19:40",
       postTitle: "NONE",
       postContent: "3 Comment on this 5 by one",
@@ -77,7 +77,7 @@ const FROMBACKEND = {
     },
     {
       postId: 9,
-      userId: 12,
+      userId: 6,
       datetime: "12 December 20:40",
       postTitle: "NONE",
       postContent: "4 Comment on this 5 by one",
