@@ -26,6 +26,8 @@ const FROMBACKEND = [
     username: "Bobby Lee One",
 
     commentCount: 23,
+
+    likes: 20,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
@@ -42,6 +44,8 @@ const FROMBACKEND = [
     username: "Bobby Lee Three",
 
     commentCount: 63,
+
+    likes: 30,
     isLikeSelected: false,
     isDislikeSelected: false,
   },
@@ -58,6 +62,8 @@ const FROMBACKEND = [
     username: "Bobby Lee Two",
 
     commentCount: 14,
+
+    likes: 15,
     isLikeSelected: false,
     isDislikeSelected: true,
   },
@@ -74,6 +80,8 @@ const FROMBACKEND = [
     username: "Bobby Lee One",
 
     commentCount: 7,
+
+    likes: 44,
     isLikeSelected: false,
     isDislikeSelected: false,
   },
@@ -90,6 +98,8 @@ const FROMBACKEND = [
     username: "Bobby Lee Five",
 
     commentCount: 12,
+
+    likes: 16,
     isLikeSelected: false,
     isDislikeSelected: false,
   },
@@ -113,7 +123,7 @@ const HomePageContent = ({ sortKey }) => {
 
   // NEED TO FIX -->
   const sortComparators = {
-    [sortKeyEnums.hot]: (a, b) => a.commentCount - b.commentCount,
+    [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
     [sortKeyEnums.new]: (a, b) => b.datetime > a.datetime,
     [sortKeyEnums.old]: (a, b) => a.datetime < b.datetime,
