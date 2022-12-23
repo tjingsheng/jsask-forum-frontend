@@ -3,7 +3,6 @@ import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ProfileContent from "../../../components/ProfileContent";
 import { authenticationAction, userAction } from "../../../redux/actions";
 
 import { headerHeight } from "../Header";
@@ -92,7 +91,7 @@ const ProfileMenu = () => {
           </Button>,
         ]}
       >
-        <ProfileContent />
+        <div>This is your profile</div>
       </Modal>
       <Modal
         title="Logout Confirmation"

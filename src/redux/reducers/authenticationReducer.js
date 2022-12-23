@@ -1,5 +1,5 @@
 const InitialState = {
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 const authenticationReducer = (state = InitialState, action) => {

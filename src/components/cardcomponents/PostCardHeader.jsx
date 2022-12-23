@@ -12,11 +12,19 @@ const PostCardHeader = ({ postTitle }) => (
         margin: "0px",
         marginRight: "auto",
         padding: "10px",
+        display: "inline",
       }}
     >
       {postTitle}
     </Title>
-    <EditOutlined style={{ margin: "10px", fontSize: "16px" }} />
+    <EditOutlined
+      style={{
+        margin: "10px",
+        fontSize: "16px",
+        display: "inline",
+        float: "right",
+      }}
+    />
   </>
 );
 

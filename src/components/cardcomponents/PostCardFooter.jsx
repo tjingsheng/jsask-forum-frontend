@@ -114,7 +114,9 @@ const PostCardFooter = ({
           )}
         </Space>
       </Col>
+
       <Col flex="auto"></Col>
+
       <Col>
         <Title
           level={5}
