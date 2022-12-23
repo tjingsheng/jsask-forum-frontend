@@ -8,4 +8,8 @@ const hasCommonElements = (arrA, arrB) => {
   );
 };
 
+export const differenceCalculator = (addOne, minusOne) => {
+  return addOne && !minusOne ? 1 : !addOne && minusOne ? -1 : 0;
+};
+
 export default hasCommonElements;

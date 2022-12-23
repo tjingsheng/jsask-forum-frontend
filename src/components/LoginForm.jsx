@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authenticationAction, userIdAction } from "../redux/actions";
+import { authenticationAction, userAction } from "../redux/actions";
 
 const { Item } = Form;
 
@@ -42,27 +42,29 @@ const FROMBACKEND = [
 const LoginForm = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
-
   const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    dispatch(authenticationAction.login());
+    dispatch(userAction.setUserId(1));
+    dispatch(userAction.setUsername(values.username));
+    goto("/home");
   };
 
   return (
-    <Form
-      name="login"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
+    <Form name="login" onFinish={onFinish} autoComplete="off">
       <Item
         name="username"
         rules={[
           {
             required: true,
             message: "Please input your username!",
+          },
+          {
+            min: 5,
+            message: "Username must be at least 5 characters.",
+          },
+          {
+            max: 32,
+            message: "Username must be at most 32 characters.",
           },
         ]}
       >
@@ -78,16 +80,7 @@ const LoginForm = () => {
           flex: "auto",
         }}
       >
-        <Button
-          onClick={() => {
-            dispatch(authenticationAction.login());
-            dispatch(userIdAction.setId(1));
-            goto("/home");
-          }}
-          type="primary"
-          htmlType="submit"
-          style={{ padding: "auto" }}
-        >
+        <Button type="primary" htmlType="submit" style={{ padding: "auto" }}>
           Login
         </Button>
       </Item>

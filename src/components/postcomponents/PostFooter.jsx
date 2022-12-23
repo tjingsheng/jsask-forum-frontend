@@ -6,8 +6,9 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import { Col, Row, Space, Typography } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { differenceCalculator } from "../../utils";
 
 const { Title } = Typography;
 
@@ -23,6 +24,9 @@ const PostFooter = ({
 }) => {
   const footerHeight = "30px";
   const goto = useNavigate();
+  const [like, setLike] = useState(isLikeSelected);
+  const [dislike, setDislike] = useState(isDislikeSelected);
+
   return (
     <Row
       style={{
@@ -36,8 +40,11 @@ const PostFooter = ({
             padding: "10px",
           }}
         >
-          {isLikeSelected ? (
+          {like ? (
             <LikeFilled
+              onClick={() => {
+                setLike(false);
+              }}
               style={{
                 color: "green",
                 fontSize: footerHeight,
@@ -45,6 +52,10 @@ const PostFooter = ({
             />
           ) : (
             <LikeOutlined
+              onClick={() => {
+                setLike(true);
+                setDislike(false);
+              }}
               style={{
                 fontSize: footerHeight,
               }}
@@ -55,13 +66,16 @@ const PostFooter = ({
             style={{
               margin: "0px",
               textAlign: "center",
-              minWidth: "16px",
+              minWidth: footerHeight,
             }}
           >
-            {likes}
+            {likes + differenceCalculator(like, dislike)}
           </Title>
-          {isDislikeSelected ? (
+          {dislike ? (
             <DislikeFilled
+              onClick={() => {
+                setDislike(false);
+              }}
               style={{
                 color: "red",
                 fontSize: footerHeight,
@@ -69,6 +83,10 @@ const PostFooter = ({
             />
           ) : (
             <DislikeOutlined
+              onClick={() => {
+                setLike(false);
+                setDislike(true);
+              }}
               style={{
                 fontSize: footerHeight,
               }}
@@ -83,6 +101,7 @@ const PostFooter = ({
                 }}
               />
               <Title
+                onClick={() => goto(`/post/?postId=${postId}`)}
                 level={5}
                 style={{
                   margin: "0px",

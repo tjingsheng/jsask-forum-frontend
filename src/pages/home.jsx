@@ -7,11 +7,6 @@ import HomeLayout from "../layouts/HomeLayout";
 import hasCommonElements from "../utils";
 import sortKeyEnums from "../utils/enums.js";
 
-const FROMUSERINFO = {
-  userId: 1,
-  username: "Bobby Lee One",
-};
-
 const FROMBACKEND = [
   {
     postId: 5,
@@ -27,7 +22,7 @@ const FROMBACKEND = [
 
     commentCount: 23,
 
-    likes: 20,
+    likes: 29,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
@@ -108,12 +103,8 @@ const FROMBACKEND = [
 const HomePage = () => {
   const [queryParams] = useSearchParams(window.location.search);
   const sortKey = queryParams.get("sort");
-  return (
-    <HomeLayout
-      content={<HomePageContent sortKey={sortKey} />}
-      username={FROMUSERINFO.username}
-    />
-  );
+
+  return <HomeLayout content={<HomePageContent sortKey={sortKey} />} />;
 };
 
 const HomePageContent = ({ sortKey }) => {
