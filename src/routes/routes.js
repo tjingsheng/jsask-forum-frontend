@@ -8,12 +8,8 @@ import PostPage from "../pages/post";
 export const privateRoutes = createBrowserRouter([
   {
     path: "/",
-    element: <LoginPage />,
+    element: <HomePage />,
     errorElement: <NotFoundPage />,
-  },
-  {
-    path: "login",
-    element: <LoginPage />,
   },
   {
     path: "home",
