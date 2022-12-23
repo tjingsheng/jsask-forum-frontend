@@ -101,6 +101,7 @@ const PostFooter = ({
                 }}
               />
               <Title
+                onClick={() => goto(`/post/?postId=${postId}`)}
                 level={5}
                 style={{
                   margin: "0px",
