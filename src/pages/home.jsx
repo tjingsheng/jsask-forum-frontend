@@ -22,7 +22,7 @@ const FROMBACKEND = [
 
     commentCount: 23,
 
-    likes: 20,
+    likes: 29,
     isLikeSelected: true,
     isDislikeSelected: false,
   },
