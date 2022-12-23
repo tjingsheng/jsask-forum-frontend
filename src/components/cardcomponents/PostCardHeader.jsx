@@ -4,27 +4,28 @@ import React from "react";
 
 const { Title } = Typography;
 
-const PostCardHeader = ({ postTitle }) => (
+const PostCardHeader = ({ postTitle, isEditButtonVisible = false }) => (
   <>
     <Title
       level={3}
       style={{
+        display: "inline-block",
         margin: "0px",
-        marginRight: "auto",
         padding: "10px",
-        display: "inline",
       }}
     >
       {postTitle}
     </Title>
-    <EditOutlined
-      style={{
-        margin: "10px",
-        fontSize: "16px",
-        display: "inline",
-        float: "right",
-      }}
-    />
+    {isEditButtonVisible && (
+      <EditOutlined
+        style={{
+          display: "inline-block",
+          float: "right",
+          fontSize: "16px",
+          margin: "10px",
+        }}
+      />
+    )}
   </>
 );
 

@@ -10,6 +10,7 @@ const CreatePostForm = (isEditPost = false) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <Form
       name="basic"
@@ -57,7 +58,7 @@ const CreatePostForm = (isEditPost = false) => {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ width: "100px", float: "right" }}
+          style={{ float: "right", width: "100px" }}
         >
           Post
         </Button>

@@ -28,10 +28,10 @@ const SortPostCard = ({ width, height, sortKey, handleChange }) => {
   return (
     <Card
       style={{
-        size: "small",
+        height: height,
         margin: "10px auto",
         padding: "10px",
-        height: height,
+        size: "small",
         width: width,
       }}
       bodyStyle={{

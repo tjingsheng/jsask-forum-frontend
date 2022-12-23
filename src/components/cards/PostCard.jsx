@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 import PostCardHeader from "../cardcomponents/PostCardHeader";
@@ -13,25 +14,32 @@ const PostCard = ({
   tags,
   postContent,
 
+  userId,
   ...props
-}) => (
-  <Card
-    style={{
-      margin: "10px auto",
-      width: width,
-    }}
-    bodyStyle={{
-      padding: "0",
-    }}
-  >
-    <PostCardHeader postTitle={postTitle} />
-    <PostCardTags tags={tags} />
-    <PostCardContent postContent={postContent} />
-    <PostCardFooter
-      isCommentButtonVisible={isCommentButtonVisible}
-      {...props}
-    />
-  </Card>
-);
+}) => {
+  const currId = useSelector((state) => state.user.userId);
+  return (
+    <Card
+      style={{
+        margin: "10px auto",
+        width: width,
+      }}
+      bodyStyle={{
+        padding: "0",
+      }}
+    >
+      <PostCardHeader
+        postTitle={postTitle}
+        isEditButtonVisible={userId === currId}
+      />
+      <PostCardTags tags={tags} />
+      <PostCardContent postContent={postContent} />
+      <PostCardFooter
+        isCommentButtonVisible={isCommentButtonVisible}
+        {...props}
+      />
+    </Card>
+  );
+};
 
 export default PostCard;

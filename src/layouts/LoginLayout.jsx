@@ -7,9 +7,9 @@ const LoginLayout = ({ leftColumn, rightColumn }) => (
   <Layout>
     <div
       style={{
-        minHeight: `calc(100vh - ${footerHeight}px)`,
-        display: "flex",
         alignItems: "center",
+        display: "flex",
+        minHeight: `calc(100vh - ${footerHeight}px)`,
       }}
     >
       <ContentComponent style={{ width: "50%" }} children={leftColumn} />

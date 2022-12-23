@@ -61,11 +61,10 @@ const ProfileMenu = () => {
         <Col
           span={16}
           style={{
+            alignItems: "center",
             display: "flex",
             justifyContent: "flex-end",
-            alignItems: "center",
           }}
-          body
         >
           <Avatar size="large" icon={<UserOutlined />} shape="square" />
         </Col>

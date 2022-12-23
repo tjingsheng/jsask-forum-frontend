@@ -65,8 +65,8 @@ const PostCardFooter = ({
             level={5}
             style={{
               margin: "0px",
-              textAlign: "center",
               minWidth: footerHeight,
+              textAlign: "center",
             }}
           >
             {likes + differenceCalculator(like, dislike)}

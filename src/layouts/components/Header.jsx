@@ -10,13 +10,13 @@ const HeaderComponent = ({ username }) => {
   return (
     <Header
       style={{
+        backgroundColor: "white",
+        height: headerHeight,
+        overflow: "hidden",
+        padding: "0px 20px 0px 20px",
         position: "sticky",
         top: 0,
         zIndex: 1,
-        height: headerHeight,
-        padding: "0px 20px 0px 20px",
-        backgroundColor: "white",
-        overflow: "hidden",
       }}
     >
       <Row>
