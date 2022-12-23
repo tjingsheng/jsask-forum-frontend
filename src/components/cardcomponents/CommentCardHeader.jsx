@@ -8,17 +8,17 @@ const CommentCardHeader = ({
   userIcon = <UserOutlined />,
   username = "Unknown User",
 }) => (
-  <div style={{ padding: "10px" }}>
+  <>
     <Avatar
       size={32}
       icon={userIcon}
       shape="square"
       style={{
-        marginRight: "10px",
+        margin: "10px",
       }}
     />
     <Text>{username}</Text>
-  </div>
+  </>
 );
 
 export default CommentCardHeader;
