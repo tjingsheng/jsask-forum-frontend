@@ -1,7 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
 import React, { useState } from "react";
-import CreatePostForm from "../forms/CreatePostForm";
+import ManagePostForm from "../forms/ManagePostForm";
 
 const CreatePostCard = ({
   width,
@@ -53,7 +53,7 @@ const CreatePostCard = ({
         onCancel={() => setIsCreatePostModalVisible(false)}
         footer={[]}
       >
-        <CreatePostForm />
+        <ManagePostForm />
       </Modal>
     </>
   );
