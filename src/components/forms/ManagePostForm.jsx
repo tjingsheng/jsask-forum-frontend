@@ -39,21 +39,16 @@ const ManagePostForm = ({
         <Input />
       </Item>
 
-      <Item label="Tags" name="tag">
-        <Select
-          mode="tags"
-          placeholder="Add Tags (Recommended)"
-          defaultValue={currTags}
-        />
+      <Item label="Tags" name="tag" initialValue={currTags}>
+        <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Item>
 
-      <Item label="Content">
+      <Item label="Content" name="content" initialValue={currContent}>
         <TextArea
           placeholder="Text (Optional)"
           showCount
           rows={5}
           maxLength={25}
-          defaultValue={currContent}
         />
       </Item>
 
