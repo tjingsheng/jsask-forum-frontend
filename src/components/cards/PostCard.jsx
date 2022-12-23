@@ -45,7 +45,7 @@ const PostCard = ({
             style={{
               display: "inline-block",
               float: "right",
-              fontSize: "16px",
+              fontSize: "20px",
               marginTop: "10px",
               marginRight: "10px",
             }}
@@ -57,7 +57,7 @@ const PostCard = ({
             style={{
               display: "inline-block",
               float: "right",
-              fontSize: "16px",
+              fontSize: "20px",
               marginTop: "10px",
               marginRight: "10px",
             }}
