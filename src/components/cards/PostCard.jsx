@@ -39,9 +39,9 @@ const PostCard = ({
         }}
       >
         <PostCardHeader postTitle={postTitle} />
-        {isEditable && (
-          <EditOutlined
-            onClick={() => SetIsEditPostModalVisible(true)}
+        {isDeletable && (
+          <DeleteOutlined
+            onClick={() => SetIsDeletePostModalVisible(true)}
             style={{
               display: "inline-block",
               float: "right",
@@ -51,9 +51,9 @@ const PostCard = ({
             }}
           />
         )}
-        {isDeletable && (
-          <DeleteOutlined
-            onClick={() => SetIsDeletePostModalVisible(true)}
+        {isEditable && (
+          <EditOutlined
+            onClick={() => SetIsEditPostModalVisible(true)}
             style={{
               display: "inline-block",
               float: "right",
