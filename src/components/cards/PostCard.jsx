@@ -1,5 +1,5 @@
-import { EditOutlined } from "@ant-design/icons";
-import { Card, Modal } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import PostCardContent from "../cardcomponents/PostCardContent";
@@ -20,8 +20,12 @@ const PostCard = ({
   ...props
 }) => {
   const currId = useSelector((state) => state.user.userId);
-  const [isEditPostModalVisible, SetisEditPostModalVisible] = useState(false);
   const isEditable = currId === userId;
+  const isDeletable = currId === userId;
+  const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);
+  const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
+    false
+  );
 
   return (
     <>
@@ -37,12 +41,25 @@ const PostCard = ({
         <PostCardHeader postTitle={postTitle} />
         {isEditable && (
           <EditOutlined
-            onClick={() => SetisEditPostModalVisible(true)}
+            onClick={() => SetIsEditPostModalVisible(true)}
             style={{
               display: "inline-block",
               float: "right",
               fontSize: "16px",
-              margin: "10px",
+              marginTop: "10px",
+              marginRight: "10px",
+            }}
+          />
+        )}
+        {isDeletable && (
+          <DeleteOutlined
+            onClick={() => SetIsDeletePostModalVisible(true)}
+            style={{
+              display: "inline-block",
+              float: "right",
+              fontSize: "16px",
+              marginTop: "10px",
+              marginRight: "10px",
             }}
           />
         )}
@@ -57,8 +74,7 @@ const PostCard = ({
       <Modal
         title="Edit Post"
         open={isEditPostModalVisible}
-        onOk={() => SetisEditPostModalVisible(false)}
-        onCancel={() => SetisEditPostModalVisible(false)}
+        onCancel={() => SetIsEditPostModalVisible(false)}
         footer={[]}
       >
         <ManagePostForm
@@ -67,6 +83,25 @@ const PostCard = ({
           currTags={tags}
           currContent={postContent}
         />
+      </Modal>
+
+      <Modal
+        title="Delete Post Confirmation"
+        open={isDeletePostModalVisible}
+        onCancel={() => SetIsDeletePostModalVisible(false)}
+        footer={[
+          <Button key="Yes" onClick={() => SetIsDeletePostModalVisible(false)}>
+            Yes
+          </Button>,
+          <Button key="No" onClick={() => SetIsDeletePostModalVisible(false)}>
+            No
+          </Button>,
+        ]}
+      >
+        <div>
+          Are you sure you want to delete your post? This action is
+          irreversible.
+        </div>
       </Modal>
     </>
   );
