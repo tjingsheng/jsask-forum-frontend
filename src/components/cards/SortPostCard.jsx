@@ -7,13 +7,15 @@ import {
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import sortKeyEnums from "../../utils/enums.js";
+import sortKeyEnums from "../../utils/enums";
 
 const FROMBACKEND = ["tag 1", "tag 2", "tag 3", "tag 4"];
-const OPTIONS = FROMBACKEND.map((x) =>
-  eval({
-    label: x,
+
+const OPTIONS = [];
+FROMBACKEND.forEach((x) =>
+  OPTIONS.push({
     value: x,
+    label: x,
   })
 );
 
@@ -26,10 +28,10 @@ const SortPostCard = ({ width, height, sortKey, handleChange }) => {
   return (
     <Card
       style={{
-        size: "small",
+        height: height,
         margin: "10px auto",
         padding: "10px",
-        height: height,
+        size: "small",
         width: width,
       }}
       bodyStyle={{

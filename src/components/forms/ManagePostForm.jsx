@@ -3,13 +3,16 @@ import React from "react";
 const { TextArea } = Input;
 const { Item } = Form;
 
-const CreatePostForm = () => {
+const ManagePostForm = ({
+  isEditPost = false,
+  currTitle,
+  currTags,
+  currContent,
+}) => {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+
   return (
     <Form
       name="basic"
@@ -20,7 +23,6 @@ const CreatePostForm = () => {
         span: 20,
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Item
@@ -29,18 +31,19 @@ const CreatePostForm = () => {
         rules={[
           {
             required: true,
-            message: "Please input your post title!",
+            message: "Post title cannot be empty!",
           },
         ]}
+        initialValue={currTitle}
       >
         <Input />
       </Item>
 
-      <Item label="Tags" name="tag">
+      <Item label="Tags" name="tag" initialValue={currTags}>
         <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Item>
 
-      <Item label="Content">
+      <Item label="Content" name="content" initialValue={currContent}>
         <TextArea
           placeholder="Text (Optional)"
           showCount
@@ -57,13 +60,16 @@ const CreatePostForm = () => {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ width: "100px", float: "right" }}
+          style={{
+            float: "right",
+            width: "100px",
+          }}
         >
-          Post
+          {isEditPost ? "Edit" : "Post"}
         </Button>
       </Item>
     </Form>
   );
 };
 
-export default CreatePostForm;
+export default ManagePostForm;

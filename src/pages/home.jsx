@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import CreatePostCard from "../components/postcomponents/CreatePostCard";
-import PostCard from "../components/postcomponents/PostCard";
-import SortPostCard from "../components/postcomponents/SortPostCard";
+import CreatePostCard from "../components/cards/CreatePostCard";
+import PostCard from "../components/cards/PostCard";
+import SortPostCard from "../components/cards/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
 import hasCommonElements from "../utils";
+
 import sortKeyEnums from "../utils/enums.js";
 
 const FROMBACKEND = [

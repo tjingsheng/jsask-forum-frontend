@@ -12,7 +12,7 @@ import { differenceCalculator } from "../../utils";
 
 const { Title } = Typography;
 
-const PostFooter = ({
+const PostCardFooter = ({
   postId = -1,
   isLikeSelected = false,
   likes = -1,
@@ -65,8 +65,8 @@ const PostFooter = ({
             level={5}
             style={{
               margin: "0px",
-              textAlign: "center",
               minWidth: footerHeight,
+              textAlign: "center",
             }}
           >
             {likes + differenceCalculator(like, dislike)}
@@ -114,7 +114,9 @@ const PostFooter = ({
           )}
         </Space>
       </Col>
+
       <Col flex="auto"></Col>
+
       <Col>
         <Title
           level={5}
@@ -130,4 +132,4 @@ const PostFooter = ({
   );
 };
 
-export default PostFooter;
+export default PostCardFooter;

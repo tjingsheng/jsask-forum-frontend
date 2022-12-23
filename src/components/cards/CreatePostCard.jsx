@@ -1,7 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
 import React, { useState } from "react";
-import CreatePostForm from "./CreatePostForm";
+import ManagePostForm from "../forms/ManagePostForm";
 
 const CreatePostCard = ({
   width,
@@ -14,33 +14,38 @@ const CreatePostCard = ({
   );
 
   return (
-    <Card
-      style={{
-        margin: "10px auto",
-        padding: "10px",
-        width: width,
-      }}
-      bodyStyle={{
-        padding: "0",
-      }}
-    >
-      <Row align="middle">
-        <Col>
-          <AvatarIcon />
-        </Col>
-        <Col flex="auto">
-          <CreatePostInput
-            handleOnClick={setIsCreatePostModalVisible}
-            text={inputPlaceholder}
-          />
-        </Col>
-        <Col>
-          <CreatePostButton
-            handleOnClick={setIsCreatePostModalVisible}
-            text={buttonText}
-          />
-        </Col>
-      </Row>
+    <>
+      <Card
+        style={{
+          margin: "10px auto",
+          padding: "10px",
+          width: width,
+        }}
+        bodyStyle={{
+          padding: "0",
+        }}
+      >
+        <Row align="middle">
+          <Col>
+            <AvatarIcon />
+          </Col>
+
+          <Col flex="auto">
+            <CreatePostInput
+              handleOnClick={setIsCreatePostModalVisible}
+              text={inputPlaceholder}
+            />
+          </Col>
+
+          <Col>
+            <CreatePostButton
+              handleOnClick={setIsCreatePostModalVisible}
+              text={buttonText}
+            />
+          </Col>
+        </Row>
+      </Card>
+
       <Modal
         title="Create Post"
         open={isCreatePostModalVisible && isCreatePost}
@@ -48,9 +53,9 @@ const CreatePostCard = ({
         onCancel={() => setIsCreatePostModalVisible(false)}
         footer={[]}
       >
-        <CreatePostForm />
+        <ManagePostForm />
       </Modal>
-    </Card>
+    </>
   );
 };
 

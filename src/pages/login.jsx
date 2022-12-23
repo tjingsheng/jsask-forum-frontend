@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import React from "react";
 import JsaskLogo from "../assets/JsaskLogo";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 import LoginLayout from "../layouts/LoginLayout";
 
 const LoginPage = () => {

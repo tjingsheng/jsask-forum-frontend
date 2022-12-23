@@ -6,10 +6,10 @@ const { Footer } = Layout;
 const FooterComponent = () => (
   <Footer
     style={{
-      height: footerHeight,
-      display: "flex",
-      justifyContent: "center",
       alignItems: "center",
+      display: "flex",
+      height: footerHeight,
+      justifyContent: "center",
     }}
   >
     Jsask © 2022 Created by Tan Jing Sheng

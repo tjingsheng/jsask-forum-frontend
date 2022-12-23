@@ -1,8 +1,8 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import CommentCard from "../components/postcomponents/CommentCard";
-import CreatePostCard from "../components/postcomponents/CreatePostCard";
-import PostCard from "../components/postcomponents/PostCard";
+import CommentCard from "../components/cards/CommentCard";
+import CreatePostCard from "../components/cards/CreatePostCard";
+import PostCard from "../components/cards/PostCard";
 import HomeLayout from "../layouts/HomeLayout";
 
 const FROMUSERINFO = {
