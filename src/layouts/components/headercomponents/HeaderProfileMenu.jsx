@@ -1,14 +1,15 @@
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
-import { authenticationAction } from "../../../redux/actions";
+import { authenticationAction, userAction } from "../../../redux/actions";
 
 import { headerHeight } from "../Header";
 
-const ProfileMenu = ({ username }) => {
+const ProfileMenu = () => {
+  const username = useSelector((state) => state.user.username);
   const dispatch = useDispatch();
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
@@ -24,14 +25,16 @@ const ProfileMenu = ({ username }) => {
     }
   };
 
-  const handleOk = () => {
+  const handleCloseAllModals = () => {
     setIsLogoutModalVisible(false);
     setIsProfileModalVisible(false);
   };
 
-  const handleCancel = () => {
-    setIsLogoutModalVisible(false);
-    setIsProfileModalVisible(false);
+  const handleLogout = () => {
+    handleCloseAllModals();
+    dispatch(authenticationAction.logout());
+    dispatch(userAction.resetUsername());
+    dispatch(userAction.resetUserId());
   };
 
   const items = [
@@ -80,9 +83,9 @@ const ProfileMenu = ({ username }) => {
       <Modal
         title="Your Profile"
         open={isProfileModalVisible}
-        onCancel={handleCancel}
+        onCancel={handleCloseAllModals}
         footer={[
-          <Button key="Ok" onClick={handleOk}>
+          <Button key="Ok" onClick={handleCloseAllModals}>
             Ok
           </Button>,
         ]}
@@ -90,13 +93,15 @@ const ProfileMenu = ({ username }) => {
         <ProfileContent />
       </Modal>
       <Modal
-        title="You have successfully logged out"
-        afterClose={() => dispatch(authenticationAction.logout())}
+        title="Logout Confirmation"
         open={isLogoutModalVisible}
-        onCancel={handleCancel}
+        onCancel={handleCloseAllModals}
         footer={[
-          <Button key="Ok" onClick={handleOk}>
-            Ok
+          <Button key="Yes" onClick={handleLogout}>
+            Yes
+          </Button>,
+          <Button key="No" onClick={handleCloseAllModals}>
+            No
           </Button>,
         ]}
       >
