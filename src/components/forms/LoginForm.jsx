@@ -47,7 +47,16 @@ const LoginForm = () => {
           flex: "auto",
         }}
       >
-        <Button type="primary" htmlType="submit" style={{ padding: "auto" }}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{
+            padding: "auto",
+            display: "inline-block",
+            float: "right",
+            width: "100px",
+          }}
+        >
           Login
         </Button>
       </Item>
