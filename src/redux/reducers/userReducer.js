@@ -8,12 +8,17 @@ const userReducer = (state = InitialState, action) => {
     case "RESET_USER_ID":
       return {
         ...state,
-        userId: action.payload.userId,
+        userId: -1,
       };
     case "SET_USER_ID":
       return {
         ...state,
         userId: action.payload.userId,
+      };
+    case "RESET_USERNAME":
+      return {
+        ...state,
+        username: "",
       };
     case "SET_USERNAME":
       return {

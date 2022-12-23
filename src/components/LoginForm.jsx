@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authenticationAction, userIdAction } from "../redux/actions";
+import { authenticationAction, userAction } from "../redux/actions";
 
 const { Item } = Form;
 
@@ -44,9 +44,9 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
     dispatch(authenticationAction.login());
-    dispatch(userIdAction.setId(1));
+    dispatch(userAction.setUserId(1));
+    dispatch(userAction.setUsername(values.username));
     goto("/home");
-    console.log("Success:", values);
   };
 
   return (
