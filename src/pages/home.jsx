@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import PostCard from "../components/PostCard";
+
 import CreatePostCard from "../components/postcomponents/CreatePostCard";
-import PostCard from "../components/postcomponents/PostCard";
 import SortPostCard from "../components/postcomponents/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
 import hasCommonElements from "../utils";

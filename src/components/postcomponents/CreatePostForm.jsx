@@ -3,7 +3,7 @@ import React from "react";
 const { TextArea } = Input;
 const { Item } = Form;
 
-const CreatePostForm = () => {
+const CreatePostForm = (isEditPost = false) => {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -29,7 +29,7 @@ const CreatePostForm = () => {
         rules={[
           {
             required: true,
-            message: "Please input your post title!",
+            message: "Post title cannot be empty!",
           },
         ]}
       >

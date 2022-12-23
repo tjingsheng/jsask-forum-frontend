@@ -3,7 +3,6 @@ import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import LogoutContent from "../../../components/LogoutContent";
 import ProfileContent from "../../../components/ProfileContent";
 import { authenticationAction, userAction } from "../../../redux/actions";
 
@@ -12,7 +11,7 @@ import { headerHeight } from "../Header";
 const ProfileMenu = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
-  const username = useSelector((state) => state.user.username);
+  const currUsername = useSelector((state) => state.user.username);
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
@@ -42,7 +41,7 @@ const ProfileMenu = () => {
 
   const items = [
     {
-      label: username,
+      label: currUsername,
       key: "Menu",
       children: [
         {
@@ -108,7 +107,7 @@ const ProfileMenu = () => {
           </Button>,
         ]}
       >
-        <LogoutContent />
+        <div>Are you sure you want to logout?</div>
       </Modal>
     </>
   );

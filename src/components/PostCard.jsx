@@ -1,8 +1,9 @@
 import { Card, Row, Tag, Typography } from "antd";
 import React from "react";
-import PostFooter from "./PostFooter";
+import PostCardFooter from "./postcomponents/PostCardFooter";
+import PostCardHeader from "./postcomponents/PostCardHeader";
 
-const { Title, Paragraph } = Typography;
+const { Paragraph } = Typography;
 
 const PostCard = ({
   width,
@@ -24,7 +25,7 @@ const PostCard = ({
     }}
   >
     <Row>
-      <PostTitle postTitle={postTitle} />
+      <PostCardHeader postTitle={postTitle} />
     </Row>
     <Row>
       <PostTags tags={tags} />
@@ -33,21 +34,12 @@ const PostCard = ({
       <PostContent postContent={postContent} />
     </Row>
     <Row>
-      <PostFooter isCommentButtonVisible={isCommentButtonVisible} {...props} />
+      <PostCardFooter
+        isCommentButtonVisible={isCommentButtonVisible}
+        {...props}
+      />
     </Row>
   </Card>
-);
-
-const PostTitle = ({ postTitle }) => (
-  <Title
-    level={3}
-    style={{
-      margin: "0px",
-      padding: "10px",
-    }}
-  >
-    {postTitle}
-  </Title>
 );
 
 const PostTags = ({ tags }) => (

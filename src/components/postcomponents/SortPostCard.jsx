@@ -10,10 +10,12 @@ import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums.js";
 
 const FROMBACKEND = ["tag 1", "tag 2", "tag 3", "tag 4"];
-const OPTIONS = FROMBACKEND.map((x) =>
-  eval({
-    label: x,
+
+const OPTIONS = [];
+FROMBACKEND.forEach((x) =>
+  OPTIONS.push({
     value: x,
+    label: x,
   })
 );
 

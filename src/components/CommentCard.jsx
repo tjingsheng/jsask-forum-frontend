@@ -1,7 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Card, Typography } from "antd";
 import React from "react";
-import PostFooter from "./PostFooter";
+import PostCardFooter from "./postcomponents/PostCardFooter";
 
 const { Paragraph, Text } = Typography;
 
@@ -25,7 +25,7 @@ const CommentCard = ({ width, postContent, ...props }) => (
       >
         {postContent}
       </Paragraph>
-      <PostFooter isCommentButtonVisible={false} {...props} />
+      <PostCardFooter isCommentButtonVisible={false} {...props} />
     </Card>
   </>
 );

@@ -12,7 +12,7 @@ import { differenceCalculator } from "../../utils";
 
 const { Title } = Typography;
 
-const PostFooter = ({
+const PostCardFooter = ({
   postId = -1,
   isLikeSelected = false,
   likes = -1,
@@ -130,4 +130,4 @@ const PostFooter = ({
   );
 };
 
-export default PostFooter;
+export default PostCardFooter;
