@@ -1,11 +1,9 @@
 import authenticationReducer from "./authenticationReducer";
-import likeReducer from "./likeReducer";
-import userIdReducer from "./userIdReducer";
+import userReducer from "./userReducer";
 
 const rootReducer = {
   authentication: authenticationReducer,
-  userId: userIdReducer,
-  like: likeReducer,
+  user: userReducer,
 };
 
 export default rootReducer;
