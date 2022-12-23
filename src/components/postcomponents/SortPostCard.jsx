@@ -9,6 +9,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums.js";
 
+const FROMBACKEND = ["tag 1", "tag 2", "tag 3", "tag 4"];
+const OPTIONS = FROMBACKEND.map((x) =>
+  eval({
+    label: x,
+    value: x,
+  })
+);
+
 const SortPostCard = ({ width, height, sortKey, handleChange }) => {
   const buttonWidth = "100px";
   const goto = useNavigate();
@@ -102,6 +110,7 @@ const SortPostCard = ({ width, height, sortKey, handleChange }) => {
               width: "100%",
             }}
             onChange={handleChange}
+            options={OPTIONS}
           />
         </Col>
       </Row>
