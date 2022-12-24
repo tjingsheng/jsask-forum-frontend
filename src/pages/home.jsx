@@ -12,7 +12,7 @@ const FROMBACKEND = [
   {
     postId: 5,
     userId: 1,
-    postDateTime: "12 December 16:40",
+    postDatetime: "12 December 16:40",
     postTitle: "This is my fifth forum post",
     postContent: "This is life 5 by one",
     parentPost: -1,
@@ -30,7 +30,7 @@ const FROMBACKEND = [
   {
     postId: 4,
     userId: 3,
-    postDateTime: "11 December 15:40",
+    postDatetime: "11 December 15:40",
     postTitle: "This is my fourth forum post",
     postContent: "This is life 4 by three",
     parentPost: -1,
@@ -48,7 +48,7 @@ const FROMBACKEND = [
   {
     postId: 3,
     userId: 2,
-    postDateTime: "10 December 13:40",
+    postDatetime: "10 December 13:40",
     postTitle: "This is my third forum post",
     postContent: "This is life 3 by two",
     parentPost: -1,
@@ -66,7 +66,7 @@ const FROMBACKEND = [
   {
     postId: 2,
     userId: 1,
-    postDateTime: "4 December 12:40",
+    postDatetime: "4 December 12:40",
     postTitle: "This is my second forum post",
     postContent: "This is life 2 by one",
     parentPost: -1,
@@ -84,7 +84,7 @@ const FROMBACKEND = [
   {
     postId: 1,
     userId: 5,
-    postDateTime: "1 December 12:40",
+    postDatetime: "1 December 12:40",
     postTitle: "This is my first forum post",
     postContent: "This is life 1 by five",
     parentPost: -1,
@@ -117,8 +117,8 @@ const HomePageContent = ({ sortKey }) => {
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) => b.postDateTime > a.postDateTime,
-    [sortKeyEnums.old]: (a, b) => a.postDateTime < b.postDateTime,
+    [sortKeyEnums.new]: (a, b) => b.postDatetime > a.postDatetime,
+    [sortKeyEnums.old]: (a, b) => a.postDatetime < b.postDatetime,
   };
   // <-- NEED TO FIX
 

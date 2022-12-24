@@ -13,7 +13,7 @@ const FROMBACKEND = {
   post: {
     postId: 5,
     userId: 1,
-    postDateTime: "12 December 16:40",
+    postDatetime: "12 December 16:40",
     postTitle: "This is my fifth forum post",
     postContent: "This is life 5 by one",
     parentPost: -1,
@@ -32,7 +32,7 @@ const FROMBACKEND = {
     {
       postId: 6,
       userId: 4,
-      postDateTime: "12 December 17:40",
+      postDatetime: "12 December 17:40",
       postTitle: "NONE",
       postContent: "1 Comment on this 5 by one",
       parentPost: 5,
@@ -50,7 +50,7 @@ const FROMBACKEND = {
     {
       postId: 7,
       userId: 6,
-      postDateTime: "12 December 18:40",
+      postDatetime: "12 December 18:40",
       postTitle: "NONE",
       postContent: "2 Comment on this 5 by one",
       parentPost: 5,
@@ -68,7 +68,7 @@ const FROMBACKEND = {
     {
       postId: 8,
       userId: 4,
-      postDateTime: "12 December 19:40",
+      postDatetime: "12 December 19:40",
       postTitle: "NONE",
       postContent: "3 Comment on this 5 by one",
       parentPost: 5,
@@ -86,7 +86,7 @@ const FROMBACKEND = {
     {
       postId: 9,
       userId: 6,
-      postDateTime: "12 December 20:40",
+      postDatetime: "12 December 20:40",
       postTitle: "NONE",
       postContent: "4 Comment on this 5 by one",
       parentPost: 5,
