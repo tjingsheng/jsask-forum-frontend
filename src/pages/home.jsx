@@ -12,10 +12,10 @@ const FROMBACKEND = [
   {
     postId: 5,
     userId: 1,
-    datetime: "12 December 16:40",
+    postDateTime: "12 December 16:40",
     postTitle: "This is my fifth forum post",
     postContent: "This is life 5 by one",
-    parent: -1,
+    parentPost: -1,
 
     tags: ["tag 1", "tag 3"],
 
@@ -30,10 +30,10 @@ const FROMBACKEND = [
   {
     postId: 4,
     userId: 3,
-    datetime: "11 December 15:40",
+    postDateTime: "11 December 15:40",
     postTitle: "This is my fourth forum post",
     postContent: "This is life 4 by three",
-    parent: -1,
+    parentPost: -1,
 
     tags: ["tag 2", "tag 4"],
 
@@ -48,10 +48,10 @@ const FROMBACKEND = [
   {
     postId: 3,
     userId: 2,
-    datetime: "10 December 13:40",
+    postDateTime: "10 December 13:40",
     postTitle: "This is my third forum post",
     postContent: "This is life 3 by two",
-    parent: -1,
+    parentPost: -1,
 
     tags: ["tag 1", "tag 2", "tag 3", "tag 4", "tag 5"],
 
@@ -66,10 +66,10 @@ const FROMBACKEND = [
   {
     postId: 2,
     userId: 1,
-    datetime: "4 December 12:40",
+    postDateTime: "4 December 12:40",
     postTitle: "This is my second forum post",
     postContent: "This is life 2 by one",
-    parent: -1,
+    parentPost: -1,
 
     tags: ["tag 2", "tag 1", "tag 3"],
 
@@ -84,10 +84,10 @@ const FROMBACKEND = [
   {
     postId: 1,
     userId: 5,
-    datetime: "1 December 12:40",
+    postDateTime: "1 December 12:40",
     postTitle: "This is my first forum post",
     postContent: "This is life 1 by five",
-    parent: -1,
+    parentPost: -1,
 
     tags: ["tag 4", "tag 2"],
 
@@ -117,8 +117,8 @@ const HomePageContent = ({ sortKey }) => {
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) => b.datetime > a.datetime,
-    [sortKeyEnums.old]: (a, b) => a.datetime < b.datetime,
+    [sortKeyEnums.new]: (a, b) => b.postDateTime > a.postDateTime,
+    [sortKeyEnums.old]: (a, b) => a.postDateTime < b.postDateTime,
   };
   // <-- NEED TO FIX
 

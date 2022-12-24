@@ -19,7 +19,7 @@ const PostCardFooter = ({
   isDislikeSelected = false,
   commentCount = "Unknown",
   username = "Unknown User",
-  datetime = "",
+  postDateTime = "",
   isCommentButtonVisible = true,
 }) => {
   const footerHeight = "30px";
@@ -125,7 +125,7 @@ const PostCardFooter = ({
             padding: "10px",
           }}
         >
-          {`Posted by ${username} ${datetime}`}
+          {`Posted by ${username} ${postDateTime}`}
         </Title>
       </Col>
     </Row>
