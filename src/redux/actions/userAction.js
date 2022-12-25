@@ -19,6 +19,15 @@ const userAction = {
       username: data,
     },
   }),
+<<<<<<< HEAD
+=======
+  setUsername: (data) => ({
+    type: ActionType.GET_USERNAME,
+    payload: {
+      username: data,
+    },
+  }),
+>>>>>>> create-redux
   resetUsername: (data) => ({
     type: ActionType.RESET_USERNAME,
     payload: {
