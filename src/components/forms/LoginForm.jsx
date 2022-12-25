@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
@@ -9,6 +9,15 @@ const { Item } = Form;
 const LoginForm = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
+  const [queryParams, setQueryParams] = useSearchParams(window.location.search);
+  const removeQueryParams = () => {
+    const param = queryParams.get("q");
+    if (param) {
+      queryParams.delete("q");
+      setQueryParams(queryParams);
+    }
+  };
+
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
     goto("/home");
@@ -46,6 +55,7 @@ const LoginForm = () => {
         }}
       >
         <Button
+          onClick={removeQueryParams}
           type="primary"
           htmlType="submit"
           style={{
