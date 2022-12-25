@@ -11,8 +11,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
     dispatch(authenticationAction.login());
-    dispatch(userAction.GetUserByID(69));
-    dispatch(userAction.setUsername(values.username));
+    dispatch(userAction.InitUserByUsername(values.username));
     goto("/home");
   };
 

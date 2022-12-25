@@ -8,12 +8,12 @@ export const RequestMethod = Object.freeze({
 });
 
 export async function axiosRequest(
-  endpoint,
-  payload = null,
-  method = RequestMethod.GET
+  method = RequestMethod.GET,
+  resourceIdentifier,
+  payload = null
 ) {
   const baseURL = "http://localhost:8000/";
   axios.defaults.baseURL = baseURL;
-  const result = axios[method.toLowerCase()](endpoint, payload);
+  const result = axios[method.toLowerCase()](resourceIdentifier, payload);
   return result;
 }

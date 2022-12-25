@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 
 const { Paragraph } = Typography;
 
-const CommentCardContent = ({ postContent = "", userId }) => {
-  const currId = useSelector((state) => state.user.userId);
-  const isEditable = currId === userId;
+const CommentCardContent = ({ postContent = "", userID }) => {
+  const currID = useSelector((state) => state.user.userID);
+  const isEditable = currID === userID;
   const [editablePostContent, SetEditablePostContent] = useState(postContent);
   return (
     <Paragraph

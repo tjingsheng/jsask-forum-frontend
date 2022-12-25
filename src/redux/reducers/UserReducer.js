@@ -3,11 +3,12 @@ import { ActionType, Constant } from "../../constants";
 const InitialState = {
   userID: Constant.DEFAULT_USER_ID,
   username: Constant.DEFAULT_USERNAME,
+  userDatetime: Constant.DEFAULT_DATETIME,
 };
 
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case ActionType.GET_USER_BY_ID:
+    case ActionType.INIT_USER_BY_USERNAME:
       return {
         ...state,
         username: action.payload.username,
@@ -31,6 +32,16 @@ const userReducer = (state = InitialState, action) => {
       return {
         ...state,
         username: Constant.DEFAULT_USERNAME,
+      };
+    case ActionType.SET_USER_DATETIME:
+      return {
+        ...state,
+        userDatetime: action.payload.userDatetime,
+      };
+    case ActionType.RESET_USER_DATETIME:
+      return {
+        ...state,
+        userDatetime: Constant.DEFAULT_DATETIME,
       };
     default:
       return {

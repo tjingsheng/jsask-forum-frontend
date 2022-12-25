@@ -16,12 +16,12 @@ const PostCard = ({
   tags,
   postContent,
 
-  userId,
+  userID,
   ...props
 }) => {
-  const currId = useSelector((state) => state.user.userId);
-  const isEditable = currId === userId;
-  const isDeletable = currId === userId;
+  const currID = useSelector((state) => state.user.userID);
+  const isEditable = currID === userID;
+  const isDeletable = currID === userID;
   const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);
   const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
     false

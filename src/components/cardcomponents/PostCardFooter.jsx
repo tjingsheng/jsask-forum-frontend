@@ -13,7 +13,7 @@ import { differenceCalculator } from "../../utils";
 const { Title } = Typography;
 
 const PostCardFooter = ({
-  postId = -1,
+  postID = -1,
   isLikeSelected = false,
   likes = -1,
   isDislikeSelected = false,
@@ -95,13 +95,13 @@ const PostCardFooter = ({
           {isCommentButtonVisible && (
             <>
               <MessageOutlined
-                onClick={() => goto(`/post/?postId=${postId}`)}
+                onClick={() => goto(`/post/?postID=${postID}`)}
                 style={{
                   fontSize: footerHeight,
                 }}
               />
               <Title
-                onClick={() => goto(`/post/?postId=${postId}`)}
+                onClick={() => goto(`/post/?postID=${postID}`)}
                 level={5}
                 style={{
                   margin: "0px",

@@ -10,8 +10,8 @@ import sortKeyEnums from "../utils/enums.js";
 
 const FROMBACKEND = [
   {
-    postId: 5,
-    userId: 1,
+    postID: 5,
+    userID: 1,
     postDatetime: "12 December 16:40",
     postTitle: "This is my fifth forum post",
     postContent: "This is life 5 by one",
@@ -28,8 +28,8 @@ const FROMBACKEND = [
     isDislikeSelected: false,
   },
   {
-    postId: 4,
-    userId: 3,
+    postID: 4,
+    userID: 3,
     postDatetime: "11 December 15:40",
     postTitle: "This is my fourth forum post",
     postContent: "This is life 4 by three",
@@ -46,8 +46,8 @@ const FROMBACKEND = [
     isDislikeSelected: false,
   },
   {
-    postId: 3,
-    userId: 2,
+    postID: 3,
+    userID: 2,
     postDatetime: "10 December 13:40",
     postTitle: "This is my third forum post",
     postContent: "This is life 3 by two",
@@ -64,8 +64,8 @@ const FROMBACKEND = [
     isDislikeSelected: true,
   },
   {
-    postId: 2,
-    userId: 1,
+    postID: 2,
+    userID: 1,
     postDatetime: "4 December 12:40",
     postTitle: "This is my second forum post",
     postContent: "This is life 2 by one",
@@ -82,8 +82,8 @@ const FROMBACKEND = [
     isDislikeSelected: false,
   },
   {
-    postId: 1,
-    userId: 5,
+    postID: 1,
+    userID: 5,
     postDatetime: "1 December 12:40",
     postTitle: "This is my first forum post",
     postContent: "This is life 1 by five",

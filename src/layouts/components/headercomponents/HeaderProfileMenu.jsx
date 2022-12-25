@@ -34,7 +34,7 @@ const ProfileMenu = () => {
     handleCloseAllModals();
     dispatch(authenticationAction.logout());
     dispatch(userAction.resetUsername());
-    dispatch(userAction.resetUserId());
+    dispatch(userAction.resetUserID());
     goto("/");
   };
 

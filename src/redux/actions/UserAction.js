@@ -1,8 +1,8 @@
-import { ActionType } from "../../constants";
+import { ActionType, Constant } from "../../constants";
 
 const userAction = {
-  GetUserByID: (data) => ({
-    type: ActionType.GET_USER_BY_ID,
+  InitUserByUsername: (data) => ({
+    type: ActionType.INIT_USER_BY_USERNAME,
     payload: {
       userID: data,
     },
@@ -16,7 +16,7 @@ const userAction = {
   resetUserID: (data) => ({
     type: ActionType.RESET_USER_ID,
     payload: {
-      userID: -1,
+      userID: Constant.DEFAULT_USER_ID,
     },
   }),
   setUsername: (data) => ({
@@ -28,7 +28,19 @@ const userAction = {
   resetUsername: (data) => ({
     type: ActionType.RESET_USERNAME,
     payload: {
-      username: "",
+      username: Constant.DEFAULT_USERNAME,
+    },
+  }),
+  setUserDatetime: (data) => ({
+    type: ActionType.SET_USER_DATETIME,
+    payload: {
+      userDatetime: data,
+    },
+  }),
+  resetUserDatetime: (data) => ({
+    type: ActionType.RESET_USER_DATETIME,
+    payload: {
+      userDatetime: Constant.DEFAULT_DATETIME,
     },
   }),
 };
