@@ -1,22 +1,22 @@
 import { ActionType } from "../../constants";
 
 const userAction = {
-  setUserId: (data) => ({
+  GetUserByID: (data) => ({
+    type: ActionType.GET_USER_BY_ID,
+    payload: {
+      userID: data,
+    },
+  }),
+  setUserID: (data) => ({
     type: ActionType.SET_USER_ID,
     payload: {
-      userId: data,
+      userID: data,
     },
   }),
-  resetUserId: (data) => ({
+  resetUserID: (data) => ({
     type: ActionType.RESET_USER_ID,
     payload: {
-      userId: -1,
-    },
-  }),
-  GetUsername: (data) => ({
-    type: ActionType.GET_USERNAME,
-    payload: {
-      username: data,
+      userID: -1,
     },
   }),
   setUsername: (data) => ({
