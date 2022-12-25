@@ -17,14 +17,11 @@ const userReducer = (state = InitialState, action) => {
         ...state,
         userId: Constant.DEFAULT_USER_ID,
       };
-<<<<<<< HEAD
-=======
     case ActionType.GET_USERNAME:
       return {
         ...state,
         username: action.payload.username,
       };
->>>>>>> create-redux
     case ActionType.SET_USERNAME:
       return {
         ...state,
