@@ -23,9 +23,8 @@ export const privateRoutes = createBrowserRouter([
 
 const publicRoutes = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
     element: <LoginPage />,
-    errorElement: <LoginPage />,
   },
 ]);
 
