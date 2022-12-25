@@ -3,6 +3,7 @@ const Constant = {
   DEFAULT_USER_ID: -1,
   DEFAULT_USERNAME: "",
   DEFAULT_DATETIME: "000",
+  DEFAULT_ERROR: "Error. An unexpected error occured.",
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",

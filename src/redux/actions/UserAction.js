@@ -1,12 +1,28 @@
 import { ActionType, Constant } from "../../constants";
 
 const userAction = {
-  InitUserByUsername: (data) => ({
+  resetUserReducer: (data) => ({
+    type: ActionType.RESET_USER_REDUCER,
+    payload: {},
+  }),
+
+  initUserByUsername: (data) => ({
     type: ActionType.INIT_USER_BY_USERNAME,
     payload: {
       userID: data,
     },
   }),
+  initUserByUsernameSuccess: (data) => ({
+    type: ActionType.INIT_USER_BY_USERNAME_SUCCESS,
+    payload: {},
+  }),
+  initUserByUsernameFailed: (data) => ({
+    type: ActionType.INIT_USER_BY_USERNAME_FAILED,
+    payload: {
+      error: data,
+    },
+  }),
+
   setUserID: (data) => ({
     type: ActionType.SET_USER_ID,
     payload: {
@@ -19,6 +35,7 @@ const userAction = {
       userID: Constant.DEFAULT_USER_ID,
     },
   }),
+
   setUsername: (data) => ({
     type: ActionType.SET_USERNAME,
     payload: {
@@ -31,6 +48,7 @@ const userAction = {
       username: Constant.DEFAULT_USERNAME,
     },
   }),
+
   setUserDatetime: (data) => ({
     type: ActionType.SET_USER_DATETIME,
     payload: {
