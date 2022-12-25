@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CommentCard from "../components/cards/CommentCard";
 import CreatePostCard from "../components/cards/CreatePostCard";
@@ -103,51 +102,14 @@ const FROMBACKEND = {
 
 const PostPage = () => <HomeLayout content={<PostPageContent />} />;
 
-function extractAllComments(allComments) {
-  if (
-    allComments === undefined ||
-    allComments.post === undefined ||
-    allComments.comments === undefined
-  ) {
-    return {
-      posts: {
-        postID: 5,
-        userID: 1,
-        postDatetime: "12 December 16:40",
-        postTitle: "This is my fifth forum post",
-        postContent: "This is life 5 by one",
-        parentPost: -1,
-
-        tags: ["tag 1", "tag 3"],
-
-        username: "Bobby Lee One",
-
-        commentCount: 23,
-
-        likes: 20,
-        isLikeSelected: true,
-        isDislikeSelected: false,
-      },
-      comments: [],
-    };
-  } else {
-    console.log(1, allComments);
-    console.log(2, allComments.post);
-    console.log(3, allComments.comments);
-    console.log(4, "reached");
-    return allComments;
-  }
-}
-
 const PostPageContent = () => {
-  const PageWidth = "50%";
-  const allComments = useSelector((state) => state.post.allComment);
-  const isLoading = useSelector((state) => state.app.isLoading);
-  // const { post, comments } = extractAllComments(allComments);
   const { post, comments } = FROMBACKEND;
-  const [queryParams] = useSearchParams(window.location.search); //FOR TESTING
+  //FOR TESTING --->
+  const [queryParams] = useSearchParams(window.location.search);
   const TEST = queryParams.get("postID"); //FOR TESTING
+  // <--- FOR TESTING
 
+  const PageWidth = "50%";
   return (
     <>
       <PostCard width={PageWidth} isCommentButtonVisible={false} {...post} />
