@@ -5,10 +5,6 @@ import CreatePostCard from "../components/cards/CreatePostCard";
 import PostCard from "../components/cards/PostCard";
 import HomeLayout from "../layouts/HomeLayout";
 
-const FROMUSERINFO = {
-  username: "Bobby Lee",
-};
-
 const FROMBACKEND = {
   post: {
     postID: 5,
@@ -104,9 +100,7 @@ const FROMBACKEND = {
   ],
 };
 
-const PostPage = () => (
-  <HomeLayout content={<PostPageContent />} username={FROMUSERINFO.username} />
-);
+const PostPage = () => <HomeLayout content={<PostPageContent />} />;
 
 const PostPageContent = () => {
   const PageWidth = "50%";

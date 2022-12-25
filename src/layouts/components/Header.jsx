@@ -6,7 +6,7 @@ import SearchBox from "./headercomponents/HeaderSearchBox";
 
 const { Header } = Layout;
 
-const HeaderComponent = ({ username }) => {
+const HeaderComponent = () => {
   return (
     <Header
       style={{
@@ -27,7 +27,7 @@ const HeaderComponent = ({ username }) => {
           <SearchBox />
         </Col>
         <Col span={8}>
-          <ProfileMenu username={username} />
+          <ProfileMenu />
         </Col>
       </Row>
     </Header>

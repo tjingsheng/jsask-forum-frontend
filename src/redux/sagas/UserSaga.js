@@ -6,6 +6,7 @@ import { userAction } from "../actions";
 
 function* initUserByUsername(action) {
   try {
+    // ADD LOGIC TO SPECIFY USERNAME IN AXIOS REQUEST
     const response = yield axiosRequest(RequestMethod.get, URI.getCurrUser);
     const currUsername = action.payload.userID;
     const currUserID = response.data.payload.data.userID;
@@ -15,6 +16,7 @@ function* initUserByUsername(action) {
     yield put(userAction.setUserDatetime(currUserDatetime));
     yield put(userAction.initUserByUsernameSuccess());
   } catch (e) {
+    console.log(e);
     yield put(
       userAction.initUserByUsernameFailed(ErrorType.INIT_USER_BY_USERNAME_ERROR)
     );

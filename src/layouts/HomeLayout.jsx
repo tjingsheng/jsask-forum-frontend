@@ -4,9 +4,9 @@ import ContentComponent from "./components/Content";
 import FooterComponent, { footerHeight } from "./components/Footer";
 import HeaderComponent, { headerHeight } from "./components/Header";
 
-const HomeLayout = ({ content, username }) => (
+const HomeLayout = ({ content }) => (
   <Layout>
-    <HeaderComponent username={username} />
+    <HeaderComponent />
     <ContentComponent
       style={{
         minHeight: `calc(100vh - ${headerHeight}px - ${footerHeight}px)`,
