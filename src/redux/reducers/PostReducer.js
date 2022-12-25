@@ -4,7 +4,7 @@ const InitialState = {
   allPosts: Constant.DEFAULT_ALL_POSTS,
   error: Constant.DEFAULT_ERROR,
 
-  isAllPostFetched: false,
+  isAllPostsFetched: false,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -21,12 +21,12 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_POSTS_SUCCESS:
       return {
         ...state,
-        isAllPostFetched: true,
+        isAllPostsFetched: true,
       };
     case ActionType.FETCH_ALL_POSTS_FAILED:
       return {
         ...state,
-        isAllPostFetched: false,
+        isAllPostsFetched: false,
       };
 
     case ActionType.SET_ALL_POSTS:

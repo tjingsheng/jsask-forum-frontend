@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   authenticationAction,
   postAction,
+  tagAction,
   userAction,
 } from "../../redux/actions";
 
@@ -17,6 +18,7 @@ const LoginForm = () => {
     dispatch(authenticationAction.login());
     dispatch(userAction.initUserByUsername(values.username));
     dispatch(postAction.fetchAllPosts());
+    dispatch(tagAction.fetchAllTags());
     goto("/home");
   };
 

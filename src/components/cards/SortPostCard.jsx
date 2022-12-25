@@ -6,20 +6,23 @@ import {
 } from "@ant-design/icons";
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums";
 
-const FROMBACKEND = ["tag 1", "tag 2", "tag 3", "tag 4"];
-
-const OPTIONS = [];
-FROMBACKEND.forEach((x) =>
-  OPTIONS.push({
-    value: x,
-    label: x,
-  })
-);
+function getTagOptions(allTags) {
+  const options = [];
+  if (allTags !== undefined) {
+    allTags.forEach((x) =>
+      options.push({ value: x.tagName, label: x.tagName })
+    );
+  }
+  return options;
+}
 
 const SortPostCard = ({ width, height, sortKey, handleChange }) => {
+  const allTags = useSelector((state) => state.tag.allTags);
+  const tagOptions = getTagOptions(allTags);
   const buttonWidth = "100px";
   const goto = useNavigate();
   const buttonSelectedType = "primary";
@@ -112,7 +115,7 @@ const SortPostCard = ({ width, height, sortKey, handleChange }) => {
               width: "100%",
             }}
             onChange={handleChange}
-            options={OPTIONS}
+            options={tagOptions}
           />
         </Col>
       </Row>

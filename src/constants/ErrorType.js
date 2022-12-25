@@ -4,6 +4,9 @@ const ErrorType = {
 
   // POST
   FETCH_ALL_POSTS_ERROR: "Error. Failed to fetch all posts.",
+
+  // TAG
+  FETCH_ALL_TAGS_ERROR: "Error. Failed to fetch all tags.",
 };
 
 export default ErrorType;

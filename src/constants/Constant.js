@@ -5,6 +5,7 @@ const Constant = {
   DEFAULT_DATETIME: "000",
   DEFAULT_ERROR: "Error. An unexpected error occured.",
   DEFAULT_ALL_POSTS: [],
+  DEFAULT_ALL_TAGS: [],
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",
