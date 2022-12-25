@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authenticationAction, userAction } from "../../../redux/actions";
 
-import { headerHeight } from "../header";
+import { headerHeight } from "../Header";
 
 const ProfileMenu = () => {
   const goto = useNavigate();

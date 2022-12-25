@@ -1,29 +1,31 @@
+import { ActionType, Constant } from "../../constants";
+
 const InitialState = {
-  userId: -1,
-  username: "",
+  userId: Constant.DEFAULT_ID,
+  username: Constant.DEFAULT_USERNAME,
 };
 
 const userReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case "RESET_USER_ID":
-      return {
-        ...state,
-        userId: -1,
-      };
-    case "SET_USER_ID":
+    case ActionType.SET_USER_ID:
       return {
         ...state,
         userId: action.payload.userId,
       };
-    case "RESET_USERNAME":
+    case ActionType.RESET_USER_ID:
       return {
         ...state,
-        username: "",
+        userId: Constant.DEFAULT_USER_ID,
       };
-    case "SET_USERNAME":
+    case ActionType.SET_USERNAME:
       return {
         ...state,
         username: action.payload.username,
+      };
+    case ActionType.RESET_USERNAME:
+      return {
+        ...state,
+        username: Constant.DEFAULT_USERNAME,
       };
     default:
       return {

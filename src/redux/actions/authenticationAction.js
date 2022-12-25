@@ -1,9 +1,11 @@
+import { ActionType } from "../../constants";
+
 const authenticationAction = {
   login: () => ({
-    type: "LOGIN",
+    type: ActionType.LOGIN,
   }),
   logout: () => ({
-    type: "LOGOUT",
+    type: ActionType.LOGOUT,
   }),
 };
 
