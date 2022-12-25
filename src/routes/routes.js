@@ -1,9 +1,9 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/home";
-import LoginPage from "../pages/login";
-import NotFoundPage from "../pages/notfound";
-import PostPage from "../pages/post";
+import HomePage from "../pages/Home";
+import LoginPage from "../pages/Login";
+import NotFoundPage from "../pages/NotFound";
+import PostPage from "../pages/Post";
 
 export const privateRoutes = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
-import authenticationReducer from "./authenticationReducer";
-import userReducer from "./userReducer";
+import authenticationReducer from "./AuthenticationReducer";
+import userReducer from "./UserReducer";
 
 const rootReducer = {
   authentication: authenticationReducer,

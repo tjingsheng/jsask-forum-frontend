@@ -1,2 +1,2 @@
-export { default as authenticationAction } from "./authenticationAction";
-export { default as userAction } from "./userAction";
+export { default as authenticationAction } from "./AuthenticationAction";
+export { default as userAction } from "./UserAction";
