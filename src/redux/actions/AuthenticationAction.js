@@ -1,6 +1,11 @@
 import { ActionType } from "../../constants";
 
 const authenticationAction = {
+  resetAuthenticationReducer: (data) => ({
+    type: ActionType.RESET_AUTHENTICATION_REDUCER,
+    payload: {},
+  }),
+
   login: (data) => ({
     type: ActionType.LOGIN,
     payload: {
@@ -25,7 +30,7 @@ const authenticationAction = {
     payload: {},
   }),
   logoutFailed: (data) => ({
-    type: ActionType.LOGIN_FAILED,
+    type: ActionType.LOGOUT_FAILED,
     payload: {},
   }),
 };

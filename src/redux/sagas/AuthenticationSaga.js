@@ -12,6 +12,7 @@ function* logoutProcess(action) {
     yield put(postAction.resetPostReducer());
     yield put(userAction.resetUserReducer());
     yield put(tagAction.resetTagReducer());
+    yield put(authenticationAction.resetAuthenticationReducer());
     yield put(authenticationAction.logoutSuccess());
   } catch (e) {
     console.log(e);
@@ -21,8 +22,8 @@ function* logoutProcess(action) {
 
 function* loginProcess(action) {
   try {
-    console.log(action);
     const values = action.payload.loginForm;
+    yield put(authenticationAction.logoutFailed());
     yield put(userAction.initUserByUsername(values.username));
     yield put(postAction.fetchAllPosts());
     yield put(tagAction.fetchAllTags());

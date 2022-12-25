@@ -9,6 +9,11 @@ const InitialState = {
 
 const authenticationReducer = (state = InitialState, action) => {
   switch (action.type) {
+    case ActionType.RESET_AUTHENTICATION_REDUCER:
+      return {
+        ...InitialState,
+      };
+
     case ActionType.LOGIN:
       return {
         ...state,
