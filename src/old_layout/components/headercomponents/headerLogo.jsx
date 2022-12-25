@@ -2,7 +2,7 @@ import React from "react";
 import JsaskLogo from "../../../assets/JsaskLogo";
 import JsaskWord from "../../../assets/JsaskWord";
 
-import { headerHeight } from "../Header";
+import { headerHeight } from "../header";
 
 const Logo = () => (
   <>

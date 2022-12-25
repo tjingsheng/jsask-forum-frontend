@@ -1,6 +1,6 @@
 import { Input } from "antd";
 import React from "react";
-import { headerHeight } from "../Header";
+import { headerHeight } from "../header";
 
 const { Search } = Input;
 const SearchBox = () => {
