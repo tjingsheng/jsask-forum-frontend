@@ -2,12 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  authenticationAction,
-  postAction,
-  tagAction,
-  userAction,
-} from "../../redux/actions";
+import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
 
@@ -15,10 +10,7 @@ const LoginForm = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
   const onFinish = (values) => {
-    dispatch(authenticationAction.login());
-    dispatch(userAction.initUserByUsername(values.username));
-    dispatch(postAction.fetchAllPosts());
-    dispatch(tagAction.fetchAllTags());
+    dispatch(authenticationAction.login(values));
     goto("/home");
   };
 

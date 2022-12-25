@@ -3,7 +3,7 @@ import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authenticationAction, userAction } from "../../../redux/actions";
+import { authenticationAction } from "../../../redux/actions";
 
 import { headerHeight } from "../Header";
 
@@ -33,8 +33,6 @@ const ProfileMenu = () => {
   const handleLogout = () => {
     handleCloseAllModals();
     dispatch(authenticationAction.logout());
-    dispatch(userAction.resetUsername());
-    dispatch(userAction.resetUserID());
     goto("/");
   };
 
