@@ -1,8 +1,9 @@
 import React from "react";
+import { Constant } from "../constants";
 
 const JsaskWord = ({
-  outline = "#6071a4",
-  fill = "#93DBE9",
+  outline = Constant.WORD_OUTLINE_COLOR,
+  fill = Constant.WORD_FILL_COLOR,
   height = 150,
   width = 300,
   ...props

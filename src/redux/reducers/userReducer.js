@@ -1,7 +1,7 @@
 import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
-  userId: Constant.DEFAULT_ID,
+  userId: Constant.DEFAULT_USER_ID,
   username: Constant.DEFAULT_USERNAME,
 };
 

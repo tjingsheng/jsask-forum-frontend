@@ -1,10 +1,11 @@
 import React from "react";
+import { Constant } from "../constants";
 
 const JsaskLogo = ({
-  outline = "black",
-  thread = "grey",
-  bulb = "yellow",
-  reflection = "white",
+  outline = Constant.LOGO_OUTLINE_COLOR,
+  thread = Constant.LOGO_THREAD_COLOR,
+  bulb = Constant.LOGO_BULB_COLOR,
+  reflection = Constant.LOGO_REFLECTION_COLOR,
   height = 150,
   width = 300,
   ...props
