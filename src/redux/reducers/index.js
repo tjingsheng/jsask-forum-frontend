@@ -1,3 +1,4 @@
+import appReducer from "./AppReducer";
 import authenticationReducer from "./AuthenticationReducer";
 import postReducer from "./PostReducer";
 import tagReducer from "./TagReducer";
@@ -8,6 +9,7 @@ const rootReducer = {
   user: userReducer,
   post: postReducer,
   tag: tagReducer,
+  app: appReducer,
 };
 
 export default rootReducer;

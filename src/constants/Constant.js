@@ -6,6 +6,7 @@ const Constant = {
   DEFAULT_ERROR: "Error. An unexpected error occured.",
   DEFAULT_ALL_POSTS: [],
   DEFAULT_ALL_TAGS: [],
+  DEFAULT_ALL_COMMENTS: {},
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",

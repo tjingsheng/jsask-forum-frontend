@@ -26,6 +26,7 @@ function* loginProcess(action) {
     yield put(authenticationAction.logoutFailed());
     yield put(userAction.initUserByUsername(values.username));
     yield put(postAction.fetchAllPosts());
+    yield put(postAction.fetchAllComments());
     yield put(tagAction.fetchAllTags());
     yield put(authenticationAction.loginSuccess());
   } catch (e) {
