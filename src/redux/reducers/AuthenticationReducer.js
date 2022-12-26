@@ -18,6 +18,7 @@ const authenticationReducer = (state = InitialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
+        isLogoutProperly: false,
       };
 
     case ActionType.LOGIN_SUCCESS:
@@ -35,6 +36,7 @@ const authenticationReducer = (state = InitialState, action) => {
       return {
         ...state,
         isAuthenticated: false,
+        isLoginProperly: false,
       };
     case ActionType.LOGOUT_SUCCESS:
       return {

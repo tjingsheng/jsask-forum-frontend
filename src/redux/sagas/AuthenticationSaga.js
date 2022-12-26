@@ -23,7 +23,6 @@ function* logoutProcess(action) {
 function* loginProcess(action) {
   try {
     const values = action.payload.loginForm;
-    yield put(authenticationAction.logoutFailed());
     yield put(userAction.initUserByUsername(values.username));
     yield put(postAction.fetchAllPosts());
     yield put(postAction.fetchAllComments());
