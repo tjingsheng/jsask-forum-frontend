@@ -10,19 +10,20 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums";
 
-function getTagOptions(allTags) {
-  const options = [];
-  if (allTags !== undefined) {
-    allTags.forEach((x) =>
-      options.push({ value: x.tagName, label: x.tagName })
-    );
-  }
-  return options;
-}
-
 const SortPostCard = ({ width, height, sortKey, handleChange }) => {
+  const getTagOptions = (allTags) => {
+    const result = [];
+    if (allTags !== undefined) {
+      allTags.forEach((x) =>
+        result.push({ value: x.tagName, label: x.tagName })
+      );
+    }
+    return result;
+  };
+
   const allTags = useSelector((state) => state.tag.allTags);
   const tagOptions = getTagOptions(allTags);
+
   const buttonWidth = "100px";
   const goto = useNavigate();
   const buttonSelectedType = "primary";

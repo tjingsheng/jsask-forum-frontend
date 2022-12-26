@@ -8,15 +8,15 @@ import HomeLayout from "../layouts/HomeLayout";
 
 const PostPage = () => <HomeLayout content={<PostPageContent />} />;
 
-function getAllComments(target) {
-  let result = { post: { tags: [] }, comments: [] };
-  if (target !== undefined) {
-    return target;
-  }
-  return result;
-}
-
 const PostPageContent = () => {
+  const getAllComments = (allComments) => {
+    let result = { post: { tags: [] }, comments: [] };
+    if (allComments !== undefined) {
+      return allComments;
+    }
+    return result;
+  };
+
   const allComments = useSelector((state) => state.post.allComments);
   const { post, comments } = getAllComments(allComments);
   //FOR TESTING --->
@@ -43,9 +43,10 @@ const PostPageContent = () => {
         buttonText="Comment"
         isPost={false}
       />
-      {comments.map((comment, idx) => (
-        <CommentCard key={idx} width={PageWidth} {...comment} />
-      ))}
+      {Array.isArray(comments) &&
+        comments.map((comment, idx) => (
+          <CommentCard key={idx} width={PageWidth} {...comment} />
+        ))}
     </>
   );
 };

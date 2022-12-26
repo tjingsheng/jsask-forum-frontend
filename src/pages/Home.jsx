@@ -44,18 +44,19 @@ const HomePageContent = ({ sortKey }) => {
         handleChange={setFilterByTagsArray}
       />
 
-      {AllPosts.filter((post) =>
-        hasCommonElements(post.tags, filterByTagsArray)
-      )
-        .sort(sortComparators[sortKey])
-        .map((post, idx) => (
-          <PostCard
-            key={idx}
-            width={PageWidth}
-            isCommentButtonVisible={true}
-            {...post}
-          />
-        ))}
+      {Array.isArray(AllPosts) &&
+        AllPosts.filter((post) =>
+          hasCommonElements(post.tags, filterByTagsArray)
+        )
+          .sort(sortComparators[sortKey])
+          .map((post, idx) => (
+            <PostCard
+              key={idx}
+              width={PageWidth}
+              isCommentButtonVisible={true}
+              {...post}
+            />
+          ))}
     </>
   );
 };
