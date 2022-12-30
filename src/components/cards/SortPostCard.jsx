@@ -11,18 +11,11 @@ import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums";
 
 const SortPostCard = ({ width, height, sortKey, handleChange }) => {
-  const getTagOptions = (allTags) => {
-    const result = [];
-    if (allTags !== undefined) {
-      allTags.forEach((x) =>
-        result.push({ value: x.tagName, label: x.tagName })
-      );
-    }
-    return result;
-  };
-
   const allTags = useSelector((state) => state.tag.allTags);
-  const tagOptions = getTagOptions(allTags);
+  const tagOptions = allTags.map((x) => ({
+    value: x.tagName,
+    label: x.tagName,
+  }));
 
   const buttonWidth = "100px";
   const goto = useNavigate();

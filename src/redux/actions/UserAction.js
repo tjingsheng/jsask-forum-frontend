@@ -9,7 +9,7 @@ const userAction = {
   initUserByUsername: (data) => ({
     type: ActionType.INIT_USER_BY_USERNAME,
     payload: {
-      userID: data,
+      username: data,
     },
   }),
   initUserByUsernameSuccess: (data) => ({

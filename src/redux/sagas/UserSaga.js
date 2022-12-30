@@ -7,12 +7,16 @@ import { userAction } from "../actions";
 function* initUserByUsername(action) {
   try {
     // ADD LOGIC TO SPECIFY USERNAME IN AXIOS REQUEST
-    const response = yield axiosRequest(RequestMethod.get, URI.getCurrUser);
-    const currUsername = action.payload.userID;
-    const currUserID = response.data.payload.data.userID;
-    const currUserDatetime = response.data.payload.data.userDatetime;
+
+    const requestURI = URI.getCurrUser + "/" + action.payload.username;
+    const response = yield axiosRequest(RequestMethod.get, requestURI);
+
+    const curruser = response.data.payload.data;
+    const currUserId = curruser.id;
+    const currUsername = curruser.username;
+    const currUserDatetime = curruser.userDatetime;
     yield put(userAction.setUsername(currUsername));
-    yield put(userAction.setUserID(currUserID));
+    yield put(userAction.setUserID(currUserId));
     yield put(userAction.setUserDatetime(currUserDatetime));
     yield put(userAction.initUserByUsernameSuccess());
   } catch (e) {
