@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/cards/CreatePostCard";
+import NoContentCard from "../components/cards/NoContentCard";
 import PostCard from "../components/cards/PostCard";
 import SortPostCard from "../components/cards/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
@@ -44,7 +45,9 @@ const HomePageContent = ({ sortKey }) => {
         handleChange={setFilterByTagsArray}
       />
 
-      {Array.isArray(AllPosts) &&
+      {Array.isArray(AllPosts) && AllPosts.length === 0 ? (
+        <NoContentCard width={PageWidth} message="There are no posts yet" />
+      ) : (
         AllPosts.filter((post) =>
           hasCommonElements(post.tags, filterByTagsArray)
         )
@@ -56,7 +59,8 @@ const HomePageContent = ({ sortKey }) => {
               isCommentButtonVisible={true}
               {...post}
             />
-          ))}
+          ))
+      )}
     </>
   );
 };
