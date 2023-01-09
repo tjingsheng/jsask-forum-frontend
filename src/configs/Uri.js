@@ -1,7 +1,7 @@
 const URI = {
   getCurrUser: "/curruser",
   getAllPosts: "/posts",
-  getAllUniqueTags: "/uniquetags",
+  getAllTags: "/tags",
   getAllComments: "/comments",
 };
 
