@@ -12,11 +12,6 @@ import sortKeyEnums from "../../utils/enums";
 
 const SortPostCard = ({ width, height, sortKey, handleChange }) => {
   const allTags = useSelector((state) => state.tag.allTags);
-  const tagOptions = allTags.map((x) => ({
-    value: x.tagName,
-    label: x.tagName,
-  }));
-
   const buttonWidth = "100px";
   const goto = useNavigate();
   const buttonSelectedType = "primary";
@@ -109,7 +104,7 @@ const SortPostCard = ({ width, height, sortKey, handleChange }) => {
               width: "100%",
             }}
             onChange={handleChange}
-            options={tagOptions}
+            options={allTags}
           />
         </Col>
       </Row>

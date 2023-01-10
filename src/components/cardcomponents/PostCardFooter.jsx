@@ -8,7 +8,7 @@ import {
 import { Col, Row, Space, Typography } from "antd";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { differenceCalculator } from "../../utils";
+import { differenceCalculator, formatDatetime } from "../../utils";
 
 const { Title } = Typography;
 
@@ -27,6 +27,7 @@ const PostCardFooter = ({
   const [like, setLike] = useState(isLikeSelected);
   const [dislike, setDislike] = useState(isDislikeSelected);
 
+  const FormattedPostDatetime = formatDatetime(postDatetime);
   return (
     <Row
       style={{
@@ -125,7 +126,7 @@ const PostCardFooter = ({
             padding: "10px",
           }}
         >
-          {`Posted by ${username} ${postDatetime}`}
+          {`${username} | ${FormattedPostDatetime}`}
         </Title>
       </Col>
     </Row>
