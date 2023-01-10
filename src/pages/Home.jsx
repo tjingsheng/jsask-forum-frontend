@@ -22,14 +22,15 @@ const HomePageContent = ({ sortKey }) => {
   const AllPosts = useSelector((state) => state.post.allPosts);
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
 
-  // NEED TO FIX -->
+  // NEED REPAIR FOR DATE SORTING
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) => b.postDatetime > a.postDatetime,
-    [sortKeyEnums.old]: (a, b) => a.postDatetime < b.postDatetime,
+    [sortKeyEnums.new]: (a, b) =>
+      new Date(b.postDatetime).getTime() < new Date(a.postDatetime).getTime(),
+    [sortKeyEnums.old]: (a, b) =>
+      new Date(b.postDatetime).getTime() > new Date(a.postDatetime).getTime(),
   };
-  // <-- NEED TO FIX
 
   return (
     <>

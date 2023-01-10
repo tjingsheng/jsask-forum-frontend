@@ -23,10 +23,10 @@ function* logoutProcess(action) {
 function* loginProcess(action) {
   try {
     const values = action.payload.loginForm;
+    yield put(postAction.resetPostReducer());
+    yield put(userAction.resetUserReducer());
+    yield put(tagAction.resetTagReducer());
     yield put(userAction.initUserByUsername(values.username));
-    yield put(postAction.fetchAllPosts());
-    yield put(postAction.fetchAllComments());
-    yield put(tagAction.fetchAllTags());
     yield put(authenticationAction.loginSuccess());
   } catch (e) {
     console.log(e);
