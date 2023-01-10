@@ -27,7 +27,6 @@ const LoginForm = () => {
     dispatch(authenticationAction.login(values));
     dispatch(postAction.fetchAllPosts(currID));
     dispatch(tagAction.fetchAllTags());
-    dispatch(postAction.fetchAllComments());
     goto("/home");
   };
 

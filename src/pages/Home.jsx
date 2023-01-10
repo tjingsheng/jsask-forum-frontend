@@ -21,8 +21,6 @@ const HomePageContent = ({ sortKey }) => {
   const PageWidth = "50%";
   const AllPosts = useSelector((state) => state.post.allPosts);
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
-
-  // NEED REPAIR FOR DATE SORTING
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
