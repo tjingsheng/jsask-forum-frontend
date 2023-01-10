@@ -27,9 +27,9 @@ const HomePageContent = ({ sortKey }) => {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
     [sortKeyEnums.new]: (a, b) =>
-      new Date(b.postDatetime).getTime() < new Date(a.postDatetime).getTime(),
+      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
     [sortKeyEnums.old]: (a, b) =>
-      new Date(b.postDatetime).getTime() > new Date(a.postDatetime).getTime(),
+      new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
   };
 
   return (

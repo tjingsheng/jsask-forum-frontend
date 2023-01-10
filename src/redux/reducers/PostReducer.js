@@ -1,9 +1,9 @@
-import { ActionType, Constant } from "../../constants";
+import { ActionType, Constant, ErrorType } from "../../constants";
 
 const InitialState = {
   allPosts: Constant.DEFAULT_ALL_POSTS,
   allComments: Constant.DEFAULT_ALL_COMMENTS,
-  error: Constant.DEFAULT_ERROR,
+  error: ErrorType.NO_ERROR,
 
   isAllPostsFetched: false,
   isAllCommentsFetched: false,

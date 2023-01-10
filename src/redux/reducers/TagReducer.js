@@ -1,8 +1,8 @@
-import { ActionType, Constant } from "../../constants";
+import { ActionType, Constant, ErrorType } from "../../constants";
 
 const InitialState = {
   allTags: Constant.DEFAULT_ALL_TAGS,
-  error: Constant.DEFAULT_ERROR,
+  error: ErrorType.NO_ERROR,
 
   isAllTagsFetched: false,
 };

@@ -1,10 +1,14 @@
-import { ActionType } from "../../constants";
+import { ActionType, Constant, ErrorType } from "../../constants";
 
 const InitialState = {
+  userID: Constant.DEFAULT_USER_ID,
+  username: Constant.DEFAULT_USERNAME,
+  userDatetime: Constant.DEFAULT_DATETIME,
+  error: ErrorType.NO_ERROR,
+
   isAuthenticated: false,
   isLoginProperly: false,
   isLogoutProperly: true,
-  loginForm: {},
 };
 
 const authenticationReducer = (state = InitialState, action) => {
@@ -14,13 +18,31 @@ const authenticationReducer = (state = InitialState, action) => {
         ...InitialState,
       };
 
+    case ActionType.INITUSER:
+      return {
+        ...state,
+        userID: action.payload.userID,
+        username: action.payload.username,
+        userDatetime: action.payload.userDatetime,
+      };
+
+    case ActionType.INITUSER_SUCCESS:
+      return {
+        ...state,
+        error: ErrorType.NO_ERROR,
+      };
+    case ActionType.INITUSER_FAILED:
+      return {
+        ...state,
+        error: ErrorType.INIT_USER_ERROR,
+      };
+
     case ActionType.LOGIN:
       return {
         ...state,
         isAuthenticated: true,
         isLogoutProperly: false,
       };
-
     case ActionType.LOGIN_SUCCESS:
       return {
         ...state,

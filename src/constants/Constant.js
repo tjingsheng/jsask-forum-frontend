@@ -3,7 +3,6 @@ const Constant = {
   DEFAULT_USER_ID: -1,
   DEFAULT_USERNAME: "",
   DEFAULT_DATETIME: "000",
-  DEFAULT_ERROR: "Error. An unexpected error occured.",
   DEFAULT_ALL_POSTS: [],
   DEFAULT_ALL_TAGS: [],
   DEFAULT_ALL_COMMENTS: {},

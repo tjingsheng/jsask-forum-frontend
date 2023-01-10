@@ -19,7 +19,7 @@ const PostCard = ({
   userID,
   ...props
 }) => {
-  const currID = useSelector((state) => state.user.userID);
+  const currID = useSelector((state) => state.authentication.userID);
   const isEditable = currID === userID;
   const isDeletable = currID === userID;
   const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);

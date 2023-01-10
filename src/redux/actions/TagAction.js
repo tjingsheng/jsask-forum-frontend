@@ -22,13 +22,13 @@ const tagAction = {
       error: data,
     },
   }),
-
   setAllTags: (data) => ({
     type: ActionType.SET_ALL_TAGS,
     payload: {
       allTags: data,
     },
   }),
+
   resetAllTags: (data) => ({
     type: ActionType.RESET_ALL_TAGS,
     payload: {

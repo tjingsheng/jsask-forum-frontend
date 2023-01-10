@@ -1,16 +1,12 @@
 import { put, takeEvery } from "redux-saga/effects";
+import { axiosRequest, RequestMethod } from "../../configs/axios";
+import URI from "../../configs/Uri";
 import { ActionType, ErrorType } from "../../constants";
-import {
-  authenticationAction,
-  postAction,
-  tagAction,
-  userAction,
-} from "../actions";
+import { authenticationAction, postAction, tagAction } from "../actions";
 
 function* logoutProcess(action) {
   try {
     yield put(postAction.resetPostReducer());
-    yield put(userAction.resetUserReducer());
     yield put(tagAction.resetTagReducer());
     yield put(authenticationAction.resetAuthenticationReducer());
     yield put(authenticationAction.logoutSuccess());
@@ -22,11 +18,15 @@ function* logoutProcess(action) {
 
 function* loginProcess(action) {
   try {
-    const values = action.payload.loginForm;
-    yield put(postAction.resetPostReducer());
-    yield put(userAction.resetUserReducer());
-    yield put(tagAction.resetTagReducer());
-    yield put(userAction.initUserByUsername(values.username));
+    console.log(1, action);
+    console.log(2, action.payload.username);
+    const requestURI = URI.getCurrUser + "/" + action.payload.username;
+
+    const response = yield axiosRequest(RequestMethod.get, requestURI);
+    console.log(3, response);
+    console.log(4, response.data.payload.data);
+
+    yield put(authenticationAction.initUser(response.data.payload.data));
     yield put(authenticationAction.loginSuccess());
   } catch (e) {
     console.log(e);

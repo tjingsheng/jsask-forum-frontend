@@ -1,4 +1,6 @@
 const ErrorType = {
+  NO_ERROR: "No Error",
+
   // AUTHENTICATION
   LOGIN_ERROR: "Error. Failed to login.",
   LOGOUT_ERROR: "Error. Failed to logout.",
@@ -11,7 +13,7 @@ const ErrorType = {
   FETCH_ALL_TAGS_ERROR: "Error. Failed to fetch all tags.",
 
   // USER
-  INIT_USER_BY_USERNAME_ERROR: "Error. Failed to initialise user by username.",
+  INIT_USER_ERROR: "Error. Failed to initialise user by username.",
 };
 
 export default ErrorType;

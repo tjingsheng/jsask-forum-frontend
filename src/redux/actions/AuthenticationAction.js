@@ -9,7 +9,7 @@ const authenticationAction = {
   login: (data) => ({
     type: ActionType.LOGIN,
     payload: {
-      loginForm: data,
+      username: data.username,
     },
   }),
   loginSuccess: (data) => ({
@@ -18,6 +18,23 @@ const authenticationAction = {
   }),
   loginFailed: (data) => ({
     type: ActionType.LOGIN_FAILED,
+    payload: {},
+  }),
+
+  initUser: (data) => ({
+    type: ActionType.INITUSER,
+    payload: {
+      userID: data.id,
+      username: data.username,
+      userDatetime: data.userDatetime,
+    },
+  }),
+  initUserSuccess: (data) => ({
+    type: ActionType.INITUSER_SUCCESS,
+    payload: {},
+  }),
+  initUserFailed: (data) => ({
+    type: ActionType.INITUSER_FAILED,
     payload: {},
   }),
 
