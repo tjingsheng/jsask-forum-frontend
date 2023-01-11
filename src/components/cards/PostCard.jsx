@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 import PostCardHeader from "../cardcomponents/PostCardHeader";
-import PostCardTags from "../cardcomponents/postCardTags";
+import PostCardTags from "../cardcomponents/PostCardTags";
 import ManagePostForm from "../forms/ManagePostForm";
 
 const PostCard = ({
