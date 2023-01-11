@@ -23,7 +23,7 @@ const PostPageContent = () => {
   const [queryParams] = useSearchParams(window.location.search);
   const postId = queryParams.get("postId");
   const initialPost = useSelector((state) => state.post.currPost);
-  const [currPost, setCurrPost] = useState(initialPost);
+  const [currPost] = useState(initialPost);
   const { post, comments } = getCurrPost(currPost);
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authenticationAction } from "../../../redux/actions";
+import { formatDatetime } from "../../../utils";
 
 import { headerHeight } from "../Header";
 
@@ -13,6 +14,10 @@ const ProfileMenu = () => {
   const currUserUsername = useSelector(
     (state) => state.authentication.user.username
   );
+  const currUserDatetime = useSelector(
+    (state) => state.authentication.user.userDatetime
+  );
+  const FormattedCurrUserDatetime = formatDatetime(currUserDatetime);
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 
@@ -90,7 +95,8 @@ const ProfileMenu = () => {
           </Button>,
         ]}
       >
-        <div>This is your profile</div>
+        <div>Hi {currUserUsername}</div>
+        <div>You created your account on {FormattedCurrUserDatetime}</div>
       </Modal>
       <Modal
         title="Logout Confirmation"
