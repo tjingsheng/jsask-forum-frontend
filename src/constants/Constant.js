@@ -1,10 +1,7 @@
 const Constant = {
   //DEFAULT VALUES
-  DEFAULT_USER_ID: -1,
-  DEFAULT_USERNAME: "",
-  DEFAULT_DATETIME: "000",
   DEFAULT_USER: {
-    userId: -1,
+    id: -1,
     username: "",
     userDatetime: "2000-01-01 00:00:00+00",
   },

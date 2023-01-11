@@ -10,7 +10,7 @@ import { headerHeight } from "../Header";
 const ProfileMenu = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
-  const currUsername = useSelector(
+  const currUserUsername = useSelector(
     (state) => state.authentication.user.username
   );
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
@@ -40,7 +40,7 @@ const ProfileMenu = () => {
 
   const items = [
     {
-      label: currUsername,
+      label: currUserUsername,
       key: "Menu",
       children: [
         {

@@ -14,7 +14,8 @@ const LoginForm = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
   const [queryParams, setQueryParams] = useSearchParams(window.location.search);
-  const currId = useSelector((state) => state.authentication.user.id);
+  const currUserId = useSelector((state) => state.authentication.user.id);
+
   const removeQueryParams = () => {
     const param = queryParams.get("q");
     if (param) {
@@ -25,7 +26,7 @@ const LoginForm = () => {
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
-    dispatch(postAction.fetchAllPosts(currId));
+    dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(tagAction.fetchAllTags());
     goto("/home");
   };

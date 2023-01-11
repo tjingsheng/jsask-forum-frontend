@@ -20,7 +20,6 @@ function* loginProcess(action) {
   try {
     const requestURI = URI.getCurrUser + "/" + action.payload.username;
     const response = yield axiosRequest(RequestMethod.get, requestURI);
-    console.log(1, response.data.payload.data);
     yield put(authenticationAction.initUser(response.data.payload.data));
     yield put(authenticationAction.loginSuccess());
   } catch (e) {

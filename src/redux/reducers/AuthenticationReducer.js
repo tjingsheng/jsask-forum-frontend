@@ -21,11 +21,9 @@ const authenticationReducer = (state = InitialState, action) => {
         ...state,
         user: action.payload.user,
       };
-
     case ActionType.INITUSER_SUCCESS:
       return {
         ...state,
-        error: ErrorType.NO_ERROR,
       };
     case ActionType.INITUSER_FAILED:
       return {
