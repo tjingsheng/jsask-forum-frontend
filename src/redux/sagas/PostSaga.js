@@ -17,22 +17,27 @@ function* fetchAllPosts(action) {
   }
 }
 
-function* fetchAllComments(action) {
+function* fetchCurrPost(action) {
   try {
-    // ADD LOGIC TO SPECIFY POSTID IN AXIOS REQUEST
-    const response = yield axiosRequest(RequestMethod.get, URI.getAllComments);
-    const allComments = response.data.payload.data;
-    yield put(postAction.setAllComments(allComments));
-    yield put(postAction.fetchAllCommentsSuccess());
+    const requestURI =
+      URI.getCurrPost +
+      "/" +
+      action.payload.currPostKeys.userId +
+      "/" +
+      action.payload.currPostKeys.postId;
+    const response = yield axiosRequest(RequestMethod.get, requestURI);
+    const currPost = response.data.payload.data;
+    yield put(postAction.setCurrPost(currPost));
+    yield put(postAction.fetchCurrPostSuccess());
   } catch (e) {
     console.log(e);
-    yield put(postAction.fetchAllPostsFailed(ErrorType.FETCH_ALL_POSTS_ERROR));
+    yield put(postAction.fetchCurrPostFailed(ErrorType.FETCH_CURR_POST_ERROR));
   }
 }
 
 function* postSaga() {
   yield takeEvery(ActionType.FETCH_ALL_POSTS, fetchAllPosts);
-  yield takeEvery(ActionType.FETCH_ALL_COMMENTS, fetchAllComments);
+  yield takeEvery(ActionType.FETCH_CURR_POST, fetchCurrPost);
 }
 
 export default postSaga;

@@ -1,8 +1,8 @@
 const URI = {
   getCurrUser: "/curruser",
+  getCurrPost: "/currpost",
   getAllPosts: "/posts",
   getAllTags: "/tags",
-  getAllComments: "/comments",
 };
 
 export default URI;

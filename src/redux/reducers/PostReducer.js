@@ -2,11 +2,12 @@ import { ActionType, Constant, ErrorType } from "../../constants";
 
 const InitialState = {
   allPosts: Constant.DEFAULT_ALL_POSTS,
-  allComments: Constant.DEFAULT_ALL_COMMENTS,
+  currPostKeys: Constant.DEFAULT_CURR_POST_KEYS,
+  currPost: Constant.DEFAULT_CURR_POST,
   error: ErrorType.NO_ERROR,
 
   isAllPostsFetched: false,
-  isAllCommentsFetched: false,
+  isCurrPostFetched: false,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -41,29 +42,30 @@ const postReducer = (state = InitialState, action) => {
         allPosts: Constant.DEFAULT_ALL_POSTS,
       };
 
-    case ActionType.FETCH_ALL_COMMENTS:
+    case ActionType.FETCH_CURR_POST:
       return {
         ...state,
+        currPostKeys: action.payload.currPostKeys,
       };
-    case ActionType.FETCH_ALL_COMMENTS_SUCCESS:
+    case ActionType.FETCH_CURR_POST_SUCCESS:
       return {
         ...state,
-        isAllCommentsFetched: true,
+        isCurrPostFetched: true,
       };
-    case ActionType.FETCH_ALL_COMMENTS_FAILED:
+    case ActionType.FETCH_CURR_POST_FAILED:
       return {
         ...state,
-        isAllCommentsFetched: false,
+        isCurrPostFetched: false,
       };
-    case ActionType.SET_ALL_COMMENTS:
+    case ActionType.SET_CURR_POST:
       return {
         ...state,
-        allComments: action.payload.allComments,
+        currPost: action.payload.currPost,
       };
-    case ActionType.RESET_ALL_COMMENTS:
+    case ActionType.RESET_CURR_POST:
       return {
         ...state,
-        allComments: Constant.DEFAULT_ALL_COMMENTS,
+        currPost: Constant.DEFAULT_CURR_POST,
       };
 
     default:

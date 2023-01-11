@@ -36,33 +36,32 @@ const postAction = {
     },
   }),
 
-  fetchAllComments: (data) => ({
-    type: ActionType.FETCH_ALL_COMMENTS,
+  fetchCurrPost: (data) => ({
+    type: ActionType.FETCH_CURR_POST,
     payload: {
-      allComments: data,
+      currPostKeys: data,
     },
   }),
-  fetchAllCommentsSuccess: (data) => ({
-    type: ActionType.FETCH_ALL_COMMENTS_SUCCESS,
+  fetchCurrPostSuccess: (data) => ({
+    type: ActionType.FETCH_CURR_POST_SUCCESS,
     payload: {},
   }),
-  fetchAllCommentsFailed: (data) => ({
-    type: ActionType.FETCH_ALL_COMMENTS_FAILED,
+  fetchCurrPostFailed: (data) => ({
+    type: ActionType.FETCH_CURR_POST_FAILED,
     payload: {
       error: data,
     },
   }),
-
-  setAllComments: (data) => ({
-    type: ActionType.SET_ALL_COMMENTS,
+  setCurrPost: (data) => ({
+    type: ActionType.SET_CURR_POST,
     payload: {
-      allComments: data,
+      currPost: data,
     },
   }),
-  resetAllComments: (data) => ({
-    type: ActionType.RESET_ALL_COMMENTS,
+  resetCurrPost: (data) => ({
+    type: ActionType.RESET_CURR_POST,
     payload: {
-      allComments: Constant.DEFAULT_ALL_POSTS,
+      currPost: Constant.DEFAULT_CURR_POST,
     },
   }),
 };

@@ -7,7 +7,11 @@ const Constant = {
   },
   DEFAULT_ALL_POSTS: [],
   DEFAULT_ALL_TAGS: [],
-  DEFAULT_ALL_COMMENTS: {},
+  DEFAULT_CURR_POST: {},
+  DEFAULT_CURR_POST_KEYS: {
+    userId: -1,
+    postId: -1,
+  },
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",

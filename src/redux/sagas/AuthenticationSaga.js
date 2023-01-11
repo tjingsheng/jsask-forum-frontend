@@ -22,8 +22,8 @@ function* loginProcess(action) {
     const response = yield axiosRequest(RequestMethod.get, requestURI);
     yield put(authenticationAction.initUser(response.data.payload.data));
     yield put(authenticationAction.loginSuccess());
-
-    yield put(postAction.fetchAllPosts(response.data.payload.data.id));
+    const currUserId = response.data.payload.data.id;
+    yield put(postAction.fetchAllPosts(currUserId));
     yield put(tagAction.fetchAllTags());
   } catch (e) {
     console.log(e);
