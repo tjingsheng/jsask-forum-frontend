@@ -1,12 +1,8 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import {
-  authenticationAction,
-  postAction,
-  tagAction,
-} from "../../redux/actions";
+import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
 
@@ -14,7 +10,6 @@ const LoginForm = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
   const [queryParams, setQueryParams] = useSearchParams(window.location.search);
-  const currUserId = useSelector((state) => state.authentication.user.id);
 
   const removeQueryParams = () => {
     const param = queryParams.get("q");
@@ -26,8 +21,6 @@ const LoginForm = () => {
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
-    dispatch(postAction.fetchAllPosts(currUserId));
-    dispatch(tagAction.fetchAllTags());
     goto("/home");
   };
 
