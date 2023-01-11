@@ -24,9 +24,7 @@ const authenticationAction = {
   initUser: (data) => ({
     type: ActionType.INITUSER,
     payload: {
-      userID: data.id,
-      username: data.username,
-      userDatetime: data.userDatetime,
+      user: data,
     },
   }),
   initUserSuccess: (data) => ({

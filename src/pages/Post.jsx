@@ -21,7 +21,7 @@ const PostPageContent = () => {
   const { post, comments } = getAllComments(allComments);
   //FOR TESTING --->
   const [queryParams] = useSearchParams(window.location.search);
-  const TEST = queryParams.get("postID"); //FOR TESTING
+  const TEST = queryParams.get("postId"); //FOR TESTING
   // <--- FOR TESTING
 
   const PageWidth = "50%";
@@ -34,7 +34,7 @@ const PostPageContent = () => {
           textAlign: "center",
         }}
       >
-        This is the value of postID taken from the URL is: {TEST}
+        This is the value of postId taken from the URL is: {TEST}
       </div>
       {/* <--- FOR TESTING */}
       <CreatePostCard

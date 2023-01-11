@@ -9,7 +9,7 @@ const postAction = {
   fetchAllPosts: (data) => ({
     type: ActionType.FETCH_ALL_POSTS,
     payload: {
-      userID: data,
+      userId: data,
     },
   }),
   fetchAllPostsSuccess: (data) => ({

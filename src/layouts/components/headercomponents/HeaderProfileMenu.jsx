@@ -10,7 +10,9 @@ import { headerHeight } from "../Header";
 const ProfileMenu = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
-  const currUsername = useSelector((state) => state.authentication.username);
+  const currUsername = useSelector(
+    (state) => state.authentication.user.username
+  );
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
 

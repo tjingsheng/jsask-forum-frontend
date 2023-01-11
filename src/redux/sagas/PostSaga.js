@@ -6,7 +6,7 @@ import { postAction } from "../actions";
 
 function* fetchAllPosts(action) {
   try {
-    const requestURI = URI.getAllPosts + "/" + action.payload.userID;
+    const requestURI = URI.getAllPosts + "/" + action.payload.userId;
     const response = yield axiosRequest(RequestMethod.get, requestURI);
     const allPosts = response.data.payload.data;
     yield put(postAction.setAllPosts(allPosts));

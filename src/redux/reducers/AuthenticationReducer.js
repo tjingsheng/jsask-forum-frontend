@@ -1,10 +1,8 @@
 import { ActionType, Constant, ErrorType } from "../../constants";
 
 const InitialState = {
-  userID: Constant.DEFAULT_USER_ID,
-  username: Constant.DEFAULT_USERNAME,
-  userDatetime: Constant.DEFAULT_DATETIME,
   error: ErrorType.NO_ERROR,
+  user: Constant.DEFAULT_USER,
 
   isAuthenticated: false,
   isLoginProperly: false,
@@ -21,9 +19,7 @@ const authenticationReducer = (state = InitialState, action) => {
     case ActionType.INITUSER:
       return {
         ...state,
-        userID: action.payload.userID,
-        username: action.payload.username,
-        userDatetime: action.payload.userDatetime,
+        user: action.payload.user,
       };
 
     case ActionType.INITUSER_SUCCESS:

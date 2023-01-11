@@ -8,9 +8,9 @@ import PostCardFooter from "../cardcomponents/PostCardFooter";
 
 const { Text } = Typography;
 
-const CommentCard = ({ width, userID, ...props }) => {
-  const currID = useSelector((state) => state.user.userID);
-  const isDeletable = currID === userID;
+const CommentCard = ({ width, userId, ...props }) => {
+  const currId = useSelector((state) => state.authentication.user.id);
+  const isDeletable = currId === userId;
   const [
     isDeleteCommentModalVisible,
     SetIsDeleteCommentModalVisible,
@@ -39,7 +39,7 @@ const CommentCard = ({ width, userID, ...props }) => {
             }}
           />
         )}
-        <CommentCardContent userID={userID} {...props} />
+        <CommentCardContent userId={userId} {...props} />
         <PostCardFooter isCommentButtonVisible={false} {...props} />
       </Card>
 

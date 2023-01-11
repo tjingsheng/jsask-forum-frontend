@@ -13,7 +13,7 @@ import { differenceCalculator, formatDatetime } from "../../utils";
 const { Title } = Typography;
 
 const PostCardFooter = ({
-  postID = -1,
+  postId = -1,
   isLikeSelected = false,
   likes = -1,
   isDislikeSelected = false,
@@ -96,13 +96,13 @@ const PostCardFooter = ({
           {isCommentButtonVisible && (
             <>
               <MessageOutlined
-                onClick={() => goto(`/post/?postID=${postID}`)}
+                onClick={() => goto(`/post/?postId=${postId}`)}
                 style={{
                   fontSize: footerHeight,
                 }}
               />
               <Title
-                onClick={() => goto(`/post/?postID=${postID}`)}
+                onClick={() => goto(`/post/?postId=${postId}`)}
                 level={5}
                 style={{
                   margin: "0px",

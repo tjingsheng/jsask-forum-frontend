@@ -3,6 +3,11 @@ const Constant = {
   DEFAULT_USER_ID: -1,
   DEFAULT_USERNAME: "",
   DEFAULT_DATETIME: "000",
+  DEFAULT_USER: {
+    userId: -1,
+    username: "",
+    userDatetime: "2000-01-01 00:00:00+00",
+  },
   DEFAULT_ALL_POSTS: [],
   DEFAULT_ALL_TAGS: [],
   DEFAULT_ALL_COMMENTS: {},
