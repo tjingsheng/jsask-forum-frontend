@@ -34,7 +34,6 @@ const CommentCard = ({ width, isCreator, ...props }) => {
               float: "right",
               fontSize: "20px",
               marginTop: "10px",
-              
               marginRight: "10px",
             }}
           />
