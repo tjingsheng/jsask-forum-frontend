@@ -6,7 +6,7 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import { Col, Row, Space, Typography } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { differenceCalculator, formatDatetime } from "../../utils";
 
@@ -26,6 +26,10 @@ const PostCardFooter = ({
   const goto = useNavigate();
   const [like, setLike] = useState(isLikeSelected);
   const [dislike, setDislike] = useState(isDislikeSelected);
+  useEffect(() => {
+    setLike(isLikeSelected);
+    setDislike(isDislikeSelected);
+  }, [postId]);
 
   const FormattedPostDatetime = formatDatetime(postDatetime);
   return (
