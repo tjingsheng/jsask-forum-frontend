@@ -1,20 +1,19 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Card, Modal, Typography } from "antd";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import CommentCardContent from "../cardcomponents/CommentCardContent";
 import CommentCardHeader from "../cardcomponents/CommentCardHeader";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 
 const { Text } = Typography;
 
-const CommentCard = ({ width, userId, ...props }) => {
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const isDeletable = currUserId === userId;
+const CommentCard = ({ width, isCreator, ...props }) => {
   const [
     isDeleteCommentModalVisible,
     SetIsDeleteCommentModalVisible,
   ] = useState(false);
+
+  console.log("propsCmmentCard", props);
   return (
     <>
       <Card
@@ -27,7 +26,7 @@ const CommentCard = ({ width, userId, ...props }) => {
         }}
       >
         <CommentCardHeader {...props} />
-        {isDeletable && (
+        {isCreator && (
           <DeleteOutlined
             onClick={() => SetIsDeleteCommentModalVisible(true)}
             style={{
@@ -39,7 +38,7 @@ const CommentCard = ({ width, userId, ...props }) => {
             }}
           />
         )}
-        <CommentCardContent userId={userId} {...props} />
+        <CommentCardContent isCreator={isCreator} {...props} />
         <PostCardFooter isCommentButtonVisible={false} {...props} />
       </Card>
 

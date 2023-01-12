@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
 import NotFoundPage from "../pages/NotFound";
@@ -23,8 +23,9 @@ export const privateRoutes = createBrowserRouter([
 
 const publicRoutes = createBrowserRouter([
   {
-    path: "*",
+    path: "/",
     element: <LoginPage />,
+    errorElement: <Navigate to="/" replace={true} />,
   },
 ]);
 

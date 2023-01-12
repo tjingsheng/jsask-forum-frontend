@@ -1,7 +1,6 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 import PostCardHeader from "../cardcomponents/PostCardHeader";
@@ -16,17 +15,15 @@ const PostCard = ({
   tags,
   postContent,
 
+  isCreator,
+
   userId,
   ...props
 }) => {
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const isEditable = currUserId === userId;
-  const isDeletable = currUserId === userId;
   const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);
   const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
     false
   );
-
   return (
     <>
       <Card
@@ -39,7 +36,7 @@ const PostCard = ({
         }}
       >
         <PostCardHeader postTitle={postTitle} />
-        {isDeletable && (
+        {isCreator && (
           <DeleteOutlined
             onClick={() => SetIsDeletePostModalVisible(true)}
             style={{
@@ -51,7 +48,7 @@ const PostCard = ({
             }}
           />
         )}
-        {isEditable && (
+        {isCreator && (
           <EditOutlined
             onClick={() => SetIsEditPostModalVisible(true)}
             style={{

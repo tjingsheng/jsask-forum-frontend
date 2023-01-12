@@ -12,14 +12,25 @@ import sortKeyEnums from "../utils/enums.js";
 
 const HomePage = () => {
   const [queryParams] = useSearchParams(window.location.search);
+  const AllPosts = useSelector((state) => state.post.allPosts);
+  const currUserId = useSelector((state) => state.authentication.user.id);
   const sortKey = queryParams.get("sort");
 
-  return <HomeLayout content={<HomePageContent sortKey={sortKey} />} />;
+  return (
+    <HomeLayout
+      content={
+        <HomePageContent
+          sortKey={sortKey}
+          allPosts={AllPosts}
+          currUserId={currUserId}
+        />
+      }
+    />
+  );
 };
 
-const HomePageContent = ({ sortKey }) => {
+const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
   const PageWidth = "50%";
-  const AllPosts = useSelector((state) => state.post.allPosts);
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
@@ -44,18 +55,18 @@ const HomePageContent = ({ sortKey }) => {
         handleChange={setFilterByTagsArray}
       />
 
-      {Array.isArray(AllPosts) && AllPosts.length === 0 ? (
+      {Array.isArray(allPosts) && allPosts.length === 0 ? (
         <NoContentCard width={PageWidth} message="There are no posts yet" />
       ) : (
-        AllPosts.filter((post) =>
-          hasCommonElements(post.tags, filterByTagsArray)
-        )
+        allPosts
+          .filter((post) => hasCommonElements(post.tags, filterByTagsArray))
           .sort(sortComparators[sortKey])
           .map((post, idx) => (
             <PostCard
               key={idx}
               width={PageWidth}
               isCommentButtonVisible={true}
+              isCreator={currUserId === post.userId}
               {...post}
             />
           ))

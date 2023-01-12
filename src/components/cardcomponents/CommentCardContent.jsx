@@ -1,13 +1,13 @@
 import { Typography } from "antd";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 
 const { Paragraph } = Typography;
 
-const CommentCardContent = ({ postContent = "", userId }) => {
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const isEditable = currUserId === userId;
+const CommentCardContent = ({ postContent = "", isCreator }) => {
   const [editablePostContent, SetEditablePostContent] = useState(postContent);
+  useEffect(() => {
+    SetEditablePostContent(postContent);
+  }, [postContent]);
   return (
     <Paragraph
       style={{
@@ -15,7 +15,7 @@ const CommentCardContent = ({ postContent = "", userId }) => {
         padding: "10px",
       }}
       editable={
-        isEditable && {
+        isCreator && {
           enterIcon: null,
           tooltip: "click to edit comment",
           onChange: SetEditablePostContent,
