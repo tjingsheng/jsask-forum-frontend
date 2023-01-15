@@ -2,7 +2,7 @@ import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
   user: Constant.DEFAULT_USER,
-  isAuthenticated: true,
+  isAuthenticated: false,
   isLoginProperly: false,
   isLogoutProperly: true,
 };

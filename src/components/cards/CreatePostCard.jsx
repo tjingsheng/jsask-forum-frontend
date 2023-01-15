@@ -1,16 +1,9 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Col, Input, Row } from "antd";
+import { Avatar, Card, Col, Row } from "antd";
 import React from "react";
 import CreatePostForm from "../forms/CreatePostForm";
 
-const CreatePostCard = ({
-  width,
-  inputPlaceholder,
-  buttonText,
-
-  handleOnClickCreatePostInput,
-  handleOnClickCreatePostButton,
-}) => {
+const CreatePostCard = ({ width, ...props }) => {
   return (
     <Card
       style={{
@@ -27,7 +20,7 @@ const CreatePostCard = ({
           <AvatarIcon />
         </Col>
         <Col flex={"auto"}>
-          <CreatePostForm />
+          <CreatePostForm {...props} />
         </Col>
       </Row>
     </Card>
@@ -43,29 +36,6 @@ const AvatarIcon = () => (
       marginRight: "10px",
     }}
   />
-);
-
-const CreatePostInput = ({ handleOnClick, text = "placeholder" }) => (
-  <Input
-    onClick={() => handleOnClick(true)}
-    placeholder={text}
-    style={{
-      height: "auto",
-    }}
-  />
-);
-
-const CreatePostButton = ({ handleOnClick, text = "button" }) => (
-  <Button
-    onClick={() => handleOnClick(true)}
-    type="primary"
-    style={{
-      width: "100px",
-      marginLeft: "10px",
-    }}
-  >
-    {text}
-  </Button>
 );
 
 export default CreatePostCard;

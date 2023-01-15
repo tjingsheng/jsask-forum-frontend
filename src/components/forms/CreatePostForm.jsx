@@ -1,25 +1,47 @@
 import { Button, Form, Input } from "antd";
+import { useForm } from "antd/es/form/Form";
 import React from "react";
-const { TextArea } = Input;
 const { Item } = Form;
 
-const CreatePostForm = () => {
+const CreatePostForm = ({
+  inputPlaceholder,
+  buttonText,
+  handleOnClickCreatePostButton,
+  handleOnClickCreatePostInput,
+  handleOnFinish,
+}) => {
+  const [form] = useForm();
   return (
-    <Form onFinish={() => {}} layout="inline">
-      <Item name="postTitle" style={{ display: "flex" }}>
-        <Input placeholder="Create Post" />
+    <Form
+      form={form}
+      onFinish={() => {
+        handleOnFinish(form.getFieldValue());
+        form.resetFields();
+      }}
+      layout="inline"
+      style={{ display: "flex" }}
+    >
+      <Item name="postContent" style={{ flex: "auto" }}>
+        <Input
+          placeholder={inputPlaceholder}
+          onClick={handleOnClickCreatePostInput}
+        />
       </Item>
 
-      <Item>
+      <Item
+        style={{
+          margin: "0px",
+        }}
+      >
         <Button
           type="primary"
           htmlType="submit"
           style={{
-            float: "right",
             width: "100px",
           }}
+          onClick={handleOnClickCreatePostButton}
         >
-          {"Post"}
+          {buttonText}
         </Button>
       </Item>
     </Form>

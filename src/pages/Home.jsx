@@ -9,9 +9,7 @@ import SortPostCard from "../components/cards/SortPostCard";
 import ManagePostForm from "../components/forms/ManagePostForm";
 import HomeLayout from "../layouts/HomeLayout";
 import { postAction } from "../redux/actions";
-// import { postAction } from "../redux/actions";
 import hasCommonElements from "../utils";
-
 import sortKeyEnums from "../utils/enums.js";
 
 const HomePage = () => {

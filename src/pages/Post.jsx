@@ -41,6 +41,20 @@ const PostPage = () => {
 };
 
 const PostPageContent = ({ currUserId, currPost, allComments }) => {
+  const dispatch = useDispatch();
+  const submitComment = (values) => {
+    if (values.postContent !== undefined) {
+      dispatch(
+        postAction.createNewPost({
+          userId: currUserId,
+          postTitle: "NONE",
+          postContent: values.postContent,
+          parentPost: currPost.postId,
+        })
+      );
+    }
+  };
+
   const PageWidth = "50%";
   return (
     <>
@@ -55,6 +69,7 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
         buttonText="Comment"
+        handleOnFinish={submitComment}
         handleOnClickCreatePostInput={() => {}}
         handleOnClickCreatePostButton={() => {}}
       />

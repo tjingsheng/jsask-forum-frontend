@@ -37,7 +37,6 @@ function* getCurrPost(action) {
 
 function* createPost(action) {
   try {
-    console.log(1, action.payload.newPost);
     yield axiosRequest(
       RequestMethod.POST,
       URI.createPost,
