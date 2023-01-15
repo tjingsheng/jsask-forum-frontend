@@ -1,6 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Col, Input, Row } from "antd";
 import React from "react";
+import CreatePostForm from "../forms/CreatePostForm";
 
 const CreatePostCard = ({
   width,
@@ -21,23 +22,12 @@ const CreatePostCard = ({
         padding: "0",
       }}
     >
-      <Row align="middle">
+      <Row>
         <Col>
           <AvatarIcon />
         </Col>
-
-        <Col flex="auto">
-          <CreatePostInput
-            handleOnClick={handleOnClickCreatePostInput}
-            text={inputPlaceholder}
-          />
-        </Col>
-
-        <Col>
-          <CreatePostButton
-            handleOnClick={handleOnClickCreatePostButton}
-            text={buttonText}
-          />
+        <Col flex={"auto"}>
+          <CreatePostForm />
         </Col>
       </Row>
     </Card>

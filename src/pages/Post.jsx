@@ -55,8 +55,8 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
         buttonText="Comment"
-        currUserId={currUserId}
-        isPost={false}
+        handleOnClickCreatePostInput={() => {}}
+        handleOnClickCreatePostButton={() => {}}
       />
       {Array.isArray(allComments) &&
         allComments.map((comment, idx) => (
