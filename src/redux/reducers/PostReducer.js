@@ -2,11 +2,14 @@ import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
   allPosts: Constant.DEFAULT_ALL_POSTS,
+  isAllPostsFetched: true,
+
   currPostKeys: Constant.DEFAULT_CURR_POST_KEYS,
   currPost: Constant.DEFAULT_CURR_POST,
-
-  isAllPostsFetched: true,
   isCurrPostFetched: true,
+
+  newPost: Constant.DEFAULT_NEW_POST,
+  isNewPostPosted: true,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -67,6 +70,23 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         currPost: Constant.DEFAULT_CURR_POST,
+      };
+
+    case ActionType.CREATE_NEW_POST:
+      return {
+        ...state,
+        newPost: action.payload.newPost,
+        isNewPostPosted: false,
+      };
+    case ActionType.CREATE_NEW_POST_SUCCESS:
+      return {
+        ...state,
+        isNewPostPosted: true,
+      };
+    case ActionType.CREATE_NEW_POST_FAILED:
+      return {
+        ...state,
+        isNewPostPosted: false,
       };
 
     default:

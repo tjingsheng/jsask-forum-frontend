@@ -63,6 +63,21 @@ const postAction = {
       currPost: Constant.DEFAULT_CURR_POST,
     },
   }),
+
+  createNewPost: (data) => ({
+    type: ActionType.CREATE_NEW_POST,
+    payload: {
+      newPost: data,
+    },
+  }),
+  createNewPostSuccess: (data) => ({
+    type: ActionType.CREATE_NEW_POST_SUCCESS,
+    payload: {},
+  }),
+  createNewPostFailed: (data) => ({
+    type: ActionType.CREATE_NEW_POST_FAILED,
+    payload: {},
+  }),
 };
 
 export default postAction;

@@ -49,6 +49,7 @@ const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
         inputPlaceholder="Create Post"
         buttonText="Post"
         isCreatePost
+        currUserId={currUserId}
       />
       <SortPostCard
         width={PageWidth}

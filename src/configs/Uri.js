@@ -5,6 +5,8 @@ const URI = {
   getAllTags: "/tags",
 
   putPreference: "/postpreference",
+
+  createPost: "/post",
 };
 
 export default URI;

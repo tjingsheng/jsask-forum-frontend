@@ -25,7 +25,7 @@ function* getCurrPost(action) {
       action.payload.currPostKeys.userId +
       "/" +
       action.payload.currPostKeys.postId;
-    const response = yield axiosRequest(RequestMethod.get, requestURI);
+    const response = yield axiosRequest(RequestMethod.GET, requestURI);
     const currPost = response.data.payload.data;
     yield put(postAction.setCurrPost(currPost));
     yield put(postAction.fetchCurrPostSuccess());
@@ -35,9 +35,25 @@ function* getCurrPost(action) {
   }
 }
 
+function* createPost(action) {
+  try {
+    console.log(1, action.payload.newPost);
+    yield axiosRequest(
+      RequestMethod.POST,
+      URI.createPost,
+      action.payload.newPost
+    );
+    yield put(postAction.createNewPostSuccess());
+  } catch (e) {
+    console.log(e);
+    yield put(postAction.createNewPostFailed());
+  }
+}
+
 function* postSaga() {
   yield takeEvery(ActionType.FETCH_ALL_POSTS, getAllPosts);
   yield takeEvery(ActionType.FETCH_CURR_POST, getCurrPost);
+  yield takeEvery(ActionType.CREATE_NEW_POST, createPost);
 }
 
 export default postSaga;

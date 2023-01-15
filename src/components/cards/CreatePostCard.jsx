@@ -1,6 +1,8 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postAction } from "../../redux/actions";
 import ManagePostForm from "../forms/ManagePostForm";
 
 const CreatePostCard = ({
@@ -8,10 +10,12 @@ const CreatePostCard = ({
   inputPlaceholder,
   buttonText,
   isCreatePost,
+  currUserId,
 }) => {
   const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
     false
   );
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -57,6 +61,14 @@ const CreatePostCard = ({
           onFinishFunc={(values) => {
             console.log("Success:", values);
             setIsCreatePostModalVisible(false);
+            dispatch(
+              postAction.createNewPost({
+                userId: currUserId,
+                postTitle: values.postTitle,
+                postContent: values.postContent,
+                parentPost: 0,
+              })
+            );
           }}
         />
       </Modal>

@@ -14,6 +14,12 @@ const Constant = {
     userId: -1,
     postId: -1,
   },
+  DEFAULT_NEW_POST: {
+    userId: -1,
+    postTitle: "",
+    postContent: "",
+    parentPost: 0,
+  },
 
   // POST PREFERENCES DEFAULT VALUES
   DEFAULT_CURR_USER_ID: -1,
