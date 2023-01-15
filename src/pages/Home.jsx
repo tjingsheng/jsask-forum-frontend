@@ -6,6 +6,7 @@ import NoContentCard from "../components/cards/NoContentCard";
 import PostCard from "../components/cards/PostCard";
 import SortPostCard from "../components/cards/SortPostCard";
 import HomeLayout from "../layouts/HomeLayout";
+// import { postAction } from "../redux/actions";
 import hasCommonElements from "../utils";
 
 import sortKeyEnums from "../utils/enums.js";
