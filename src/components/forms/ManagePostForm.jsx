@@ -47,7 +47,7 @@ const ManagePostForm = ({
           placeholder="Text (Optional)"
           showCount
           rows={5}
-          maxLength={25}
+          maxLength={500}
         />
       </Item>
 
