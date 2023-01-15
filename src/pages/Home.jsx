@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/cards/CreatePostCard";
@@ -13,40 +13,44 @@ import hasCommonElements from "../utils";
 import sortKeyEnums from "../utils/enums.js";
 
 const HomePage = () => {
-  const [queryParams] = useSearchParams(window.location.search);
-  const AllPosts = useSelector((state) => state.post.allPosts);
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const sortKey = queryParams.get("sort");
-
-  return (
-    <HomeLayout
-      content={
-        <HomePageContent
-          sortKey={sortKey}
-          allPosts={AllPosts}
-          currUserId={currUserId}
-        />
-      }
-    />
-  );
+  return <HomeLayout content={<HomePageContent />} />;
 };
 
-const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
+const HomePageContent = () => {
   const dispatch = useDispatch();
-  const PageWidth = "50%";
+
+  const allPosts = useSelector((state) => state.post.allPosts);
+  const currUserId = useSelector((state) => state.authentication.user.id);
+  const allTags = useSelector((state) => state.tag.allTags);
+  const isPutPostPreferenceSuccess = useSelector(
+    (state) => state.postPreference.isPutPostPreferenceSuccess
+  );
+
+  const [queryParams] = useSearchParams(window.location.search);
+  const sortKey = queryParams.get("sort");
+
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
+    false
+  );
+
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
     [sortKeyEnums.new]: (a, b) =>
-      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
-    [sortKeyEnums.old]: (a, b) =>
       new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
+    [sortKeyEnums.old]: (a, b) =>
+      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
   };
 
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
-    false
-  );
+  const PageWidth = "50%";
+
+  useEffect(() => {
+    if (isPutPostPreferenceSuccess) {
+      console.log(currUserId);
+      dispatch(postAction.fetchAllPosts(currUserId));
+    }
+  }, [isPutPostPreferenceSuccess]);
 
   return (
     <>
@@ -61,6 +65,7 @@ const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
         width={PageWidth}
         sortKey={sortKey}
         handleChange={setFilterByTagsArray}
+        allTags={allTags}
       />
 
       {Array.isArray(allPosts) && allPosts.length === 0 ? (

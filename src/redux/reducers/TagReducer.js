@@ -20,6 +20,7 @@ const tagReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_TAGS_SUCCESS:
       return {
         ...state,
+        allTags: action.payload.allTags,
         isAllTagsFetched: true,
       };
     case ActionType.FETCH_ALL_TAGS_FAILED:
@@ -28,16 +29,6 @@ const tagReducer = (state = InitialState, action) => {
         isAllTagsFetched: false,
       };
 
-    case ActionType.SET_ALL_TAGS:
-      return {
-        ...state,
-        allTags: action.payload.allTags,
-      };
-    case ActionType.RESET_ALL_TAGS:
-      return {
-        ...state,
-        allTags: Constant.DEFAULT_ALL_TAGS,
-      };
     default:
       return {
         ...state,

@@ -8,8 +8,7 @@ function* fetchAllTags(action) {
   try {
     const response = yield axiosRequest(RequestMethod.get, URI.getAllTags);
     const allTags = response.data.payload.data;
-    yield put(tagAction.setAllTags(allTags));
-    yield put(tagAction.fetchAllTagsSuccess());
+    yield put(tagAction.fetchAllTagsSuccess(allTags));
   } catch (e) {
     console.log(e);
     yield put(tagAction.fetchAllTagsFailed());

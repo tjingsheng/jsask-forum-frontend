@@ -6,11 +6,12 @@ import { postAction } from "../actions";
 
 function* getAllPosts(action) {
   try {
-    const requestURI = URI.getAllPosts + "/" + action.payload.userId;
-    const response = yield axiosRequest(RequestMethod.get, requestURI);
-    const allPosts = response.data.payload.data;
-    yield put(postAction.setAllPosts(allPosts));
-    yield put(postAction.fetchAllPostsSuccess());
+    if (action.payload.userId !== -1) {
+      const requestURI = URI.getAllPosts + "/" + action.payload.userId;
+      const response = yield axiosRequest(RequestMethod.get, requestURI);
+      const allPosts = response.data.payload.data;
+      yield put(postAction.fetchAllPostsSuccess(allPosts));
+    }
   } catch (e) {
     console.log(e);
     yield put(postAction.fetchAllPostsFailed());
@@ -27,8 +28,7 @@ function* getCurrPost(action) {
       action.payload.currPostKeys.postId;
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     const currPost = response.data.payload.data;
-    yield put(postAction.setCurrPost(currPost));
-    yield put(postAction.fetchCurrPostSuccess());
+    yield put(postAction.fetchCurrPostSuccess(currPost));
   } catch (e) {
     console.log(e);
     yield put(postAction.fetchCurrPostFailed());

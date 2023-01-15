@@ -6,12 +6,10 @@ import {
 } from "@ant-design/icons";
 import { Button, Card, Col, Row, Select, Space } from "antd";
 import React from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import sortKeyEnums from "../../utils/enums";
 
-const SortPostCard = ({ width, height, sortKey, handleChange }) => {
-  const allTags = useSelector((state) => state.tag.allTags);
+const SortPostCard = ({ width, height, sortKey, handleChange, allTags }) => {
   const buttonWidth = "100px";
   const goto = useNavigate();
   const buttonSelectedType = "primary";

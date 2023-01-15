@@ -1,4 +1,4 @@
-import { ActionType, Constant } from "../../constants";
+import { ActionType } from "../../constants";
 
 const postAction = {
   resetPostReducer: (data) => ({
@@ -12,26 +12,14 @@ const postAction = {
       userId: data,
     },
   }),
-  setAllPosts: (data) => ({
-    type: ActionType.SET_ALL_POSTS,
-    payload: {
-      allPosts: data,
-    },
-  }),
   fetchAllPostsSuccess: (data) => ({
     type: ActionType.FETCH_ALL_POSTS_SUCCESS,
-    payload: {},
+    payload: { allPosts: data },
   }),
   fetchAllPostsFailed: (data) => ({
     type: ActionType.FETCH_ALL_POSTS_FAILED,
     payload: {
       error: data,
-    },
-  }),
-  resetAllPosts: (data) => ({
-    type: ActionType.RESET_ALL_POSTS,
-    payload: {
-      allPosts: Constant.DEFAULT_ALL_POSTS,
     },
   }),
 
@@ -41,26 +29,14 @@ const postAction = {
       currPostKeys: data,
     },
   }),
-  setCurrPost: (data) => ({
-    type: ActionType.SET_CURR_POST,
-    payload: {
-      currPost: data,
-    },
-  }),
   fetchCurrPostSuccess: (data) => ({
     type: ActionType.FETCH_CURR_POST_SUCCESS,
-    payload: {},
+    payload: { currPost: data },
   }),
   fetchCurrPostFailed: (data) => ({
     type: ActionType.FETCH_CURR_POST_FAILED,
     payload: {
       error: data,
-    },
-  }),
-  resetCurrPost: (data) => ({
-    type: ActionType.RESET_CURR_POST,
-    payload: {
-      currPost: Constant.DEFAULT_CURR_POST,
     },
   }),
 
