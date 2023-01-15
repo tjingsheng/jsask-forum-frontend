@@ -7,7 +7,9 @@ import {
 } from "@ant-design/icons";
 import { Col, Row, Space, Typography } from "antd";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { postPreferenceAction } from "../../redux/actions";
 import { differenceCalculator, formatDatetime } from "../../utils";
 
 const { Title } = Typography;
@@ -21,8 +23,10 @@ const PostCardFooter = ({
   username = "Unknown User",
   postDatetime = "",
   isCommentButtonVisible = true,
+  currUserId = -1,
 }) => {
   const footerHeight = "30px";
+  const dispatch = useDispatch();
   const goto = useNavigate();
   const [like, setLike] = useState(isLikeSelected);
   const [dislike, setDislike] = useState(isDislikeSelected);
@@ -30,6 +34,24 @@ const PostCardFooter = ({
     setLike(isLikeSelected);
     setDislike(isDislikeSelected);
   }, [postId]);
+
+  const likePayload = {
+    currUserId: currUserId,
+    currPostId: postId,
+    currPreference: 1,
+  };
+
+  const dislikePayload = {
+    currUserId: currUserId,
+    currPostId: postId,
+    currPreference: 2,
+  };
+
+  const resetPayload = {
+    currUserId: currUserId,
+    currPostId: postId,
+    currPreference: 3,
+  };
 
   const FormattedPostDatetime = formatDatetime(postDatetime);
   return (
@@ -49,6 +71,7 @@ const PostCardFooter = ({
             <LikeFilled
               onClick={() => {
                 setLike(false);
+                dispatch(postPreferenceAction.putPostPreference(resetPayload));
               }}
               style={{
                 color: "green",
@@ -60,6 +83,7 @@ const PostCardFooter = ({
               onClick={() => {
                 setLike(true);
                 setDislike(false);
+                dispatch(postPreferenceAction.putPostPreference(likePayload));
               }}
               style={{
                 fontSize: footerHeight,
@@ -80,6 +104,7 @@ const PostCardFooter = ({
             <DislikeFilled
               onClick={() => {
                 setDislike(false);
+                dispatch(postPreferenceAction.putPostPreference(resetPayload));
               }}
               style={{
                 color: "red",
@@ -91,6 +116,9 @@ const PostCardFooter = ({
               onClick={() => {
                 setLike(false);
                 setDislike(true);
+                dispatch(
+                  postPreferenceAction.putPostPreference(dislikePayload)
+                );
               }}
               style={{
                 fontSize: footerHeight,

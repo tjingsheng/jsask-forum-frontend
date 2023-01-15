@@ -48,6 +48,7 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
         width={PageWidth}
         isCommentButtonVisible={false}
         isCreator={true}
+        currUserId={currUserId}
         {...currPost}
       />
       <CreatePostCard
@@ -62,6 +63,7 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
             key={idx}
             width={PageWidth}
             isCreator={comment.userId === currUserId}
+            currUserId={currUserId}
             {...comment}
           />
         ))}

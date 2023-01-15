@@ -16,8 +16,6 @@ const PostCard = ({
   postContent,
 
   isCreator,
-
-  userId,
   ...props
 }) => {
   const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);

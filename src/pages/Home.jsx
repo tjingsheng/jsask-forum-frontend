@@ -67,6 +67,7 @@ const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
               width={PageWidth}
               isCommentButtonVisible={true}
               isCreator={currUserId === post.userId}
+              currUserId={currUserId}
               {...post}
             />
           ))
