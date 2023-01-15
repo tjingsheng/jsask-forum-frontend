@@ -13,7 +13,6 @@ const CommentCard = ({ width, isCreator, ...props }) => {
     SetIsDeleteCommentModalVisible,
   ] = useState(false);
 
-  console.log("propsCmmentCard", props);
   return (
     <>
       <Card

@@ -1,78 +1,46 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Col, Input, Modal, Row } from "antd";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { postAction } from "../../redux/actions";
-import ManagePostForm from "../forms/ManagePostForm";
+import { Avatar, Button, Card, Col, Input, Row } from "antd";
+import React from "react";
 
 const CreatePostCard = ({
   width,
   inputPlaceholder,
   buttonText,
-  isCreatePost,
-  currUserId,
+
+  handleOnClickCreatePostInput,
+  handleOnClickCreatePostButton,
 }) => {
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
-    false
-  );
-  const dispatch = useDispatch();
-
   return (
-    <>
-      <Card
-        style={{
-          margin: "10px auto",
-          padding: "10px",
-          width: width,
-        }}
-        bodyStyle={{
-          padding: "0",
-        }}
-      >
-        <Row align="middle">
-          <Col>
-            <AvatarIcon />
-          </Col>
+    <Card
+      style={{
+        margin: "10px auto",
+        padding: "10px",
+        width: width,
+      }}
+      bodyStyle={{
+        padding: "0",
+      }}
+    >
+      <Row align="middle">
+        <Col>
+          <AvatarIcon />
+        </Col>
 
-          <Col flex="auto">
-            <CreatePostInput
-              handleOnClick={setIsCreatePostModalVisible}
-              text={inputPlaceholder}
-            />
-          </Col>
+        <Col flex="auto">
+          <CreatePostInput
+            handleOnClick={handleOnClickCreatePostInput}
+            text={inputPlaceholder}
+          />
+        </Col>
 
-          <Col>
-            <CreatePostButton
-              handleOnClick={setIsCreatePostModalVisible}
-              text={buttonText}
-            />
-          </Col>
-        </Row>
-      </Card>
-
-      <Modal
-        title="Create Post"
-        open={isCreatePostModalVisible && isCreatePost}
-        onOk={() => setIsCreatePostModalVisible(false)}
-        onCancel={() => setIsCreatePostModalVisible(false)}
-        footer={[]}
-      >
-        <ManagePostForm
-          onFinishFunc={(values) => {
-            console.log("Success:", values);
-            setIsCreatePostModalVisible(false);
-            dispatch(
-              postAction.createNewPost({
-                userId: currUserId,
-                postTitle: values.postTitle,
-                postContent: values.postContent,
-                parentPost: 0,
-              })
-            );
-          }}
-        />
-      </Modal>
-    </>
+        <Col>
+          <CreatePostButton
+            handleOnClick={handleOnClickCreatePostButton}
+            text={buttonText}
+          />
+        </Col>
+      </Row>
+    </Card>
   );
 };
 

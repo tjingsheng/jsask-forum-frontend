@@ -1,11 +1,14 @@
+import { Modal } from "antd";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import NoContentCard from "../components/cards/NoContentCard";
 import PostCard from "../components/cards/PostCard";
 import SortPostCard from "../components/cards/SortPostCard";
+import ManagePostForm from "../components/forms/ManagePostForm";
 import HomeLayout from "../layouts/HomeLayout";
+import { postAction } from "../redux/actions";
 // import { postAction } from "../redux/actions";
 import hasCommonElements from "../utils";
 
@@ -31,6 +34,7 @@ const HomePage = () => {
 };
 
 const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
+  const dispatch = useDispatch();
   const PageWidth = "50%";
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
   const sortComparators = {
@@ -42,14 +46,18 @@ const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
       new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
   };
 
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
+    false
+  );
+
   return (
     <>
       <CreatePostCard
         width={PageWidth}
         inputPlaceholder="Create Post"
         buttonText="Post"
-        isCreatePost
-        currUserId={currUserId}
+        handleOnClickCreatePostInput={setIsCreatePostModalVisible}
+        handleOnClickCreatePostButton={setIsCreatePostModalVisible}
       />
       <SortPostCard
         width={PageWidth}
@@ -74,6 +82,28 @@ const HomePageContent = ({ sortKey, allPosts, currUserId }) => {
             />
           ))
       )}
+
+      <Modal
+        title="Create Post"
+        open={isCreatePostModalVisible}
+        onOk={() => setIsCreatePostModalVisible(false)}
+        onCancel={() => setIsCreatePostModalVisible(false)}
+        footer={[]}
+      >
+        <ManagePostForm
+          onFinishFunc={(values) => {
+            setIsCreatePostModalVisible(false);
+            dispatch(
+              postAction.createNewPost({
+                userId: currUserId,
+                postTitle: values.postTitle,
+                postContent: values.postContent,
+                parentPost: 0,
+              })
+            );
+          }}
+        />
+      </Modal>
     </>
   );
 };
