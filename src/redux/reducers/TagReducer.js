@@ -1,10 +1,8 @@
-import { ActionType, Constant, ErrorType } from "../../constants";
+import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
   allTags: Constant.DEFAULT_ALL_TAGS,
-  error: ErrorType.NO_ERROR,
-
-  isAllTagsFetched: false,
+  isAllTagsFetched: true,
 };
 
 const tagReducer = (state = InitialState, action) => {
@@ -17,6 +15,7 @@ const tagReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_TAGS:
       return {
         ...state,
+        isAllTagsFetched: false,
       };
     case ActionType.FETCH_ALL_TAGS_SUCCESS:
       return {

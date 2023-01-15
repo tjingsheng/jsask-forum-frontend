@@ -1,10 +1,12 @@
 const Constant = {
-  //DEFAULT VALUES
+  //USER DEFAULT VALUES
   DEFAULT_USER: {
     id: -1,
     username: "",
     userDatetime: "2000-01-01 00:00:00+00",
   },
+
+  // POST DEFAULT VALUES
   DEFAULT_ALL_POSTS: [],
   DEFAULT_ALL_TAGS: [],
   DEFAULT_CURR_POST: {},
@@ -12,6 +14,11 @@ const Constant = {
     userId: -1,
     postId: -1,
   },
+
+  // POST PREFERENCES DEFAULT VALUES
+  DEFAULT_CURR_USER_ID: -1,
+  DEFAULT_CURR_POST_ID: -1,
+  DEFAULT_CURR_PREFERENCE: 0,
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",

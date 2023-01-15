@@ -1,9 +1,7 @@
-import { ActionType, Constant, ErrorType } from "../../constants";
+import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
-  error: ErrorType.NO_ERROR,
   user: Constant.DEFAULT_USER,
-
   isAuthenticated: false,
   isLoginProperly: false,
   isLogoutProperly: true,

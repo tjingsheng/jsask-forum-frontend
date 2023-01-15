@@ -1,13 +1,12 @@
-import { ActionType, Constant, ErrorType } from "../../constants";
+import { ActionType, Constant } from "../../constants";
 
 const InitialState = {
   allPosts: Constant.DEFAULT_ALL_POSTS,
   currPostKeys: Constant.DEFAULT_CURR_POST_KEYS,
   currPost: Constant.DEFAULT_CURR_POST,
-  error: ErrorType.NO_ERROR,
 
-  isAllPostsFetched: false,
-  isCurrPostFetched: false,
+  isAllPostsFetched: true,
+  isCurrPostFetched: true,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -20,6 +19,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_POSTS:
       return {
         ...state,
+        isAllPostsFetched: false,
       };
     case ActionType.SET_ALL_POSTS:
       return {
@@ -46,6 +46,7 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         currPostKeys: action.payload.currPostKeys,
+        isCurrPostFetched: false,
       };
     case ActionType.SET_CURR_POST:
       return {

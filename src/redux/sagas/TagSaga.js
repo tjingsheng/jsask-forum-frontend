@@ -1,7 +1,7 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { axiosRequest, RequestMethod } from "../../configs/axios";
 import URI from "../../configs/Uri";
-import { ActionType, ErrorType } from "../../constants";
+import { ActionType } from "../../constants";
 import { tagAction } from "../actions";
 
 function* fetchAllTags(action) {
@@ -12,7 +12,7 @@ function* fetchAllTags(action) {
     yield put(tagAction.fetchAllTagsSuccess());
   } catch (e) {
     console.log(e);
-    yield put(tagAction.fetchAllTagsFailed(ErrorType.FETCH_ALL_TAGS_ERROR));
+    yield put(tagAction.fetchAllTagsFailed());
   }
 }
 

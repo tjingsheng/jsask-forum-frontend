@@ -1,7 +1,7 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { axiosRequest, RequestMethod } from "../../configs/axios";
 import URI from "../../configs/Uri";
-import { ActionType, ErrorType } from "../../constants";
+import { ActionType } from "../../constants";
 import { authenticationAction, postAction, tagAction } from "../actions";
 
 function* logoutProcess(action) {
@@ -12,7 +12,7 @@ function* logoutProcess(action) {
     yield put(authenticationAction.logoutSuccess());
   } catch (e) {
     console.log(e);
-    yield put(authenticationAction.logoutFailed(ErrorType.LOGOUT_ERROR));
+    yield put(authenticationAction.logoutFailed());
   }
 }
 
@@ -27,7 +27,7 @@ function* loginProcess(action) {
     yield put(tagAction.fetchAllTags());
   } catch (e) {
     console.log(e);
-    yield put(authenticationAction.loginFailed(ErrorType.LOGIN_ERROR));
+    yield put(authenticationAction.loginFailed());
   }
 }
 
