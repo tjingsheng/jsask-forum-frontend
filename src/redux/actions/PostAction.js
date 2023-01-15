@@ -12,6 +12,12 @@ const postAction = {
       userId: data,
     },
   }),
+  setAllPosts: (data) => ({
+    type: ActionType.SET_ALL_POSTS,
+    payload: {
+      allPosts: data,
+    },
+  }),
   fetchAllPostsSuccess: (data) => ({
     type: ActionType.FETCH_ALL_POSTS_SUCCESS,
     payload: {},
@@ -20,13 +26,6 @@ const postAction = {
     type: ActionType.FETCH_ALL_POSTS_FAILED,
     payload: {
       error: data,
-    },
-  }),
-
-  setAllPosts: (data) => ({
-    type: ActionType.SET_ALL_POSTS,
-    payload: {
-      allPosts: data,
     },
   }),
   resetAllPosts: (data) => ({
@@ -42,6 +41,12 @@ const postAction = {
       currPostKeys: data,
     },
   }),
+  setCurrPost: (data) => ({
+    type: ActionType.SET_CURR_POST,
+    payload: {
+      currPost: data,
+    },
+  }),
   fetchCurrPostSuccess: (data) => ({
     type: ActionType.FETCH_CURR_POST_SUCCESS,
     payload: {},
@@ -50,12 +55,6 @@ const postAction = {
     type: ActionType.FETCH_CURR_POST_FAILED,
     payload: {
       error: data,
-    },
-  }),
-  setCurrPost: (data) => ({
-    type: ActionType.SET_CURR_POST,
-    payload: {
-      currPost: data,
     },
   }),
   resetCurrPost: (data) => ({

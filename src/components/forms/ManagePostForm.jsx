@@ -8,10 +8,9 @@ const ManagePostForm = ({
   currTitle,
   currTags,
   currContent,
+  onFinishFunc,
 }) => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const onFinish = onFinishFunc;
 
   return (
     <Form
@@ -27,7 +26,7 @@ const ManagePostForm = ({
     >
       <Item
         label="Title"
-        name="title"
+        name="postTitle"
         rules={[
           {
             required: true,
@@ -43,7 +42,7 @@ const ManagePostForm = ({
         <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Item>
 
-      <Item label="Content" name="content" initialValue={currContent}>
+      <Item label="Content" name="postContent" initialValue={currContent}>
         <TextArea
           placeholder="Text (Optional)"
           showCount

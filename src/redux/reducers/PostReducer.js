@@ -21,6 +21,11 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
       };
+    case ActionType.SET_ALL_POSTS:
+      return {
+        ...state,
+        allPosts: action.payload.allPosts,
+      };
     case ActionType.FETCH_ALL_POSTS_SUCCESS:
       return {
         ...state,
@@ -30,11 +35,6 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         isAllPostsFetched: false,
-      };
-    case ActionType.SET_ALL_POSTS:
-      return {
-        ...state,
-        allPosts: action.payload.allPosts,
       };
     case ActionType.RESET_ALL_POSTS:
       return {
@@ -47,6 +47,11 @@ const postReducer = (state = InitialState, action) => {
         ...state,
         currPostKeys: action.payload.currPostKeys,
       };
+    case ActionType.SET_CURR_POST:
+      return {
+        ...state,
+        currPost: action.payload.currPost,
+      };
     case ActionType.FETCH_CURR_POST_SUCCESS:
       return {
         ...state,
@@ -56,11 +61,6 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         isCurrPostFetched: false,
-      };
-    case ActionType.SET_CURR_POST:
-      return {
-        ...state,
-        currPost: action.payload.currPost,
       };
     case ActionType.RESET_CURR_POST:
       return {

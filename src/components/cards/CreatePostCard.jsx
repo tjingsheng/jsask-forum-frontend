@@ -53,7 +53,12 @@ const CreatePostCard = ({
         onCancel={() => setIsCreatePostModalVisible(false)}
         footer={[]}
       >
-        <ManagePostForm />
+        <ManagePostForm
+          onFinishFunc={(values) => {
+            console.log("Success:", values);
+            setIsCreatePostModalVisible(false);
+          }}
+        />
       </Modal>
     </>
   );
