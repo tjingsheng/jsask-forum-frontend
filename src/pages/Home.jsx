@@ -31,6 +31,8 @@ const HomePageContent = () => {
   const isAllPostsFetched = useSelector(
     (state) => state.post.isAllPostsFetched
   );
+  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
+  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
 
   const allTags = useSelector((state) => state.tag.allTags);
   const isAllTagsFetched = useSelector((state) => state.tag.isAllTagsFetched);
@@ -59,20 +61,14 @@ const HomePageContent = () => {
   const PageWidth = "50%";
 
   useEffect(() => {
-    if (isAuthenticated && isAuthenticatedSuccess && isAllPostsFetched) {
-      dispatch(postAction.fetchAllPosts(currUserId));
-    }
-
-    if (isAuthenticated && isAuthenticatedSuccess && isAllTagsFetched) {
-      dispatch(tagAction.fetchAllTags());
-    }
-  }, [isAuthenticatedSuccess]);
-
-  useEffect(() => {
-    if (isPutPostPreferenceSuccess) {
-      dispatch(postAction.fetchAllPosts(currUserId));
-    }
-  }, [isPutPostPreferenceSuccess]);
+    dispatch(postAction.fetchAllPosts(currUserId));
+    dispatch(tagAction.fetchAllTags());
+  }, [
+    isPostDeleted,
+    isNewPostPosted,
+    isPutPostPreferenceSuccess,
+    isAuthenticatedSuccess,
+  ]);
 
   return (
     <>
