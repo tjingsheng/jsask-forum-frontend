@@ -40,7 +40,7 @@ const CommentCard = ({ width, isCreator, postId, ...props }) => {
             }}
           />
         )}
-        <CommentCardContent isCreator={isCreator} {...props} />
+        <CommentCardContent isCreator={isCreator} postId={postId} {...props} />
         <PostCardFooter
           isCommentButtonVisible={false}
           postId={postId}

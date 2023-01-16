@@ -20,8 +20,9 @@ const PostPageContent = () => {
   const [queryParams] = useSearchParams(window.location.search);
   const currPostId = queryParams.get("postId");
 
-  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
   const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
+  const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
   const isPutPostPreferenceSuccess = useSelector(
     (state) => state.postPreference.isPutPostPreferenceSuccess
   );
@@ -30,7 +31,12 @@ const PostPageContent = () => {
     dispatch(
       postAction.fetchCurrPost({ userId: currUserId, postId: currPostId })
     );
-  }, [isNewPostPosted, isPostDeleted, isPutPostPreferenceSuccess]);
+  }, [
+    isNewPostPosted,
+    isPostDeleted,
+    isPostUpdated,
+    isPutPostPreferenceSuccess,
+  ]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
