@@ -93,8 +93,6 @@ const PostCard = ({
                 postContent: values.postContent,
               })
             );
-            console.log(values);
-            console.log(postId);
           }}
         />
       </Modal>
