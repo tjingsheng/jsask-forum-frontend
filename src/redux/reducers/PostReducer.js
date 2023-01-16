@@ -5,11 +5,13 @@ const InitialState = {
   isAllPostsFetched: true,
 
   currPostKeys: Constant.DEFAULT_CURR_POST_KEYS,
+
   currPost: Constant.DEFAULT_CURR_POST,
   isCurrPostFetched: true,
 
   newPost: Constant.DEFAULT_NEW_POST,
   isNewPostPosted: true,
+  isPostDeleted: true,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -69,6 +71,22 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         isNewPostPosted: false,
+      };
+
+    case ActionType.DELETE_POST:
+      return {
+        ...state,
+        isPostDeleted: false,
+      };
+    case ActionType.DELETE_POST_SUCCESS:
+      return {
+        ...state,
+        isPostDeleted: true,
+      };
+    case ActionType.DELETE_POST_FAILED:
+      return {
+        ...state,
+        isPostDeleted: false,
       };
 
     default:

@@ -1,9 +1,6 @@
-import { ActionType, Constant } from "../../constants";
+import { ActionType } from "../../constants";
 
 const InitialState = {
-  currPostId: Constant.DEFAULT_CURR_POST_ID,
-  currUserId: Constant.DEFAULT_CURR_USER_ID,
-  currPreference: Constant.DEFAULT_CURR_POST_ID,
   isPutPostPreferenceSuccess: true,
 };
 
@@ -17,9 +14,6 @@ const postPreferenceReducer = (state = InitialState, action) => {
     case ActionType.PUT_POST_PREFERENCE:
       return {
         ...state,
-        currPostId: action.payload.currPostId,
-        currUserId: action.payload.currUserId,
-        currPreference: action.payload.currPreference,
         isPutPostPreferenceSuccess: false,
       };
     case ActionType.PUT_POST_PREFERENCE_SUCCESS:

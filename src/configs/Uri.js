@@ -7,6 +7,8 @@ const URI = {
   putPreference: "/postpreference",
 
   createPost: "/post",
+
+  deletePost: "/post",
 };
 
 export default URI;

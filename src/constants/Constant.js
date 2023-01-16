@@ -20,11 +20,7 @@ const Constant = {
     postContent: "",
     parentPost: 0,
   },
-
-  // POST PREFERENCES DEFAULT VALUES
-  DEFAULT_CURR_USER_ID: -1,
-  DEFAULT_CURR_POST_ID: -1,
-  DEFAULT_CURR_PREFERENCE: 0,
+  DEFAULT_DELETE_POST_ID: -1,
 
   //DEFAULT COLORS
   LOGO_OUTLINE_COLOR: "black",

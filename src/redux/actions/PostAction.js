@@ -54,6 +54,21 @@ const postAction = {
     type: ActionType.CREATE_NEW_POST_FAILED,
     payload: {},
   }),
+
+  deletePost: (data) => ({
+    type: ActionType.DELETE_POST,
+    payload: {
+      deletePostId: data,
+    },
+  }),
+  deletePostSuccess: (data) => ({
+    type: ActionType.DELETE_POST_SUCCESS,
+    payload: {},
+  }),
+  deletePostFailed: (data) => ({
+    type: ActionType.DELETE_POST_FAILED,
+    payload: {},
+  }),
 };
 
 export default postAction;

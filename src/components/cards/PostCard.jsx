@@ -1,6 +1,8 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postAction } from "../../redux/actions";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 import PostCardHeader from "../cardcomponents/PostCardHeader";
@@ -16,12 +18,16 @@ const PostCard = ({
   postContent,
 
   isCreator,
+  currUserId,
+
+  postId,
   ...props
 }) => {
   const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);
   const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
     false
   );
+  const dispatch = useDispatch();
   return (
     <>
       <Card
@@ -85,7 +91,13 @@ const PostCard = ({
         open={isDeletePostModalVisible}
         onCancel={() => SetIsDeletePostModalVisible(false)}
         footer={[
-          <Button key="Yes" onClick={() => SetIsDeletePostModalVisible(false)}>
+          <Button
+            key="Yes"
+            onClick={() => {
+              SetIsDeletePostModalVisible(false);
+              dispatch(postAction.deletePost(postId));
+            }}
+          >
             Yes
           </Button>,
           <Button key="No" onClick={() => SetIsDeletePostModalVisible(false)}>

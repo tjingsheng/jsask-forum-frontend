@@ -49,10 +49,22 @@ function* createPost(action) {
   }
 }
 
+function* deletePost(action) {
+  try {
+    const requestURI = URI.deletePost + "/" + action.payload.deletePostId;
+    yield axiosRequest(RequestMethod.DELETE, requestURI);
+    yield put(postAction.deletePostSuccess());
+  } catch (e) {
+    console.log(e);
+    yield put(postAction.deletePostFailed());
+  }
+}
+
 function* postSaga() {
   yield takeEvery(ActionType.FETCH_ALL_POSTS, getAllPosts);
   yield takeEvery(ActionType.FETCH_CURR_POST, getCurrPost);
   yield takeEvery(ActionType.CREATE_NEW_POST, createPost);
+  yield takeEvery(ActionType.DELETE_POST, deletePost);
 }
 
 export default postSaga;
