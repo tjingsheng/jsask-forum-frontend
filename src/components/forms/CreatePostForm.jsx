@@ -8,16 +8,12 @@ const CreatePostForm = ({
   buttonText,
   handleOnClickCreatePostButton,
   handleOnClickCreatePostInput,
-  handleOnFinish,
 }) => {
   const [form] = useForm();
   return (
     <Form
       form={form}
-      onFinish={() => {
-        handleOnFinish(form.getFieldValue());
-        form.resetFields();
-      }}
+      onFinish={form.resetFields}
       layout="inline"
       style={{ display: "flex" }}
     >
