@@ -1,13 +1,16 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Card, Modal, Typography } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postAction } from "../../redux/actions";
 import CommentCardContent from "../cardcomponents/CommentCardContent";
 import CommentCardHeader from "../cardcomponents/CommentCardHeader";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 
 const { Text } = Typography;
 
-const CommentCard = ({ width, isCreator, ...props }) => {
+const CommentCard = ({ width, isCreator, postId, ...props }) => {
+  const dispatch = useDispatch();
   const [
     isDeleteCommentModalVisible,
     SetIsDeleteCommentModalVisible,
@@ -38,7 +41,11 @@ const CommentCard = ({ width, isCreator, ...props }) => {
           />
         )}
         <CommentCardContent isCreator={isCreator} {...props} />
-        <PostCardFooter isCommentButtonVisible={false} {...props} />
+        <PostCardFooter
+          isCommentButtonVisible={false}
+          postId={postId}
+          {...props}
+        />
       </Card>
 
       <Modal
@@ -48,7 +55,10 @@ const CommentCard = ({ width, isCreator, ...props }) => {
         footer={[
           <Button
             key="Yes"
-            onClick={() => SetIsDeleteCommentModalVisible(false)}
+            onClick={() => {
+              SetIsDeleteCommentModalVisible(false);
+              dispatch(postAction.deletePost(postId));
+            }}
           >
             <Text>Yes</Text>
           </Button>,

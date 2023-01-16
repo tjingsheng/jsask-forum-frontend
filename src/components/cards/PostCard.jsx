@@ -68,6 +68,7 @@ const PostCard = ({
         <PostCardContent postContent={postContent} />
         <PostCardFooter
           isCommentButtonVisible={isCommentButtonVisible}
+          postId={postId}
           {...props}
         />
       </Card>
