@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CommentCard from "../components/cards/CommentCard";
@@ -8,40 +8,30 @@ import HomeLayout from "../layouts/HomeLayout";
 import { postAction } from "../redux/actions";
 
 const PostPage = () => {
+  return <HomeLayout content={<PostPageContent />} />;
+};
+
+const PostPageContent = () => {
+  const dispatch = useDispatch();
+
   const currUserId = useSelector((state) => state.authentication.user.id);
+  const allPosts = useSelector((state) => state.post.currPost);
+
   const [queryParams] = useSearchParams(window.location.search);
   const currPostId = queryParams.get("postId");
 
-  const dispatch = useDispatch();
+  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
+  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPutPostPreferenceSuccess = useSelector(
+    (state) => state.postPreference.isPutPostPreferenceSuccess
+  );
+
   useEffect(() => {
     dispatch(
       postAction.fetchCurrPost({ userId: currUserId, postId: currPostId })
     );
-  }, []);
-  const allPosts = useSelector((state) => state.post.currPost);
-  const [allComments, setAllComments] = useState();
-  const [currPost, setCurrPost] = useState();
+  }, [isNewPostPosted, isPostDeleted, isPutPostPreferenceSuccess]);
 
-  useEffect(() => {
-    setAllComments(allPosts.comments);
-    setCurrPost(allPosts.post);
-  }, [allPosts]);
-
-  return (
-    <HomeLayout
-      content={
-        <PostPageContent
-          currUserId={currUserId}
-          currPost={currPost}
-          allComments={allComments}
-        />
-      }
-    />
-  );
-};
-
-const PostPageContent = ({ currUserId, currPost, allComments }) => {
-  const dispatch = useDispatch();
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
       dispatch(
@@ -49,13 +39,14 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
           userId: currUserId,
           postTitle: "NONE",
           postContent: values.postContent,
-          parentPost: currPost.postId,
+          parentPost: allPosts.post.postId,
         })
       );
     }
   };
 
   const PageWidth = "50%";
+
   return (
     <>
       <PostCard
@@ -63,7 +54,7 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
         isCommentButtonVisible={false}
         isCreator={true}
         currUserId={currUserId}
-        {...currPost}
+        {...allPosts.post}
       />
       <CreatePostCard
         width={PageWidth}
@@ -73,8 +64,8 @@ const PostPageContent = ({ currUserId, currPost, allComments }) => {
         handleOnClickCreatePostInput={() => {}}
         handleOnClickCreatePostButton={() => {}}
       />
-      {Array.isArray(allComments) &&
-        allComments.map((comment, idx) => (
+      {Array.isArray(allPosts.comments) &&
+        allPosts.comments.map((comment, idx) => (
           <CommentCard
             key={idx}
             width={PageWidth}

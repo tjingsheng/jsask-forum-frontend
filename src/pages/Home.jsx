@@ -20,35 +20,11 @@ const HomePageContent = () => {
   const dispatch = useDispatch();
 
   const currUserId = useSelector((state) => state.authentication.user.id);
-  const isAuthenticatedSuccess = useSelector(
-    (state) => state.authentication.isAuthenticatedSuccess
-  );
-  const isAuthenticated = useSelector(
-    (state) => state.authentication.isAuthenticated
-  );
-
   const allPosts = useSelector((state) => state.post.allPosts);
-  const isAllPostsFetched = useSelector(
-    (state) => state.post.isAllPostsFetched
-  );
-  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
-  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
-
   const allTags = useSelector((state) => state.tag.allTags);
-  const isAllTagsFetched = useSelector((state) => state.tag.isAllTagsFetched);
-
-  const isPutPostPreferenceSuccess = useSelector(
-    (state) => state.postPreference.isPutPostPreferenceSuccess
-  );
 
   const [queryParams] = useSearchParams(window.location.search);
   const sortKey = queryParams.get("sort");
-
-  const [filterByTagsArray, setFilterByTagsArray] = useState([]);
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
-    false
-  );
-
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
@@ -58,7 +34,14 @@ const HomePageContent = () => {
       new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
   };
 
-  const PageWidth = "50%";
+  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
+  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPutPostPreferenceSuccess = useSelector(
+    (state) => state.postPreference.isPutPostPreferenceSuccess
+  );
+  const isAuthenticatedSuccess = useSelector(
+    (state) => state.authentication.isAuthenticatedSuccess
+  );
 
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
@@ -69,6 +52,13 @@ const HomePageContent = () => {
     isPutPostPreferenceSuccess,
     isAuthenticatedSuccess,
   ]);
+
+  const [filterByTagsArray, setFilterByTagsArray] = useState([]);
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
+    false
+  );
+
+  const PageWidth = "50%";
 
   return (
     <>
