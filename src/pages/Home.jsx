@@ -8,7 +8,7 @@ import PostCard from "../components/cards/PostCard";
 import SortPostCard from "../components/cards/SortPostCard";
 import ManagePostForm from "../components/forms/ManagePostForm";
 import HomeLayout from "../layouts/HomeLayout";
-import { postAction } from "../redux/actions";
+import { postAction, tagAction } from "../redux/actions";
 import hasCommonElements from "../utils";
 import sortKeyEnums from "../utils/enums.js";
 
@@ -19,9 +19,22 @@ const HomePage = () => {
 const HomePageContent = () => {
   const dispatch = useDispatch();
 
-  const allPosts = useSelector((state) => state.post.allPosts);
   const currUserId = useSelector((state) => state.authentication.user.id);
+  const isAuthenticatedSuccess = useSelector(
+    (state) => state.authentication.isAuthenticatedSuccess
+  );
+  const isAuthenticated = useSelector(
+    (state) => state.authentication.isAuthenticated
+  );
+
+  const allPosts = useSelector((state) => state.post.allPosts);
+  const isAllPostsFetched = useSelector(
+    (state) => state.post.isAllPostsFetched
+  );
+
   const allTags = useSelector((state) => state.tag.allTags);
+  const isAllTagsFetched = useSelector((state) => state.tag.isAllTagsFetched);
+
   const isPutPostPreferenceSuccess = useSelector(
     (state) => state.postPreference.isPutPostPreferenceSuccess
   );
@@ -46,8 +59,17 @@ const HomePageContent = () => {
   const PageWidth = "50%";
 
   useEffect(() => {
+    if (isAuthenticated && isAuthenticatedSuccess && isAllPostsFetched) {
+      dispatch(postAction.fetchAllPosts(currUserId));
+    }
+
+    if (isAuthenticated && isAuthenticatedSuccess && isAllTagsFetched) {
+      dispatch(tagAction.fetchAllTags());
+    }
+  }, [isAuthenticatedSuccess]);
+
+  useEffect(() => {
     if (isPutPostPreferenceSuccess) {
-      console.log(currUserId);
       dispatch(postAction.fetchAllPosts(currUserId));
     }
   }, [isPutPostPreferenceSuccess]);

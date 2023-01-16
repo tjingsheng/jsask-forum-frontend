@@ -6,13 +6,6 @@ const authenticationAction = {
     payload: {},
   }),
 
-  initUser: (data) => ({
-    type: ActionType.INITUSER,
-    payload: {
-      user: data,
-    },
-  }),
-
   login: (data) => ({
     type: ActionType.LOGIN,
     payload: {
@@ -21,7 +14,7 @@ const authenticationAction = {
   }),
   loginSuccess: (data) => ({
     type: ActionType.LOGIN_SUCCESS,
-    payload: {},
+    payload: { user: data },
   }),
   loginFailed: (data) => ({
     type: ActionType.LOGIN_FAILED,

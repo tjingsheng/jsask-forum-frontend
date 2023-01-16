@@ -3,8 +3,7 @@ import { ActionType, Constant } from "../../constants";
 const InitialState = {
   user: Constant.DEFAULT_USER,
   isAuthenticated: false,
-  isLoginProperly: false,
-  isLogoutProperly: true,
+  isAuthenticatedSuccess: true,
 };
 
 const authenticationReducer = (state = InitialState, action) => {
@@ -14,44 +13,43 @@ const authenticationReducer = (state = InitialState, action) => {
         ...InitialState,
       };
 
-    case ActionType.INITUSER:
-      return {
-        ...state,
-        user: action.payload.user,
-      };
-
     case ActionType.LOGIN:
       return {
         ...state,
-        isAuthenticated: true,
-        isLogoutProperly: false,
+        isAuthenticated: false,
+        isAuthenticatedSuccess: false,
       };
     case ActionType.LOGIN_SUCCESS:
       return {
         ...state,
-        isLoginProperly: true,
+        isAuthenticated: true,
+        isAuthenticatedSuccess: true,
+        user: action.payload.user,
       };
     case ActionType.LOGIN_FAILED:
       return {
         ...state,
-        isLoginProperly: false,
+        isAuthenticated: false,
+        isAuthenticatedSuccess: false,
       };
 
     case ActionType.LOGOUT:
       return {
         ...state,
-        isAuthenticated: false,
-        isLoginProperly: false,
+        isAuthenticated: true,
+        isAuthenticatedSuccess: false,
       };
     case ActionType.LOGOUT_SUCCESS:
       return {
         ...state,
-        isLogoutProperly: true,
+        isAuthenticated: false,
+        isAuthenticatedSuccess: true,
       };
     case ActionType.LOGOUT_FAILED:
       return {
         ...state,
-        isLogoutProperly: false,
+        isAuthenticated: true,
+        isAuthenticatedSuccess: false,
       };
 
     default:
