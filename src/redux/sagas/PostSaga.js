@@ -60,11 +60,26 @@ function* deletePost(action) {
   }
 }
 
+function* updatePost(action) {
+  try {
+    yield axiosRequest(
+      RequestMethod.PUT,
+      URI.updatePost,
+      action.payload.updatePost
+    );
+    yield put(postAction.updatePostSuccess());
+  } catch (e) {
+    console.log(e);
+    yield put(postAction.updatePostFailed());
+  }
+}
+
 function* postSaga() {
   yield takeEvery(ActionType.FETCH_ALL_POSTS, getAllPosts);
   yield takeEvery(ActionType.FETCH_CURR_POST, getCurrPost);
   yield takeEvery(ActionType.CREATE_NEW_POST, createPost);
   yield takeEvery(ActionType.DELETE_POST, deletePost);
+  yield takeEvery(ActionType.UPDATE_POST, updatePost);
 }
 
 export default postSaga;

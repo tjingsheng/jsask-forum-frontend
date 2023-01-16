@@ -9,6 +9,8 @@ const URI = {
   createPost: "/post",
 
   deletePost: "/post",
+
+  updatePost: "/post",
 };
 
 export default URI;

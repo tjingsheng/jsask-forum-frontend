@@ -80,10 +80,22 @@ const PostCard = ({
         footer={[]}
       >
         <ManagePostForm
-          isEditPost={true}
+          submitButtonText="Edit"
           currTitle={postTitle}
           currTags={tags}
           currContent={postContent}
+          onFinishFunc={(values) => {
+            SetIsEditPostModalVisible(false);
+            dispatch(
+              postAction.updatePost({
+                postId: postId,
+                postTitle: values.postTitle,
+                postContent: values.postContent,
+              })
+            );
+            console.log(values);
+            console.log(postId);
+          }}
         />
       </Modal>
 

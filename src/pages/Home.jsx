@@ -34,8 +34,9 @@ const HomePageContent = () => {
       new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
   };
 
-  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
   const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
+  const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
   const isPutPostPreferenceSuccess = useSelector(
     (state) => state.postPreference.isPutPostPreferenceSuccess
   );
@@ -47,8 +48,9 @@ const HomePageContent = () => {
     dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(tagAction.fetchAllTags());
   }, [
-    isPostDeleted,
     isNewPostPosted,
+    isPostDeleted,
+    isPostUpdated,
     isPutPostPreferenceSuccess,
     isAuthenticatedSuccess,
   ]);
@@ -102,6 +104,7 @@ const HomePageContent = () => {
         footer={[]}
       >
         <ManagePostForm
+          submitButtonText="Post"
           onFinishFunc={(values) => {
             setIsCreatePostModalVisible(false);
             dispatch(

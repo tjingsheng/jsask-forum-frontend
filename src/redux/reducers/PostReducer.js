@@ -5,13 +5,12 @@ const InitialState = {
   isAllPostsFetched: true,
 
   currPostKeys: Constant.DEFAULT_CURR_POST_KEYS,
-
   currPost: Constant.DEFAULT_CURR_POST,
   isCurrPostFetched: true,
 
-  newPost: Constant.DEFAULT_NEW_POST,
   isNewPostPosted: true,
   isPostDeleted: true,
+  isPostUpdated: true,
 };
 
 const postReducer = (state = InitialState, action) => {
@@ -59,7 +58,6 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.CREATE_NEW_POST:
       return {
         ...state,
-        newPost: action.payload.newPost,
         isNewPostPosted: false,
       };
     case ActionType.CREATE_NEW_POST_SUCCESS:
@@ -87,6 +85,22 @@ const postReducer = (state = InitialState, action) => {
       return {
         ...state,
         isPostDeleted: false,
+      };
+
+    case ActionType.UPDATE_POST:
+      return {
+        ...state,
+        isPostUpdated: false,
+      };
+    case ActionType.UPDATE_POST_SUCCESS:
+      return {
+        ...state,
+        isPostUpdated: true,
+      };
+    case ActionType.UPDATE_POST_FAILED:
+      return {
+        ...state,
+        isPostUpdated: false,
       };
 
     default:

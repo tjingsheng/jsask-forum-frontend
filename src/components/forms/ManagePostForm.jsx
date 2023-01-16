@@ -4,7 +4,7 @@ const { TextArea } = Input;
 const { Item } = Form;
 
 const ManagePostForm = ({
-  isEditPost = false,
+  submitButtonText = "Post",
   currTitle,
   currTags,
   currContent,
@@ -64,7 +64,7 @@ const ManagePostForm = ({
             width: "100px",
           }}
         >
-          {isEditPost ? "Edit" : "Post"}
+          {submitButtonText}
         </Button>
       </Item>
     </Form>
