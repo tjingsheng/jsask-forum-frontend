@@ -1,5 +1,6 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Modal } from "antd";
+import { useForm } from "antd/es/form/Form";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postAction } from "../../redux/actions";
@@ -27,6 +28,7 @@ const PostCard = ({
   const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
     false
   );
+  const [form] = useForm();
   const dispatch = useDispatch();
   return (
     <>
@@ -80,6 +82,7 @@ const PostCard = ({
         footer={[]}
       >
         <ManagePostForm
+          form={form}
           submitButtonText="Edit"
           currTitle={postTitle}
           currTags={tags}
@@ -94,6 +97,7 @@ const PostCard = ({
                 tags: values.tags,
               })
             );
+            form.resetFields();
           }}
         />
       </Modal>

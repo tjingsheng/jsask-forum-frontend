@@ -9,9 +9,8 @@ const ManagePostForm = ({
   currTags,
   currContent,
   onFinishFunc,
+  form,
 }) => {
-  const onFinish = onFinishFunc;
-
   return (
     <Form
       name="basic"
@@ -21,8 +20,9 @@ const ManagePostForm = ({
       wrapperCol={{
         span: 20,
       }}
-      onFinish={onFinish}
+      onFinish={onFinishFunc}
       autoComplete="off"
+      form={form}
     >
       <Item
         label="Title"

@@ -1,4 +1,5 @@
 import { Modal } from "antd";
+import { useForm } from "antd/es/form/Form";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -18,6 +19,7 @@ const HomePage = () => {
 
 const HomePageContent = () => {
   const dispatch = useDispatch();
+  const [form] = useForm();
 
   const currUserId = useSelector((state) => state.authentication.user.id);
   const allPosts = useSelector((state) => state.post.allPosts);
@@ -104,6 +106,7 @@ const HomePageContent = () => {
         footer={[]}
       >
         <ManagePostForm
+          form={form}
           submitButtonText="Post"
           onFinishFunc={(values) => {
             setIsCreatePostModalVisible(false);
@@ -116,6 +119,7 @@ const HomePageContent = () => {
                 parentPost: 0,
               })
             );
+            form.resetFields();
           }}
         />
       </Modal>
