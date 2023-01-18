@@ -112,6 +112,7 @@ const HomePageContent = () => {
                 userId: currUserId,
                 postTitle: values.postTitle,
                 postContent: values.postContent,
+                tags: values.tags,
                 parentPost: 0,
               })
             );

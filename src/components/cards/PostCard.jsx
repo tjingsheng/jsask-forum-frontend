@@ -91,6 +91,7 @@ const PostCard = ({
                 postId: postId,
                 postTitle: values.postTitle,
                 postContent: values.postContent,
+                tags: values.tags,
               })
             );
           }}

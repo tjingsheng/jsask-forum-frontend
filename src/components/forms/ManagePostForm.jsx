@@ -38,7 +38,7 @@ const ManagePostForm = ({
         <Input />
       </Item>
 
-      <Item label="Tags" name="tag" initialValue={currTags}>
+      <Item label="Tags" name="tags" initialValue={currTags}>
         <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Item>
 
