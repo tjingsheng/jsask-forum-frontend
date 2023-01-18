@@ -24,8 +24,8 @@ const PostCard = ({
   postId,
   ...props
 }) => {
-  const [isEditPostModalVisible, SetIsEditPostModalVisible] = useState(false);
-  const [isDeletePostModalVisible, SetIsDeletePostModalVisible] = useState(
+  const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
+  const [isDeletePostModalVisible, setIsDeletePostModalVisible] = useState(
     false
   );
   const [form] = useForm();
@@ -44,7 +44,7 @@ const PostCard = ({
         <PostCardHeader postTitle={postTitle} />
         {isCreator && (
           <DeleteOutlined
-            onClick={() => SetIsDeletePostModalVisible(true)}
+            onClick={() => setIsDeletePostModalVisible(true)}
             style={{
               display: "inline-block",
               float: "right",
@@ -56,7 +56,7 @@ const PostCard = ({
         )}
         {isCreator && (
           <EditOutlined
-            onClick={() => SetIsEditPostModalVisible(true)}
+            onClick={() => setIsEditPostModalVisible(true)}
             style={{
               display: "inline-block",
               float: "right",
@@ -78,7 +78,7 @@ const PostCard = ({
       <Modal
         title="Edit Post"
         open={isEditPostModalVisible}
-        onCancel={() => SetIsEditPostModalVisible(false)}
+        onCancel={() => setIsEditPostModalVisible(false)}
         footer={[]}
       >
         <ManagePostForm
@@ -88,7 +88,7 @@ const PostCard = ({
           currTags={tags}
           currContent={postContent}
           onFinishFunc={(values) => {
-            SetIsEditPostModalVisible(false);
+            setIsEditPostModalVisible(false);
             dispatch(
               postAction.updatePost({
                 postId: postId,
@@ -105,18 +105,18 @@ const PostCard = ({
       <Modal
         title="Delete Post Confirmation"
         open={isDeletePostModalVisible}
-        onCancel={() => SetIsDeletePostModalVisible(false)}
+        onCancel={() => setIsDeletePostModalVisible(false)}
         footer={[
           <Button
             key="Yes"
             onClick={() => {
-              SetIsDeletePostModalVisible(false);
+              setIsDeletePostModalVisible(false);
               dispatch(postAction.deletePost(postId));
             }}
           >
             Yes
           </Button>,
-          <Button key="No" onClick={() => SetIsDeletePostModalVisible(false)}>
+          <Button key="No" onClick={() => setIsDeletePostModalVisible(false)}>
             No
           </Button>,
         ]}
