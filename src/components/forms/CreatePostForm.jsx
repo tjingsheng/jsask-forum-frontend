@@ -14,7 +14,10 @@ const CreatePostForm = ({
   return (
     <Form
       form={form}
-      onFinish={onFinishFunc}
+      onFinish={(values) => {
+        onFinishFunc(values);
+        form.resetFields();
+      }}
       layout="inline"
       style={{ display: "flex" }}
     >

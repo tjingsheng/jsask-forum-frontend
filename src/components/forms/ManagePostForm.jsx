@@ -1,4 +1,5 @@
 import { Button, Form, Input, Select } from "antd";
+import { useForm } from "antd/es/form/Form";
 import React from "react";
 const { TextArea } = Input;
 const { Item } = Form;
@@ -9,8 +10,8 @@ const ManagePostForm = ({
   currTags,
   currContent,
   onFinishFunc = (values) => {},
-  form,
 }) => {
+  const [form] = useForm();
   return (
     <Form
       name="basic"
@@ -20,7 +21,10 @@ const ManagePostForm = ({
       wrapperCol={{
         span: 20,
       }}
-      onFinish={onFinishFunc}
+      onFinish={(values) => {
+        onFinishFunc(values);
+        form.resetFields();
+      }}
       autoComplete="off"
       form={form}
     >
