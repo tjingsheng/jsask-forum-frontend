@@ -66,9 +66,7 @@ const PostPageContent = () => {
         width={PageWidth}
         inputPlaceholder="What are your thoughts?"
         buttonText="Comment"
-        handleOnFinish={submitComment}
-        handleOnClickCreatePostInput={() => {}}
-        handleOnClickCreatePostButton={() => {}}
+        onFinishFunc={submitComment}
       />
       {Array.isArray(allPosts.comments) &&
         allPosts.comments.map((comment, idx) => (

@@ -8,7 +8,7 @@ const ManagePostForm = ({
   currTitle,
   currTags,
   currContent,
-  onFinishFunc,
+  onFinishFunc = (values) => {},
   form,
 }) => {
   return (
