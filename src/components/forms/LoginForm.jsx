@@ -2,6 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Route } from "../../constants";
 import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
@@ -21,7 +22,7 @@ const LoginForm = () => {
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
-    goto("/");
+    goto(Route.home);
   };
 
   return (
