@@ -9,18 +9,7 @@ function App() {
   );
 
   return (
-    // <>
-    //   <ConfigProvider
-    //     theme={{
-    //       token: {
-    //         fontFamily: "Poppins",
-    //         colorPrimary: "#2f55ff",
-    //       },
-    //     }}
-    //   >
     <RouterProvider router={isAuthenticated ? privateRoutes : publicRoutes} />
-    //   </ConfigProvider>
-    // </>
   );
 }
 
