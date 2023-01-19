@@ -1,17 +1,13 @@
 import { Button, Form, Input, Select } from "antd";
-import { useForm } from "antd/es/form/Form";
 import React from "react";
 const { TextArea } = Input;
 const { Item } = Form;
 
 const ManagePostForm = ({
   submitButtonText = "Post",
-  currTitle,
-  currTags,
-  currContent,
-  onFinishFunc = (values) => {},
+  onFinishFunc = () => {},
+  form,
 }) => {
-  const [form] = useForm();
   return (
     <Form
       name="basic"
@@ -21,10 +17,7 @@ const ManagePostForm = ({
       wrapperCol={{
         span: 20,
       }}
-      onFinish={(values) => {
-        onFinishFunc(values);
-        form.resetFields();
-      }}
+      onFinish={onFinishFunc}
       autoComplete="off"
       form={form}
     >
@@ -37,16 +30,15 @@ const ManagePostForm = ({
             message: "Post title cannot be empty!",
           },
         ]}
-        initialValue={currTitle}
       >
         <Input />
       </Item>
 
-      <Item label="Tags" name="tags" initialValue={currTags}>
+      <Item label="Tags" name="tags">
         <Select mode="tags" placeholder="Add Tags (Recommended)" />
       </Item>
 
-      <Item label="Content" name="postContent" initialValue={currContent}>
+      <Item label="Content" name="postContent">
         <TextArea
           placeholder="Text (Optional)"
           showCount
