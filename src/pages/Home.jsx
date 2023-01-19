@@ -82,7 +82,11 @@ const HomePageContent = () => {
         <NoContentCard width={PageWidth} message="There are no posts yet" />
       ) : (
         allPosts
-          .filter((post) => hasCommonElements(post.tags, filterByTagsArray))
+          .filter((post) =>
+            filterByTagsArray.length > 0
+              ? hasCommonElements(post.tags, filterByTagsArray)
+              : true
+          )
           .sort(sortComparators[sortKey])
           .map((post, idx) => (
             <PostCard
