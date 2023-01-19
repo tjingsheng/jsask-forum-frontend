@@ -4,7 +4,7 @@ import { headerHeight } from "../Header";
 
 const { Search } = Input;
 const SearchBox = () => {
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {};
   return (
     <Search
       size="large"

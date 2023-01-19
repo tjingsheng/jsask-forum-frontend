@@ -1,7 +1,6 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Modal } from "antd";
-import { useForm } from "antd/es/form/Form";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postAction } from "../../redux/actions";
@@ -29,17 +28,8 @@ const PostCard = ({
   const [isDeletePostModalVisible, setIsDeletePostModalVisible] = useState(
     false
   );
-  const [form] = useForm();
   const goto = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    form.setFieldsValue({
-      postTitle: postTitle,
-      tags: tags,
-      postContent: postContent,
-    });
-  }, [postTitle, tags, postContent]);
 
   return (
     <>
@@ -94,7 +84,6 @@ const PostCard = ({
         footer={[]}
       >
         <ManagePostForm
-          form={form}
           submitButtonText="Edit"
           onFinishFunc={(values) => {
             setIsEditPostModalVisible(false);
@@ -106,8 +95,10 @@ const PostCard = ({
                 tags: values.tags,
               })
             );
-            form.resetFields();
           }}
+          postTitle={postTitle}
+          tags={tags}
+          postContent={postContent}
         />
       </Modal>
 

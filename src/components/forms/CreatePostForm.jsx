@@ -6,7 +6,7 @@ const { Item } = Form;
 const CreatePostForm = ({
   inputPlaceholder,
   buttonText,
-  onFinishFunc,
+  onFinishFunc = () => {},
   handleOnClickCreatePostButton = () => {},
   handleOnClickCreatePostInput = () => {},
 }) => {

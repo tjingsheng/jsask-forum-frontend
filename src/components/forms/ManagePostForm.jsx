@@ -1,13 +1,25 @@
 import { Button, Form, Input, Select } from "antd";
-import React from "react";
+import { useForm } from "antd/es/form/Form";
+import React, { useEffect } from "react";
 const { TextArea } = Input;
 const { Item } = Form;
 
 const ManagePostForm = ({
   submitButtonText = "Post",
   onFinishFunc = () => {},
-  form,
+  postTitle,
+  tags,
+  postContent,
 }) => {
+  const [form] = useForm();
+  useEffect(() => {
+    form.setFieldsValue({
+      postTitle: postTitle,
+      tags: tags,
+      postContent: postContent,
+    });
+  }, [postTitle, tags, postContent]);
+
   return (
     <Form
       name="basic"
@@ -17,7 +29,10 @@ const ManagePostForm = ({
       wrapperCol={{
         span: 20,
       }}
-      onFinish={onFinishFunc}
+      onFinish={(values) => {
+        onFinishFunc(values);
+        form.resetFields();
+      }}
       autoComplete="off"
       form={form}
     >
