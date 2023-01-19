@@ -73,6 +73,7 @@ const PostCard = ({
         <PostCardFooter
           isCommentButtonVisible={isCommentButtonVisible}
           postId={postId}
+          currUserId={currUserId}
           {...props}
         />
       </Card>
