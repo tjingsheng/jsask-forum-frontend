@@ -3,6 +3,7 @@ import { Button, Card, Modal } from "antd";
 import { useForm } from "antd/es/form/Form";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { postAction } from "../../redux/actions";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
@@ -29,6 +30,7 @@ const PostCard = ({
     false
   );
   const [form] = useForm();
+  const goto = useNavigate();
   const dispatch = useDispatch();
   return (
     <>
@@ -112,6 +114,7 @@ const PostCard = ({
             onClick={() => {
               setIsDeletePostModalVisible(false);
               dispatch(postAction.deletePost(postId));
+              goto("/");
             }}
           >
             Yes

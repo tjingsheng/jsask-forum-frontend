@@ -9,6 +9,7 @@ import { Col, Row, Space, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Route } from "../../constants";
 import { postPreferenceAction } from "../../redux/actions";
 import { differenceCalculator, formatDatetime } from "../../utils";
 
@@ -128,13 +129,13 @@ const PostCardFooter = ({
           {isCommentButtonVisible && (
             <>
               <MessageOutlined
-                onClick={() => goto(`/post/?postId=${postId}`)}
+                onClick={() => goto(`${Route.post}/?postId=${postId}`)}
                 style={{
                   fontSize: footerHeight,
                 }}
               />
               <Title
-                onClick={() => goto(`/post/?postId=${postId}`)}
+                onClick={() => goto(`${Route.post}/?postId=${postId}`)}
                 level={5}
                 style={{
                   margin: "0px",

@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { Route } from "../constants";
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
 import NotFoundPage from "../pages/NotFound";
@@ -7,25 +8,25 @@ import PostPage from "../pages/Post";
 
 export const privateRoutes = createBrowserRouter([
   {
-    path: "/",
+    path: Route.home,
     element: <HomePage />,
     errorElement: <NotFoundPage />,
   },
   {
-    path: "home",
-    element: <HomePage />,
-  },
-  {
-    path: "post",
+    path: Route.post,
     element: <PostPage />,
   },
 ]);
 
 const publicRoutes = createBrowserRouter([
   {
-    path: "/",
+    path: Route.home,
     element: <LoginPage />,
-    errorElement: <Navigate to="/" replace={true} />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: Route.post,
+    element: <Navigate to={Route.home} replace={true} />,
   },
 ]);
 

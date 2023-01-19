@@ -1,6 +1,7 @@
 import { Col, Layout, Row } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Route } from "../../constants";
 import Logo from "./headercomponents/HeaderLogo";
 import ProfileMenu from "./headercomponents/HeaderProfileMenu";
 import SearchBox from "./headercomponents/HeaderSearchBox";
@@ -22,7 +23,7 @@ const HeaderComponent = () => {
       }}
     >
       <Row>
-        <Col span={8} onClick={() => goto("/home")}>
+        <Col span={8} onClick={() => goto(Route.home)}>
           <Logo />
         </Col>
         <Col span={8}>

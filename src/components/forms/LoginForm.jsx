@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
-    goto("/home");
+    goto("/");
   };
 
   return (
