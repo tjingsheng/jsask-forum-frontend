@@ -90,6 +90,7 @@ const HomePageContent = () => {
           .sort(sortComparators[sortKey])
           .map((post, idx) => (
             <PostCard
+              hoverable
               key={idx}
               width={PageWidth}
               isCommentButtonVisible={true}

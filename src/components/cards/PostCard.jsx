@@ -3,6 +3,7 @@ import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Route } from "../../constants";
 import { postAction } from "../../redux/actions";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
@@ -11,6 +12,7 @@ import PostCardTags from "../cardcomponents/PostCardTags";
 import ManagePostForm from "../forms/ManagePostForm";
 
 const PostCard = ({
+  hoverable = false,
   width,
   isCommentButtonVisible,
 
@@ -34,6 +36,11 @@ const PostCard = ({
   return (
     <>
       <Card
+        onClick={(e) =>
+          !["svg", "path"].includes(e.target.nodeName) &&
+          goto(`${Route.post}/?postId=${postId}`)
+        }
+        hoverable={hoverable}
         style={{
           margin: "10px auto",
           width: width,
@@ -49,7 +56,7 @@ const PostCard = ({
             style={{
               display: "inline-block",
               float: "right",
-              fontSize: "20px",
+              fontSize: "25px",
               marginTop: "10px",
               marginRight: "10px",
             }}
@@ -61,7 +68,7 @@ const PostCard = ({
             style={{
               display: "inline-block",
               float: "right",
-              fontSize: "20px",
+              fontSize: "25px",
               marginTop: "10px",
               marginRight: "10px",
             }}

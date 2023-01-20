@@ -135,7 +135,6 @@ const PostCardFooter = ({
                 }}
               />
               <Title
-                onClick={() => goto(`${Route.post}/?postId=${postId}`)}
                 level={5}
                 style={{
                   margin: "0px",
