@@ -24,7 +24,7 @@ const postPreferenceReducer = (state = InitialState, action) => {
     case ActionType.PUT_POST_PREFERENCE_FAILED:
       return {
         ...state,
-        isPutPostPreferenceSuccess: false,
+        isPutPostPreferenceSuccess: true,
       };
 
     default:

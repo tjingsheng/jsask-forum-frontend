@@ -26,7 +26,7 @@ const tagReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_TAGS_FAILED:
       return {
         ...state,
-        isAllTagsFetched: false,
+        isAllTagsFetched: true,
       };
 
     default:

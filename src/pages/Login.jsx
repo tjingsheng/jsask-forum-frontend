@@ -1,15 +1,21 @@
-import { Card } from "antd";
+import { Card, Spin } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import JsaskLogo from "../assets/JsaskLogo";
 import LoginForm from "../components/forms/LoginForm";
 import LoginLayout from "../layouts/LoginLayout";
 
 const LoginPage = () => {
+  const isAuthenticatedSuccess = useSelector(
+    (state) => state.authentication.isAuthenticatedSuccess
+  );
   return (
-    <LoginLayout
-      leftColumn={<LoginPageLogo />}
-      rightColumn={<LoginPageContent />}
-    />
+    <Spin spinning={!isAuthenticatedSuccess}>
+      <LoginLayout
+        leftColumn={<LoginPageLogo />}
+        rightColumn={<LoginPageContent />}
+      />
+    </Spin>
   );
 };
 

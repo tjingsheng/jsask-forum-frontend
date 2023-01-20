@@ -30,7 +30,7 @@ const authenticationReducer = (state = InitialState, action) => {
       return {
         ...state,
         isAuthenticated: false,
-        isAuthenticatedSuccess: false,
+        isAuthenticatedSuccess: true,
       };
 
     case ActionType.LOGOUT:
@@ -49,7 +49,7 @@ const authenticationReducer = (state = InitialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        isAuthenticatedSuccess: false,
+        isAuthenticatedSuccess: true,
       };
 
     default:

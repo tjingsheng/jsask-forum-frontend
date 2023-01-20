@@ -34,7 +34,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.FETCH_ALL_POSTS_FAILED:
       return {
         ...state,
-        isAllPostsFetched: false,
+        isAllPostsFetched: true,
       };
 
     case ActionType.FETCH_CURR_POST:
@@ -52,7 +52,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.FETCH_CURR_POST_FAILED:
       return {
         ...state,
-        isCurrPostFetched: false,
+        isCurrPostFetched: true,
       };
 
     case ActionType.CREATE_NEW_POST:
@@ -68,7 +68,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.CREATE_NEW_POST_FAILED:
       return {
         ...state,
-        isNewPostPosted: false,
+        isNewPostPosted: true,
       };
 
     case ActionType.DELETE_POST:
@@ -84,7 +84,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.DELETE_POST_FAILED:
       return {
         ...state,
-        isPostDeleted: false,
+        isPostDeleted: true,
       };
 
     case ActionType.UPDATE_POST:
@@ -100,7 +100,7 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.UPDATE_POST_FAILED:
       return {
         ...state,
-        isPostUpdated: false,
+        isPostUpdated: true,
       };
 
     default:
