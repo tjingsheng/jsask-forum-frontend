@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { Modal, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -43,6 +43,9 @@ const HomePageContent = () => {
   const isAuthenticatedSuccess = useSelector(
     (state) => state.authentication.isAuthenticatedSuccess
   );
+  const isAllPostsFetched = useSelector(
+    (state) => state.post.isAllPostsFetched
+  );
 
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
@@ -64,66 +67,70 @@ const HomePageContent = () => {
 
   return (
     <>
-      <CreatePostCard
-        width={PageWidth}
-        inputPlaceholder="Create Post"
-        buttonText="Post"
-        handleOnClickCreatePostInput={setIsCreatePostModalVisible}
-        handleOnClickCreatePostButton={setIsCreatePostModalVisible}
-      />
-      <SortPostCard
-        width={PageWidth}
-        sortKey={sortKey}
-        handleChange={setFilterByTagsArray}
-        allTags={allTags}
-      />
-
-      {Array.isArray(allPosts) && allPosts.length === 0 ? (
-        <NoContentCard width={PageWidth} message="There are no posts yet" />
-      ) : (
-        allPosts
-          .filter((post) =>
-            filterByTagsArray.length > 0
-              ? hasCommonElements(post.tags, filterByTagsArray)
-              : true
-          )
-          .sort(sortComparators[sortKey])
-          .map((post, idx) => (
-            <PostCard
-              hoverable
-              key={idx}
-              width={PageWidth}
-              isCommentButtonVisible={true}
-              isCreator={currUserId === post.userId}
-              currUserId={currUserId}
-              {...post}
-            />
-          ))
-      )}
-
-      <Modal
-        title="Create Post"
-        open={isCreatePostModalVisible}
-        onOk={() => setIsCreatePostModalVisible(false)}
-        onCancel={() => setIsCreatePostModalVisible(false)}
-        footer={[]}
-      >
-        <ManagePostForm
-          submitButtonText="Post"
-          onFinishFunc={(values) => {
-            setIsCreatePostModalVisible(false);
-            dispatch(
-              postAction.createNewPost({
-                userId: currUserId,
-                postTitle: values.postTitle,
-                postContent: values.postContent,
-                tags: values.tags,
-                parentPost: 0,
-              })
-            );
-          }}
+      <Spin spinning={!isAllPostsFetched}>
+        <CreatePostCard
+          width={PageWidth}
+          inputPlaceholder="Create Post"
+          buttonText="Post"
+          handleOnClickCreatePostInput={setIsCreatePostModalVisible}
+          handleOnClickCreatePostButton={setIsCreatePostModalVisible}
         />
-      </Modal>
+        <SortPostCard
+          width={PageWidth}
+          sortKey={sortKey}
+          handleChange={setFilterByTagsArray}
+          allTags={allTags}
+        />
+
+        {isAllPostsFetched &&
+        Array.isArray(allPosts) &&
+        allPosts.length === 0 ? (
+          <NoContentCard width={PageWidth} message="There are no posts yet" />
+        ) : (
+          allPosts
+            .filter((post) =>
+              filterByTagsArray.length > 0
+                ? hasCommonElements(post.tags, filterByTagsArray)
+                : true
+            )
+            .sort(sortComparators[sortKey])
+            .map((post, idx) => (
+              <PostCard
+                hoverable
+                key={idx}
+                width={PageWidth}
+                isCommentButtonVisible={true}
+                isCreator={currUserId === post.userId}
+                currUserId={currUserId}
+                {...post}
+              />
+            ))
+        )}
+
+        <Modal
+          title="Create Post"
+          open={isCreatePostModalVisible}
+          onOk={() => setIsCreatePostModalVisible(false)}
+          onCancel={() => setIsCreatePostModalVisible(false)}
+          footer={[]}
+        >
+          <ManagePostForm
+            submitButtonText="Post"
+            onFinishFunc={(values) => {
+              setIsCreatePostModalVisible(false);
+              dispatch(
+                postAction.createNewPost({
+                  userId: currUserId,
+                  postTitle: values.postTitle,
+                  postContent: values.postContent,
+                  tags: values.tags,
+                  parentPost: 0,
+                })
+              );
+            }}
+          />
+        </Modal>
+      </Spin>
     </>
   );
 };
