@@ -7,10 +7,10 @@ import PostCard from "../cards/PostCard";
 
 const ListPostCards = ({
   width,
-  sortKey,
-  allPosts,
-  filterByTagsArray,
   currUserId,
+  allPosts,
+  sortKey,
+  filterByTagsArray,
   isAllPostsFetched,
 }) => {
   const sortComparators = {
