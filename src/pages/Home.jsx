@@ -3,14 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CreatePostCard from "../components/cards/CreatePostCard";
-import NoContentCard from "../components/cards/NoContentCard";
-import PostCard from "../components/cards/PostCard";
 import SortPostCard from "../components/cards/SortPostCard";
+import ListPostCards from "../components/compoundcomponents/ListPostCards";
 import ManagePostForm from "../components/forms/ManagePostForm";
 import HomeLayout from "../layouts/HomeLayout";
 import { postAction, tagAction } from "../redux/actions";
-import hasCommonElements from "../utils";
-import sortKeyEnums from "../utils/enums.js";
+
+const PageWidth = "50%";
 
 const HomePage = () => {
   return <HomeLayout content={<HomePageContent />} />;
@@ -19,113 +18,80 @@ const HomePage = () => {
 const HomePageContent = () => {
   const dispatch = useDispatch();
 
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const allPosts = useSelector((state) => state.post.allPosts);
-  const allTags = useSelector((state) => state.tag.allTags);
+  const { post, tag, authentication } = useSelector((state) => state);
+  const { user, isAuthenticatedSuccess } = authentication;
+  const { id: currUserId } = user;
+  const {
+    allPosts,
+    isPostPosted,
+    isPostDeleted,
+    isPostUpdated,
+    isAllPostsFetched,
+  } = post;
+  const { allTags } = tag;
 
-  const isPostPosted = useSelector((state) => state.post.isPostPosted);
-  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
-  const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
-  const isPutPostPreferenceSuccess = useSelector(
-    (state) => state.postPreference.isPutPostPreferenceSuccess
+  const [queryParams] = useSearchParams(window.location.search);
+  const sortKey = queryParams.get("sort");
+
+  const [filterByTagsArray, setFilterByTagsArray] = useState([]);
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
+    false
   );
-  const isAuthenticatedSuccess = useSelector(
-    (state) => state.authentication.isAuthenticatedSuccess
-  );
-  const isAllPostsFetched = useSelector(
-    (state) => state.post.isAllPostsFetched
-  );
+
+  const handleOnFinishForm = (values) => {
+    setIsCreatePostModalVisible(false);
+    dispatch(
+      postAction.createNewPost({
+        userId: currUserId,
+        postTitle: values.postTitle,
+        postContent: values.postContent,
+        tags: values.tags,
+        parentPost: 0,
+      })
+    );
+  };
 
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(tagAction.fetchAllTags());
   }, [isPostPosted, isPostDeleted, isPostUpdated, isAuthenticatedSuccess]);
 
-  const [queryParams] = useSearchParams(window.location.search);
-  const sortKey = queryParams.get("sort");
-  const sortComparators = {
-    [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
-    [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) =>
-      new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
-    [sortKeyEnums.old]: (a, b) =>
-      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
-  };
-  const PageWidth = "50%";
-  const [filterByTagsArray, setFilterByTagsArray] = useState([]);
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
-    false
-  );
-
   return (
-    <>
-      <Spin spinning={!isAllPostsFetched}>
-        <CreatePostCard
-          width={PageWidth}
-          inputPlaceholder="Create Post"
-          buttonText="Post"
-          handleOnClickCreatePostInput={setIsCreatePostModalVisible}
-          handleOnClickCreatePostButton={setIsCreatePostModalVisible}
+    <Spin spinning={!isAllPostsFetched}>
+      <CreatePostCard
+        width={PageWidth}
+        inputPlaceholder="Create Post"
+        buttonText="Post"
+        handleOnClickCreatePostInput={setIsCreatePostModalVisible}
+        handleOnClickCreatePostButton={setIsCreatePostModalVisible}
+      />
+      <SortPostCard
+        width={PageWidth}
+        sortKey={sortKey}
+        handleChange={setFilterByTagsArray}
+        allTags={allTags}
+      />
+      <ListPostCards
+        width={PageWidth}
+        currUserId={currUserId}
+        allPosts={allPosts}
+        sortKey={sortKey}
+        filterByTagsArray={filterByTagsArray}
+        isAllPostsFetched={isAllPostsFetched}
+      />
+      <Modal
+        title="Create Post"
+        open={isCreatePostModalVisible}
+        onOk={() => setIsCreatePostModalVisible(false)}
+        onCancel={() => setIsCreatePostModalVisible(false)}
+        footer={[]}
+      >
+        <ManagePostForm
+          submitButtonText="Post"
+          onFinishForm={handleOnFinishForm}
         />
-        <SortPostCard
-          width={PageWidth}
-          sortKey={sortKey}
-          handleChange={setFilterByTagsArray}
-          allTags={allTags}
-        />
-
-        {isAllPostsFetched &&
-          (Array.isArray(allPosts) && allPosts.length === 0 ? (
-            <NoContentCard
-              width={PageWidth}
-              message="There are no posts yet."
-            />
-          ) : (
-            allPosts
-              .filter((post) =>
-                filterByTagsArray.length > 0
-                  ? hasCommonElements(post.tags, filterByTagsArray)
-                  : true
-              )
-              .sort(sortComparators[sortKey])
-              .map((post, idx) => (
-                <PostCard
-                  hoverable
-                  key={idx}
-                  width={PageWidth}
-                  isCommentButtonVisible={true}
-                  isCreator={currUserId === post.userId}
-                  currUserId={currUserId}
-                  {...post}
-                />
-              ))
-          ))}
-
-        <Modal
-          title="Create Post"
-          open={isCreatePostModalVisible}
-          onOk={() => setIsCreatePostModalVisible(false)}
-          onCancel={() => setIsCreatePostModalVisible(false)}
-          footer={[]}
-        >
-          <ManagePostForm
-            submitButtonText="Post"
-            onFinishFunc={(values) => {
-              setIsCreatePostModalVisible(false);
-              dispatch(
-                postAction.createNewPost({
-                  userId: currUserId,
-                  postTitle: values.postTitle,
-                  postContent: values.postContent,
-                  tags: values.tags,
-                  parentPost: 0,
-                })
-              );
-            }}
-          />
-        </Modal>
-      </Spin>
-    </>
+      </Modal>
+    </Spin>
   );
 };
 

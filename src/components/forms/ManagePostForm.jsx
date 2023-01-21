@@ -6,7 +6,7 @@ const { Item } = Form;
 
 const ManagePostForm = ({
   submitButtonText = "Post",
-  onFinishFunc = () => {},
+  onFinishForm = () => {},
   postTitle,
   tags,
   postContent,
@@ -30,7 +30,7 @@ const ManagePostForm = ({
         span: 20,
       }}
       onFinish={(values) => {
-        onFinishFunc(values);
+        onFinishForm(values);
         form.resetFields();
       }}
       autoComplete="off"

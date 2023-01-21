@@ -8,6 +8,8 @@ import PostCard from "../components/cards/PostCard";
 import HomeLayout from "../layouts/HomeLayout";
 import { postAction } from "../redux/actions";
 
+const PageWidth = "50%";
+
 const PostPage = () => {
   return <HomeLayout content={<PostPageContent />} />;
 };
@@ -51,40 +53,36 @@ const PostPageContent = () => {
     }
   };
 
-  const PageWidth = "50%";
-
   return (
-    <>
-      <Spin spinning={!isCurrPostFetched}>
-        {isCurrPostFetched && (
-          <>
-            <PostCard
-              width={PageWidth}
-              isCommentButtonVisible={false}
-              isCreator={true}
-              currUserId={currUserId}
-              {...allPosts.post}
-            />
-            <CreatePostCard
-              width={PageWidth}
-              inputPlaceholder="What are your thoughts?"
-              buttonText="Comment"
-              onFinishFunc={submitComment}
-            />
-            {Array.isArray(allPosts.comments) &&
-              allPosts.comments.map((comment, idx) => (
-                <CommentCard
-                  key={idx}
-                  width={PageWidth}
-                  isCreator={comment.userId === currUserId}
-                  currUserId={currUserId}
-                  {...comment}
-                />
-              ))}
-          </>
-        )}
-      </Spin>
-    </>
+    <Spin spinning={!isCurrPostFetched}>
+      {isCurrPostFetched && (
+        <>
+          <PostCard
+            width={PageWidth}
+            isCommentButtonVisible={false}
+            isCreator={true}
+            currUserId={currUserId}
+            {...allPosts.post}
+          />
+          <CreatePostCard
+            width={PageWidth}
+            inputPlaceholder="What are your thoughts?"
+            buttonText="Comment"
+            onFinishFunc={submitComment}
+          />
+          {Array.isArray(allPosts.comments) &&
+            allPosts.comments.map((comment, idx) => (
+              <CommentCard
+                key={idx}
+                width={PageWidth}
+                isCreator={comment.userId === currUserId}
+                currUserId={currUserId}
+                {...comment}
+              />
+            ))}
+        </>
+      )}
+    </Spin>
   );
 };
 
