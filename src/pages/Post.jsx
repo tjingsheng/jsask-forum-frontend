@@ -17,28 +17,28 @@ const PostPage = () => {
 const PostPageContent = () => {
   const dispatch = useDispatch();
 
-  const currUserId = useSelector((state) => state.authentication.user.id);
-  const allPosts = useSelector((state) => state.post.currPost);
+  const { post, authentication } = useSelector((state) => state);
+  const { user } = authentication;
+  const { id: currUserId } = user;
+  const {
+    currPost,
+    isPostPosted,
+    isPostDeleted,
+    isPostUpdated,
+    isCurrPostFetched,
+    currPostKeys,
+  } = post;
+  const { postId: currPostId } = currPostKeys;
 
   const [queryParams] = useSearchParams(window.location.search);
-  const currPostId = queryParams.get("postId");
-
-  const isPostPosted = useSelector((state) => state.post.isPostPosted);
-  const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
-  const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
-  const isPutPostPreferenceSuccess = useSelector(
-    (state) => state.postPreference.isPutPostPreferenceSuccess
-  );
-  const isCurrPostFetched = useSelector(
-    (state) => state.post.isCurrPostFetched
-  );
+  const newPostId = queryParams.get("postId");
 
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(
-      postAction.fetchCurrPost({ userId: currUserId, postId: currPostId })
+      postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
     );
-  }, [isPostPosted, isPostDeleted, isPostUpdated, isPutPostPreferenceSuccess]);
+  }, [isPostPosted, isPostDeleted, isPostUpdated]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
@@ -47,14 +47,14 @@ const PostPageContent = () => {
           userId: currUserId,
           postTitle: "NONE",
           postContent: values.postContent,
-          parentPost: allPosts.post.postId,
+          parentPost: currPost.post.postId,
         })
       );
     }
   };
 
   return (
-    <Spin spinning={!isCurrPostFetched}>
+    <Spin spinning={currPostId !== newPostId}>
       {isCurrPostFetched && (
         <>
           <PostCard
@@ -62,7 +62,7 @@ const PostPageContent = () => {
             isCommentButtonVisible={false}
             isCreator={true}
             currUserId={currUserId}
-            {...allPosts.post}
+            {...currPost.post}
           />
           <CreatePostCard
             width={PageWidth}
@@ -74,7 +74,7 @@ const PostPageContent = () => {
           <ListCommentCards
             width={PageWidth}
             currUserId={currUserId}
-            allComments={allPosts.comments}
+            allComments={currPost.comments}
           />
         </>
       )}
