@@ -2,9 +2,9 @@ import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import CommentCard from "../components/cards/CommentCard";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import PostCard from "../components/cards/PostCard";
+import ListCommentCards from "../components/compoundcomponents/ListCommentCards";
 import HomeLayout from "../layouts/HomeLayout";
 import { postAction } from "../redux/actions";
 
@@ -70,16 +70,12 @@ const PostPageContent = () => {
             buttonText="Comment"
             onFinishFunc={submitComment}
           />
-          {Array.isArray(allPosts.comments) &&
-            allPosts.comments.map((comment, idx) => (
-              <CommentCard
-                key={idx}
-                width={PageWidth}
-                isCreator={comment.userId === currUserId}
-                currUserId={currUserId}
-                {...comment}
-              />
-            ))}
+
+          <ListCommentCards
+            width={PageWidth}
+            currUserId={currUserId}
+            allComments={allPosts.comments}
+          />
         </>
       )}
     </Spin>

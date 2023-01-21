@@ -1,4 +1,5 @@
 import React from "react";
+import { Messages } from "../../constants";
 
 import hasCommonElements, { isEmptyArray } from "../../utils";
 import sortKeyEnums from "../../utils/enums.js";
@@ -26,7 +27,7 @@ const ListPostCards = ({
     <>
       {isAllPostsFetched &&
         (isEmptyArray(allPosts) ? (
-          <NoContentCard width={width} message="There are no posts yet." />
+          <NoContentCard width={width} message={Messages.NO_POSTS} />
         ) : (
           allPosts
             .filter((post) =>

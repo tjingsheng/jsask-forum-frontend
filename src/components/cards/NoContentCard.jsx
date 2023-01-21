@@ -8,6 +8,7 @@ const NoContentCard = ({ width, message = "No Content Found" }) => {
       style={{
         margin: "10px auto",
         width: width,
+        textAlign: "center",
       }}
       bodyStyle={{
         padding: "0",
