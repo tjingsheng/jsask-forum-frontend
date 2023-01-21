@@ -24,7 +24,6 @@ const PostPageContent = () => {
     currPost,
     isPostPosted,
     isPostDeleted,
-    isPostUpdated,
     isCurrPostFetched,
     currPostKeys,
   } = post;
@@ -38,7 +37,7 @@ const PostPageContent = () => {
     dispatch(
       postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
     );
-  }, [isPostPosted, isPostDeleted, isPostUpdated]);
+  }, [isPostPosted, isPostDeleted]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
@@ -70,7 +69,6 @@ const PostPageContent = () => {
             buttonText="Comment"
             onFinishFunc={submitComment}
           />
-
           <ListCommentCards
             width={PageWidth}
             currUserId={currUserId}

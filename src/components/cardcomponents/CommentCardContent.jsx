@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postAction } from "../../redux/actions";
 
@@ -7,6 +7,9 @@ const { Paragraph } = Typography;
 
 const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
   const dispatch = useDispatch();
+
+  const [editableContent, setEditableContent] = useState(postContent);
+
   return (
     <Paragraph
       style={{
@@ -18,6 +21,7 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
           enterIcon: null,
           tooltip: "click to edit comment",
           onChange: (value) => {
+            setEditableContent(value);
             dispatch(
               postAction.updatePost({
                 postId: postId,
@@ -29,7 +33,7 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
         }
       }
     >
-      {postContent}
+      {editableContent}
     </Paragraph>
   );
 };
