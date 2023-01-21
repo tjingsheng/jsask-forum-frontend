@@ -4,7 +4,6 @@ import CommentCard from "../cards/CommentCard";
 import NoContentCard from "../cards/NoContentCard";
 
 const ListCommentCards = ({ width, currUserId, allComments }) => {
-  console.log(allComments);
   return (
     <>
       {allComments === null ? (

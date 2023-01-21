@@ -95,8 +95,9 @@ const PostCard = ({
       >
         <ManagePostForm
           submitButtonText="Edit"
-          onFinishFunc={(values) => {
+          onFinishForm={(values) => {
             setIsEditPostModalVisible(false);
+            console.log(values);
             dispatch(
               postAction.updatePost({
                 postId: postId,
