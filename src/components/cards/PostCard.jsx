@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, Card, Modal } from "antd";
+import { Button, Card, Modal, Tooltip } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -50,28 +50,32 @@ const PostCard = ({
       >
         <PostCardHeader postTitle={postTitle} />
         {isCreator && (
-          <DeleteOutlined
-            onClick={() => setIsDeletePostModalVisible(true)}
-            style={{
-              display: "inline-block",
-              float: "right",
-              fontSize: "25px",
-              marginTop: "10px",
-              marginRight: "10px",
-            }}
-          />
+          <Tooltip title={Messages.TOOLTIP_DELETE_POST}>
+            <DeleteOutlined
+              onClick={() => setIsDeletePostModalVisible(true)}
+              style={{
+                display: "inline-block",
+                float: "right",
+                fontSize: "25px",
+                marginTop: "10px",
+                marginRight: "10px",
+              }}
+            />
+          </Tooltip>
         )}
         {isCreator && (
-          <EditOutlined
-            onClick={() => setIsEditPostModalVisible(true)}
-            style={{
-              display: "inline-block",
-              float: "right",
-              fontSize: "25px",
-              marginTop: "10px",
-              marginRight: "10px",
-            }}
-          />
+          <Tooltip title={Messages.TOOLTIP_EDIT_POST}>
+            <EditOutlined
+              onClick={() => setIsEditPostModalVisible(true)}
+              style={{
+                display: "inline-block",
+                float: "right",
+                fontSize: "25px",
+                marginTop: "10px",
+                marginRight: "10px",
+              }}
+            />
+          </Tooltip>
         )}
         <PostCardTags tags={tags} />
         <PostCardContent postContent={postContent} />

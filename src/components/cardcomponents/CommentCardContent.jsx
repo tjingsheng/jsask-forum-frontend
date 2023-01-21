@@ -1,6 +1,7 @@
 import { Typography } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Messages } from "../../constants";
 import { postAction } from "../../redux/actions";
 
 const { Paragraph } = Typography;
@@ -19,7 +20,7 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
       editable={
         isCreator && {
           enterIcon: null,
-          tooltip: "click to edit comment",
+          tooltip: Messages.TOOLTIP_EDIT_COMMENT,
           onChange: (value) => {
             setEditableContent(value);
             dispatch(

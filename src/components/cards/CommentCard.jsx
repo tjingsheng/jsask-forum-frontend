@@ -1,5 +1,5 @@
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, Card, Modal } from "antd";
+import { Button, Card, Modal, Tooltip } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Messages } from "../../constants";
@@ -26,16 +26,18 @@ const CommentCard = ({ width, isCreator, postId, ...props }) => {
       >
         <CommentCardHeader {...props} />
         {isCreator && (
-          <DeleteOutlined
-            onClick={() => SetIsDeleteCommentModalVisible(true)}
-            style={{
-              display: "inline-block",
-              float: "right",
-              fontSize: "20px",
-              marginTop: "10px",
-              marginRight: "10px",
-            }}
-          />
+          <Tooltip title={Messages.TOOLTIP_DELETE_COMMENT}>
+            <DeleteOutlined
+              onClick={() => SetIsDeleteCommentModalVisible(true)}
+              style={{
+                display: "inline-block",
+                float: "right",
+                fontSize: "20px",
+                marginTop: "10px",
+                marginRight: "10px",
+              }}
+            />
+          </Tooltip>
         )}
         <CommentCardContent isCreator={isCreator} postId={postId} {...props} />
         <PostCardFooter
