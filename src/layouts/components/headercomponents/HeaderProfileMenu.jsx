@@ -105,10 +105,10 @@ const ProfileMenu = () => {
         onCancel={handleCloseAllModals}
         footer={[
           <Button key="Yes" onClick={handleLogout}>
-            Yes
+            {Messages.YES_BUTTON}
           </Button>,
           <Button key="No" onClick={handleCloseAllModals}>
-            No
+            {Messages.NO_BUTTON}
           </Button>,
         ]}
       >

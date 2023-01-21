@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Route } from "../../constants";
+import { Messages, Route } from "../../constants";
 import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
@@ -67,7 +67,7 @@ const LoginForm = () => {
             width: "100px",
           }}
         >
-          Login
+          {Messages.LOGIN_BUTTON}
         </Button>
       </Item>
     </Form>
