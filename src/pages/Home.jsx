@@ -23,18 +23,7 @@ const HomePageContent = () => {
   const allPosts = useSelector((state) => state.post.allPosts);
   const allTags = useSelector((state) => state.tag.allTags);
 
-  const [queryParams] = useSearchParams(window.location.search);
-  const sortKey = queryParams.get("sort");
-  const sortComparators = {
-    [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
-    [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
-    [sortKeyEnums.new]: (a, b) =>
-      new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
-    [sortKeyEnums.old]: (a, b) =>
-      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
-  };
-
-  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPostPosted = useSelector((state) => state.post.isPostPosted);
   const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
   const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
   const isPutPostPreferenceSuccess = useSelector(
@@ -50,20 +39,23 @@ const HomePageContent = () => {
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(tagAction.fetchAllTags());
-  }, [
-    isNewPostPosted,
-    isPostDeleted,
-    isPostUpdated,
-    isPutPostPreferenceSuccess,
-    isAuthenticatedSuccess,
-  ]);
+  }, [isPostPosted, isPostDeleted, isPostUpdated, isAuthenticatedSuccess]);
 
+  const [queryParams] = useSearchParams(window.location.search);
+  const sortKey = queryParams.get("sort");
+  const sortComparators = {
+    [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
+    [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
+    [sortKeyEnums.new]: (a, b) =>
+      new Date(b.postDatetime).getTime() - new Date(a.postDatetime).getTime(),
+    [sortKeyEnums.old]: (a, b) =>
+      new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime(),
+  };
+  const PageWidth = "50%";
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
   const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
     false
   );
-
-  const PageWidth = "50%";
 
   return (
     <>
@@ -83,29 +75,31 @@ const HomePageContent = () => {
         />
 
         {isAllPostsFetched &&
-        Array.isArray(allPosts) &&
-        allPosts.length === 0 ? (
-          <NoContentCard width={PageWidth} message="There are no posts yet" />
-        ) : (
-          allPosts
-            .filter((post) =>
-              filterByTagsArray.length > 0
-                ? hasCommonElements(post.tags, filterByTagsArray)
-                : true
-            )
-            .sort(sortComparators[sortKey])
-            .map((post, idx) => (
-              <PostCard
-                hoverable
-                key={idx}
-                width={PageWidth}
-                isCommentButtonVisible={true}
-                isCreator={currUserId === post.userId}
-                currUserId={currUserId}
-                {...post}
-              />
-            ))
-        )}
+          (Array.isArray(allPosts) && allPosts.length === 0 ? (
+            <NoContentCard
+              width={PageWidth}
+              message="There are no posts yet."
+            />
+          ) : (
+            allPosts
+              .filter((post) =>
+                filterByTagsArray.length > 0
+                  ? hasCommonElements(post.tags, filterByTagsArray)
+                  : true
+              )
+              .sort(sortComparators[sortKey])
+              .map((post, idx) => (
+                <PostCard
+                  hoverable
+                  key={idx}
+                  width={PageWidth}
+                  isCommentButtonVisible={true}
+                  isCreator={currUserId === post.userId}
+                  currUserId={currUserId}
+                  {...post}
+                />
+              ))
+          ))}
 
         <Modal
           title="Create Post"

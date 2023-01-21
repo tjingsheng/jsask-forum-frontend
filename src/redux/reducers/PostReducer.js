@@ -8,7 +8,7 @@ const InitialState = {
   currPost: Constant.DEFAULT_CURR_POST,
   isCurrPostFetched: true,
 
-  isNewPostPosted: true,
+  isPostPosted: true,
   isPostDeleted: true,
   isPostUpdated: true,
 };
@@ -58,17 +58,17 @@ const postReducer = (state = InitialState, action) => {
     case ActionType.CREATE_NEW_POST:
       return {
         ...state,
-        isNewPostPosted: false,
+        isPostPosted: false,
       };
     case ActionType.CREATE_NEW_POST_SUCCESS:
       return {
         ...state,
-        isNewPostPosted: true,
+        isPostPosted: true,
       };
     case ActionType.CREATE_NEW_POST_FAILED:
       return {
         ...state,
-        isNewPostPosted: true,
+        isPostPosted: true,
       };
 
     case ActionType.DELETE_POST:

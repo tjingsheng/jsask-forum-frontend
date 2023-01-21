@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -20,23 +21,22 @@ const PostPageContent = () => {
   const [queryParams] = useSearchParams(window.location.search);
   const currPostId = queryParams.get("postId");
 
-  const isNewPostPosted = useSelector((state) => state.post.isNewPostPosted);
+  const isPostPosted = useSelector((state) => state.post.isPostPosted);
   const isPostDeleted = useSelector((state) => state.post.isPostDeleted);
   const isPostUpdated = useSelector((state) => state.post.isPostUpdated);
   const isPutPostPreferenceSuccess = useSelector(
     (state) => state.postPreference.isPutPostPreferenceSuccess
   );
+  const isCurrPostFetched = useSelector(
+    (state) => state.post.isCurrPostFetched
+  );
 
   useEffect(() => {
+    dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(
       postAction.fetchCurrPost({ userId: currUserId, postId: currPostId })
     );
-  }, [
-    isNewPostPosted,
-    isPostDeleted,
-    isPostUpdated,
-    isPutPostPreferenceSuccess,
-  ]);
+  }, [isPostPosted, isPostDeleted, isPostUpdated, isPutPostPreferenceSuccess]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
@@ -55,29 +55,35 @@ const PostPageContent = () => {
 
   return (
     <>
-      <PostCard
-        width={PageWidth}
-        isCommentButtonVisible={false}
-        isCreator={true}
-        currUserId={currUserId}
-        {...allPosts.post}
-      />
-      <CreatePostCard
-        width={PageWidth}
-        inputPlaceholder="What are your thoughts?"
-        buttonText="Comment"
-        onFinishFunc={submitComment}
-      />
-      {Array.isArray(allPosts.comments) &&
-        allPosts.comments.map((comment, idx) => (
-          <CommentCard
-            key={idx}
-            width={PageWidth}
-            isCreator={comment.userId === currUserId}
-            currUserId={currUserId}
-            {...comment}
-          />
-        ))}
+      <Spin spinning={!isCurrPostFetched}>
+        {isCurrPostFetched && (
+          <>
+            <PostCard
+              width={PageWidth}
+              isCommentButtonVisible={false}
+              isCreator={true}
+              currUserId={currUserId}
+              {...allPosts.post}
+            />
+            <CreatePostCard
+              width={PageWidth}
+              inputPlaceholder="What are your thoughts?"
+              buttonText="Comment"
+              onFinishFunc={submitComment}
+            />
+            {Array.isArray(allPosts.comments) &&
+              allPosts.comments.map((comment, idx) => (
+                <CommentCard
+                  key={idx}
+                  width={PageWidth}
+                  isCreator={comment.userId === currUserId}
+                  currUserId={currUserId}
+                  {...comment}
+                />
+              ))}
+          </>
+        )}
+      </Spin>
     </>
   );
 };
