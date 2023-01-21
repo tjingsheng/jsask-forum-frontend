@@ -3,7 +3,7 @@ import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Route } from "../../constants";
+import { Messages, Route } from "../../constants";
 import { postAction } from "../../redux/actions";
 import PostCardContent from "../cardcomponents/PostCardContent";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
@@ -27,9 +27,8 @@ const PostCard = ({
   ...props
 }) => {
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
-  const [isDeletePostModalVisible, setIsDeletePostModalVisible] = useState(
-    false
-  );
+  const [isDeletePostModalVisible, setIsDeletePostModalVisible] =
+    useState(false);
   const goto = useNavigate();
   const dispatch = useDispatch();
 
@@ -129,10 +128,7 @@ const PostCard = ({
           </Button>,
         ]}
       >
-        <div>
-          Are you sure you want to delete your post? This action is
-          irreversible.
-        </div>
+        {Messages.DELETE_POST_COMFIRMATION}
       </Modal>
     </>
   );

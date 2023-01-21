@@ -3,7 +3,7 @@ import { Avatar, Button, Col, Menu, Modal, Row } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Route } from "../../../constants";
+import { Messages, Route } from "../../../constants";
 import { authenticationAction } from "../../../redux/actions";
 import { formatDatetime } from "../../../utils";
 
@@ -112,7 +112,7 @@ const ProfileMenu = () => {
           </Button>,
         ]}
       >
-        <div>Are you sure you want to logout?</div>
+        {Messages.LOGOUT_COMFIRMATION}
       </Modal>
     </>
   );
