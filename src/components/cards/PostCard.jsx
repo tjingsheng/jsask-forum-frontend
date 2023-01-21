@@ -121,14 +121,14 @@ const PostCard = ({
               goto("/");
             }}
           >
-            Yes
+            {Messages.YES_BUTTON}
           </Button>,
           <Button key="No" onClick={() => setIsDeletePostModalVisible(false)}>
-            No
+            {Messages.NO_BUTTON}
           </Button>,
         ]}
       >
-        {Messages.DELETE_POST_COMFIRMATION}
+        {Messages.DELETE_POST_CONFIRMATION}
       </Modal>
     </>
   );

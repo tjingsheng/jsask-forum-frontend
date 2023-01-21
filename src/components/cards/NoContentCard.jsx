@@ -1,8 +1,9 @@
 import { Card } from "antd";
 import Title from "antd/es/typography/Title";
 import React from "react";
+import { Messages } from "../../constants";
 
-const NoContentCard = ({ width, message = "No Content Found" }) => {
+const NoContentCard = ({ width, message = Messages.NO_CONTENT }) => {
   return (
     <Card
       style={{

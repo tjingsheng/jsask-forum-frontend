@@ -112,7 +112,7 @@ const ProfileMenu = () => {
           </Button>,
         ]}
       >
-        {Messages.LOGOUT_COMFIRMATION}
+        {Messages.LOGOUT_CONFIRMATION}
       </Modal>
     </>
   );

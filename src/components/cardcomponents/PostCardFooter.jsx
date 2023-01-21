@@ -141,7 +141,6 @@ const PostCardFooter = ({
                 }}
               >
                 {commentCount} Comments
-                {/* create plural component */}
               </Title>
             </>
           )}

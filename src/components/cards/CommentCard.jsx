@@ -1,20 +1,17 @@
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, Card, Modal, Typography } from "antd";
+import { Button, Card, Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Messages } from "../../constants";
 import { postAction } from "../../redux/actions";
 import CommentCardContent from "../cardcomponents/CommentCardContent";
 import CommentCardHeader from "../cardcomponents/CommentCardHeader";
 import PostCardFooter from "../cardcomponents/PostCardFooter";
 
-const { Text } = Typography;
-
 const CommentCard = ({ width, isCreator, postId, ...props }) => {
   const dispatch = useDispatch();
-  const [
-    isDeleteCommentModalVisible,
-    SetIsDeleteCommentModalVisible,
-  ] = useState(false);
+  const [isDeleteCommentModalVisible, SetIsDeleteCommentModalVisible] =
+    useState(false);
 
   return (
     <>
@@ -60,20 +57,17 @@ const CommentCard = ({ width, isCreator, postId, ...props }) => {
               dispatch(postAction.deletePost(postId));
             }}
           >
-            <Text>Yes</Text>
+            {Messages.YES_BUTTON}
           </Button>,
           <Button
             key="No"
             onClick={() => SetIsDeleteCommentModalVisible(false)}
           >
-            <Text>No</Text>
+            {Messages.NO_BUTTON}
           </Button>,
         ]}
       >
-        <Text>
-          Are you sure you want to delete your comment? This action is
-          irreversible.
-        </Text>
+        {Messages.DELETE_COMMENT_CONFIRMATION}
       </Modal>
     </>
   );
