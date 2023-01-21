@@ -54,7 +54,13 @@ const HomePageContent = () => {
   useEffect(() => {
     dispatch(postAction.fetchAllPosts(currUserId));
     dispatch(tagAction.fetchAllTags());
-  }, [isPostPosted, isPostDeleted, isPostUpdated, isAuthenticatedSuccess]);
+  }, [
+    isPostPosted,
+    isPostDeleted,
+    isPostUpdated,
+    isAuthenticatedSuccess,
+    currUserId,
+  ]);
 
   return (
     <Spin spinning={!isAllPostsFetched}>

@@ -37,7 +37,7 @@ const PostPageContent = () => {
     dispatch(
       postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
     );
-  }, [isPostPosted, isPostDeleted]);
+  }, [isPostPosted, isPostDeleted, currUserId, newPostId]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {

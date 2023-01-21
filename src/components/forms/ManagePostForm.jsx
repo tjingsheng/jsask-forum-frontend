@@ -18,7 +18,7 @@ const ManagePostForm = ({
       tags: tags,
       postContent: postContent,
     });
-  }, [postTitle, tags, postContent]);
+  }, [postTitle, tags, postContent, form]);
 
   return (
     <Form
