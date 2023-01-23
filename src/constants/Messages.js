@@ -25,6 +25,7 @@ const Messages = {
 
   LOGIN_BUTTON: "Login",
   SIGNUP_BUTTON: "Sign Up",
+  CREATE_BUTTON: "Create",
 
   NO_CONTENT: "No Content Found",
 

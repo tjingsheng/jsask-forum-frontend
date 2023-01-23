@@ -124,6 +124,7 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
           <Button
             type="primary"
             htmlType="submit"
+            disabled={!isUsernameValid}
             style={{
               padding: "auto",
               display: "inline-block",
@@ -131,7 +132,7 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
               width: "100px",
             }}
           >
-            {Messages.LOGIN_BUTTON}
+            {Messages.CREATE_BUTTON}
           </Button>
         </Item>
       </Form>
