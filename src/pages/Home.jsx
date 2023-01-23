@@ -2,6 +2,8 @@ import { Modal, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import JsaskLogo from "../assets/JsaskLogo";
+import JsaskSpin from "../assets/JsaskSpin";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import SortPostCard from "../components/cards/SortPostCard";
 import ListPostCards from "../components/compoundcomponents/ListPostCards";
@@ -81,7 +83,7 @@ const HomePageContent = () => {
         handleChange={setFilterByTagsArray}
         allTags={allTags}
       />
-      <Spin spinning={!isPostLoaded}>
+      <JsaskSpin spinning={!isPostLoaded}>
         <ListPostCards
           width={PageWidth}
           currUserId={currUserId}
@@ -90,7 +92,7 @@ const HomePageContent = () => {
           filterByTagsArray={filterByTagsArray}
           isAllPostsFetched={isAllPostsFetched}
         />
-      </Spin>
+      </JsaskSpin>
       <Modal
         title="Create Post"
         open={isCreatePostModalVisible}

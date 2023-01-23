@@ -1,0 +1,10 @@
+import { Spin } from "antd";
+import JsaskLogo from "./JsaskLogo";
+
+// Return value should be component
+const JsaskSpin = ({ ...props }) => {
+  const customIcon = <JsaskLogo id="loading" style={{ fontSize: "10vw" }} />;
+
+  return <Spin indicator={customIcon} {...props} />;
+};
+export default JsaskSpin;

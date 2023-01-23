@@ -2,6 +2,7 @@ import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import JsaskSpin from "../assets/JsaskSpin";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import PostCard from "../components/cards/PostCard";
 import ListCommentCards from "../components/compoundcomponents/ListCommentCards";
@@ -55,7 +56,7 @@ const PostPageContent = () => {
 
   return (
     <>
-      <Spin spinning={!isCurrPostLoaded}>
+      <JsaskSpin spinning={!isCurrPostLoaded}>
         {isCurrPostFetched && (
           <>
             <PostCard
@@ -78,7 +79,7 @@ const PostPageContent = () => {
             />
           </>
         )}
-      </Spin>
+      </JsaskSpin>
     </>
   );
 };
