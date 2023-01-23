@@ -7,6 +7,7 @@ const URI = {
   putPreference: "/postpreference",
 
   createPost: "/post",
+  createUser: "/curruser",
 
   deletePost: "/post",
 

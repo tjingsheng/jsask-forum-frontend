@@ -4,6 +4,8 @@ const InitialState = {
   user: Constant.DEFAULT_USER,
   isAuthenticated: false,
   isAuthenticatedSuccess: true,
+  isInvalidCredentials: false,
+  isCreateUserSuccess: true,
 };
 
 const authenticationReducer = (state = InitialState, action) => {
@@ -18,6 +20,7 @@ const authenticationReducer = (state = InitialState, action) => {
         ...state,
         isAuthenticated: false,
         isAuthenticatedSuccess: false,
+        isInvalidCredentials: false,
       };
     case ActionType.LOGIN_SUCCESS:
       return {
@@ -25,12 +28,14 @@ const authenticationReducer = (state = InitialState, action) => {
         isAuthenticated: true,
         isAuthenticatedSuccess: true,
         user: action.payload.user,
+        isInvalidCredentials: false,
       };
     case ActionType.LOGIN_FAILED:
       return {
         ...state,
         isAuthenticated: false,
         isAuthenticatedSuccess: true,
+        isInvalidCredentials: true,
       };
 
     case ActionType.LOGOUT:
@@ -50,6 +55,22 @@ const authenticationReducer = (state = InitialState, action) => {
         ...state,
         isAuthenticated: true,
         isAuthenticatedSuccess: true,
+      };
+
+    case ActionType.CREATE_USER:
+      return {
+        ...state,
+        isCreateUserSuccess: false,
+      };
+    case ActionType.CREATE_USER_SUCCESS:
+      return {
+        ...state,
+        isCreateUserSuccess: true,
+      };
+    case ActionType.CREATE_USER_FAILED:
+      return {
+        ...state,
+        isCreateUserSuccess: true,
       };
 
     default:

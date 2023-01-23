@@ -1,76 +1,93 @@
-import { Button, Form, Input } from "antd";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Alert, Button, Form, Input, notification } from "antd";
+import { useForm } from "antd/es/form/Form";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Messages, Route } from "../../constants";
 import { authenticationAction } from "../../redux/actions";
 
+var CryptoJS = require("crypto-js");
+var SHA512 = require("crypto-js/sha512");
+var salt = () => CryptoJS.lib.WordArray.random(16).toString();
+
 const { Item } = Form;
 
-const LoginForm = () => {
-  const goto = useNavigate();
-  const dispatch = useDispatch();
-  const [queryParams, setQueryParams] = useSearchParams(window.location.search);
+const LoginForm = ({ openCreateUserModal }) => {
+  const [form] = useForm();
 
-  const removeQueryParams = () => {
-    const param = queryParams.get("q");
-    if (param) {
-      queryParams.delete("q");
-      setQueryParams(queryParams);
-    }
-  };
+  const dispatch = useDispatch();
+  const { authentication } = useSelector((state) => state);
+  const { isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials } =
+    authentication;
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
-    goto(Route.home);
+    form.resetFields();
   };
 
+  const [api, contextHolder] = notification.useNotification();
+  const openNotificationWithIcon = () => {
+    api["error"]({
+      message: Messages.INVALID_CREDENTIALS_TITLE,
+      description: Messages.INVALID_CREDENTIALS_DESCRIPTION,
+      placement: "top",
+    });
+  };
+  useEffect(() => {
+    if (isInvalidCredentials) {
+      openNotificationWithIcon();
+    }
+  }, [isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials]);
+
   return (
-    <Form name="login" onFinish={onFinish} autoComplete="off">
-      <Item
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-          {
-            min: 5,
-            message: "Username must be at least 5 characters.",
-          },
-          {
-            max: 32,
-            message: "Username must be at most 32 characters.",
-          },
-        ]}
-      >
-        <Input placeholder="Username" />
-      </Item>
+    <>
+      {contextHolder}
+      <Form form={form} name="login" onFinish={onFinish} autoComplete="off">
+        <Item
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: "Please input your username!",
+            },
+            {
+              min: 5,
+              message: "Username must be at least 5 characters.",
+            },
+            {
+              max: 32,
+              message: "Username must be at most 32 characters.",
+            },
+          ]}
+        >
+          <Input placeholder="Username" />
+        </Item>
 
-      <Item name="password">
-        <Input.Password placeholder="Password [free entry]" />
-      </Item>
+        <Item name="password">
+          <Input.Password placeholder="Password" />
+        </Item>
 
-      <Item
-        wrapperCol={{
-          flex: "auto",
-        }}
-      >
-        <Button
-          onClick={removeQueryParams}
-          type="primary"
-          htmlType="submit"
-          style={{
-            padding: "auto",
-            display: "inline-block",
-            float: "right",
-            width: "100px",
+        <Item
+          wrapperCol={{
+            flex: "auto",
           }}
         >
-          {Messages.LOGIN_BUTTON}
-        </Button>
-      </Item>
-    </Form>
+          <Link onClick={openCreateUserModal}>{Messages.SIGNUP_BUTTON}</Link>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{
+              padding: "auto",
+              display: "inline-block",
+              float: "right",
+              width: "100px",
+            }}
+          >
+            {Messages.LOGIN_BUTTON}
+          </Button>
+        </Item>
+      </Form>
+    </>
   );
 };
 

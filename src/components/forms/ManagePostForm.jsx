@@ -22,6 +22,7 @@ const ManagePostForm = ({
 
   return (
     <Form
+      form={form}
       name="basic"
       labelCol={{
         span: 4,
@@ -34,7 +35,6 @@ const ManagePostForm = ({
         form.resetFields();
       }}
       autoComplete="off"
-      form={form}
     >
       <Item
         label="Title"

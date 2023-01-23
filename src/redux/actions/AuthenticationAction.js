@@ -10,6 +10,7 @@ const authenticationAction = {
     type: ActionType.LOGIN,
     payload: {
       username: data.username,
+      password: data.password
     },
   }),
   loginSuccess: (data) => ({
@@ -31,6 +32,21 @@ const authenticationAction = {
   }),
   logoutFailed: (data) => ({
     type: ActionType.LOGOUT_FAILED,
+    payload: {},
+  }),
+
+  createUser: (data) => ({
+    type: ActionType.CREATE_USER,
+    payload: {
+      newUser: data
+    }
+  }),
+  createUserSuccess: (data) => ({
+    type: ActionType.CREATE_USER_SUCCESS,
+    payload: {},
+  }),
+  createUserFailed: (data) => ({
+    type: ActionType.CREATE_USER_FAILED,
     payload: {},
   }),
 };

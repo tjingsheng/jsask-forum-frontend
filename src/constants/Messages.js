@@ -1,4 +1,8 @@
 const Messages = {
+
+  INVALID_CREDENTIALS_TITLE: "Invalid Credentials",
+  INVALID_CREDENTIALS_DESCRIPTION: "You have entered an invalid username or password",
+
   NO_POSTS: "There are no posts yet.",
   NO_COMMENTS: "There are no comments yet.",
 
@@ -17,6 +21,7 @@ const Messages = {
   OLD_BUTTON: "Old",
 
   LOGIN_BUTTON: "Login",
+  SIGNUP_BUTTON: "Sign Up",
 
   NO_CONTENT: "No Content Found",
 
