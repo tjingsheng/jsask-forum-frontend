@@ -51,15 +51,34 @@ function* loginProcess(action) {
 
 function* createUser(action) {
   try {
-    yield axiosRequest(
+    const response = yield axiosRequest(
       RequestMethod.POST,
       URI.createUser,
       action.payload.newUser
     );
-    yield put(authenticationAction.createUserSuccess());
+    if (response.data === null) {
+      yield put(authenticationAction.createUserFailed());
+    } else {
+      yield put(authenticationAction.createUserSuccess());
+    }
   } catch (e) {
     console.log(e);
     yield put(authenticationAction.createUserFailed());
+  }
+}
+
+function* checkUsername(action) {
+  try {
+    const requestURI = URI.getCurrUser + "/" + action.payload.username;
+    const response = yield axiosRequest(RequestMethod.GET, requestURI);
+    if (response.data === null) {
+      yield put(authenticationAction.checkUsernameSuccess(false));
+    } else {
+      yield put(authenticationAction.checkUsernameSuccess(true));
+    }
+  } catch (e) {
+    console.log(e);
+    yield put(authenticationAction.checkUsernameFailed());
   }
 }
 
@@ -67,6 +86,7 @@ function* authenticationSaga() {
   yield takeEvery(ActionType.LOGOUT, logoutProcess);
   yield takeEvery(ActionType.LOGIN, loginProcess);
   yield takeEvery(ActionType.CREATE_USER, createUser);
+  yield takeEvery(ActionType.CHECK_USERNAME, checkUsername);
 }
 
 export default authenticationSaga;

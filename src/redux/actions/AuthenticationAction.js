@@ -10,7 +10,7 @@ const authenticationAction = {
     type: ActionType.LOGIN,
     payload: {
       username: data.username,
-      password: data.password
+      password: data.password,
     },
   }),
   loginSuccess: (data) => ({
@@ -38,8 +38,8 @@ const authenticationAction = {
   createUser: (data) => ({
     type: ActionType.CREATE_USER,
     payload: {
-      newUser: data
-    }
+      newUser: data,
+    },
   }),
   createUserSuccess: (data) => ({
     type: ActionType.CREATE_USER_SUCCESS,
@@ -47,6 +47,23 @@ const authenticationAction = {
   }),
   createUserFailed: (data) => ({
     type: ActionType.CREATE_USER_FAILED,
+    payload: {},
+  }),
+
+  checkUsername: (data) => ({
+    type: ActionType.CHECK_USERNAME,
+    payload: {
+      username: data,
+    },
+  }),
+  checkUsernameSuccess: (data) => ({
+    type: ActionType.CHECK_USERNAME_SUCCESS,
+    payload: {
+      data,
+    },
+  }),
+  checkUsernameFailed: (data) => ({
+    type: ActionType.CHECK_USERNAME_FAILED,
     payload: {},
   }),
 };

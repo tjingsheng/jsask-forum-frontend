@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd";
 import { useForm } from "antd/es/form/Form";
 import React from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Messages, Route } from "../../constants";
+import { Messages } from "../../constants";
 import { authenticationAction } from "../../redux/actions";
 
 const { Item } = Form;
@@ -12,8 +12,14 @@ var CryptoJS = require("crypto-js");
 var SHA512 = require("crypto-js/sha512");
 var salt = () => CryptoJS.lib.WordArray.random(16).toString();
 
-const CreateUserForm = () => {
+const CreateUserForm = ({ onFinishForm = () => {} }) => {
   const [form] = useForm();
+  const username = Form.useWatch("username", form);
+  useEffect(() => {
+    dispatch(authenticationAction.checkUsername(username));
+    console.log(username);
+  }, [username]);
+
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
@@ -26,7 +32,7 @@ const CreateUserForm = () => {
       password: newPassword,
     };
     dispatch(authenticationAction.createUser(newUser));
-    dispatch(authenticationAction.login(values));
+    onFinishForm();
     form.resetFields();
   };
 

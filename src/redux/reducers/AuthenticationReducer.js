@@ -6,6 +6,8 @@ const InitialState = {
   isAuthenticatedSuccess: true,
   isInvalidCredentials: false,
   isCreateUserSuccess: true,
+  isCheckUsernameSuccess: true,
+  isUsernameValid: true,
 };
 
 const authenticationReducer = (state = InitialState, action) => {
@@ -71,6 +73,25 @@ const authenticationReducer = (state = InitialState, action) => {
       return {
         ...state,
         isCreateUserSuccess: true,
+      };
+
+    case ActionType.CHECK_USERNAME:
+      return {
+        ...state,
+        isUsernameValid: true,
+        isCheckUsernameSuccess: false,
+      };
+    case ActionType.CHECK_USERNAME_SUCCESS:
+      return {
+        ...state,
+        isUsernameValid: action.payload.data,
+        isCheckUsernameSuccess: true,
+      };
+    case ActionType.CHECK_USERNAME_FAILED:
+      return {
+        ...state,
+        isUsernameValid: true,
+        isCheckUsernameSuccess: true,
       };
 
     default:

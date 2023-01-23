@@ -47,7 +47,9 @@ const LoginPageContent = () => {
         onCancel={() => setIsCreateUserModalVisible(false)}
         footer={[]}
       >
-        <CreateUserForm />
+        <CreateUserForm
+          onFinishForm={() => setIsCreateUserModalVisible(false)}
+        />
       </Modal>
     </>
   );
