@@ -34,9 +34,8 @@ const HomePageContent = () => {
   const sortKey = queryParams.get("sort");
 
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(
-    false
-  );
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] =
+    useState(false);
 
   const handleOnFinishForm = (values) => {
     setIsCreatePostModalVisible(false);
@@ -51,19 +50,24 @@ const HomePageContent = () => {
     );
   };
 
+  const isLoaded =
+    isPostDeleted && isPostPosted && isPostUpdated && isAuthenticatedSuccess;
+
   useEffect(() => {
-    dispatch(postAction.fetchAllPosts(currUserId));
-    dispatch(tagAction.fetchAllTags());
+    if (isLoaded) {
+      dispatch(postAction.fetchAllPosts(currUserId));
+      dispatch(tagAction.fetchAllTags());
+    }
   }, [
-    isPostPosted,
     isPostDeleted,
+    isPostPosted,
     isPostUpdated,
     isAuthenticatedSuccess,
     currUserId,
   ]);
 
   return (
-    <Spin spinning={!isAllPostsFetched}>
+    <>
       <CreatePostCard
         width={PageWidth}
         inputPlaceholder="Create Post"
@@ -77,14 +81,16 @@ const HomePageContent = () => {
         handleChange={setFilterByTagsArray}
         allTags={allTags}
       />
-      <ListPostCards
-        width={PageWidth}
-        currUserId={currUserId}
-        allPosts={allPosts}
-        sortKey={sortKey}
-        filterByTagsArray={filterByTagsArray}
-        isAllPostsFetched={isAllPostsFetched}
-      />
+      <Spin spinning={!isLoaded}>
+        <ListPostCards
+          width={PageWidth}
+          currUserId={currUserId}
+          allPosts={allPosts}
+          sortKey={sortKey}
+          filterByTagsArray={filterByTagsArray}
+          isAllPostsFetched={isAllPostsFetched}
+        />
+      </Spin>
       <Modal
         title="Create Post"
         open={isCreatePostModalVisible}
@@ -97,7 +103,7 @@ const HomePageContent = () => {
           onFinishForm={handleOnFinishForm}
         />
       </Modal>
-    </Spin>
+    </>
   );
 };
 
