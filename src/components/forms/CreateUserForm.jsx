@@ -18,13 +18,6 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
   const { isUsernameValid } = authentication;
 
   const [form] = useForm();
-  const username = Form.useWatch("username", form);
-  useEffect(() => {
-    if (username.length > 0) {
-      dispatch(authenticationAction.checkUsername(username));
-    }
-    console.log(username);
-  }, [username]);
 
   const [api, contextHolder] = notification.useNotification();
   const openNotificationWithIcon = () => {
@@ -40,6 +33,14 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
       openNotificationWithIcon();
     }
   }, [isUsernameValid]);
+
+  const username = Form.useWatch("username", form);
+  useEffect(() => {
+    if (username !== undefined) {
+      dispatch(authenticationAction.checkUsername(username));
+    }
+    console.log(username);
+  }, [username]);
 
   const onFinish = (values) => {
     const newUsername = values.username;
