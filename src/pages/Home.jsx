@@ -23,10 +23,10 @@ const HomePageContent = () => {
   const { id: currUserId } = user;
   const {
     allPosts,
+    isAllPostsFetched,
     isPostPosted,
     isPostDeleted,
     isPostUpdated,
-    isAllPostsFetched,
   } = post;
   const { allTags } = tag;
 
@@ -50,11 +50,11 @@ const HomePageContent = () => {
     );
   };
 
-  const isLoaded =
-    isPostDeleted && isPostPosted && isPostUpdated && isAuthenticatedSuccess;
+  const isPostLoaded =
+    isPostDeleted && isPostPosted && isPostUpdated && isAllPostsFetched;
 
   useEffect(() => {
-    if (isLoaded) {
+    if (isPostLoaded) {
       dispatch(postAction.fetchAllPosts(currUserId));
       dispatch(tagAction.fetchAllTags());
     }
@@ -81,7 +81,7 @@ const HomePageContent = () => {
         handleChange={setFilterByTagsArray}
         allTags={allTags}
       />
-      <Spin spinning={!isLoaded}>
+      <Spin spinning={!isPostLoaded}>
         <ListPostCards
           width={PageWidth}
           currUserId={currUserId}

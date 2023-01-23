@@ -22,22 +22,23 @@ const PostPageContent = () => {
   const { id: currUserId } = user;
   const {
     currPost,
-    isPostPosted,
-    isPostDeleted,
     isCurrPostFetched,
-    currPostKeys,
+    isPostDeleted,
+    isPostPosted,
+    isPostUpdated,
   } = post;
-  const { postId: currPostId } = currPostKeys;
-
+  const isCurrPostLoaded =
+    isPostDeleted && isPostPosted && isPostUpdated && isCurrPostFetched;
   const [queryParams] = useSearchParams(window.location.search);
   const newPostId = queryParams.get("postId");
 
   useEffect(() => {
-    dispatch(postAction.fetchAllPosts(currUserId));
-    dispatch(
-      postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
-    );
-  }, [isPostPosted, isPostDeleted, currUserId, newPostId]);
+    if (isCurrPostLoaded) {
+      dispatch(
+        postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
+      );
+    }
+  }, [isPostPosted, isPostDeleted, isPostUpdated, currUserId, newPostId]);
 
   const submitComment = (values) => {
     if (values.postContent !== undefined) {
@@ -53,30 +54,32 @@ const PostPageContent = () => {
   };
 
   return (
-    <Spin spinning={currPostId !== newPostId}>
-      {isCurrPostFetched && (
-        <>
-          <PostCard
-            width={PageWidth}
-            isCommentButtonVisible={false}
-            isCreator={true}
-            currUserId={currUserId}
-            {...currPost.post}
-          />
-          <CreatePostCard
-            width={PageWidth}
-            inputPlaceholder="What are your thoughts?"
-            buttonText="Comment"
-            onFinishFunc={submitComment}
-          />
-          <ListCommentCards
-            width={PageWidth}
-            currUserId={currUserId}
-            allComments={currPost.comments}
-          />
-        </>
-      )}
-    </Spin>
+    <>
+      <Spin spinning={!isCurrPostLoaded}>
+        {isCurrPostFetched && (
+          <>
+            <PostCard
+              width={PageWidth}
+              isCommentButtonVisible={false}
+              isCreator={true}
+              currUserId={currUserId}
+              {...currPost.post}
+            />
+            <CreatePostCard
+              width={PageWidth}
+              inputPlaceholder="What are your thoughts?"
+              buttonText="Comment"
+              onFinishFunc={submitComment}
+            />
+            <ListCommentCards
+              width={PageWidth}
+              currUserId={currUserId}
+              allComments={currPost.comments}
+            />
+          </>
+        )}
+      </Spin>
+    </>
   );
 };
 
