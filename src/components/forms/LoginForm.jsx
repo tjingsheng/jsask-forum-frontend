@@ -1,14 +1,10 @@
-import { Alert, Button, Form, Input, notification } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import { useForm } from "antd/es/form/Form";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Messages, Route } from "../../constants";
+import { Link } from "react-router-dom";
+import { Messages } from "../../constants";
 import { authenticationAction } from "../../redux/actions";
-
-var CryptoJS = require("crypto-js");
-var SHA512 = require("crypto-js/sha512");
-var salt = () => CryptoJS.lib.WordArray.random(16).toString();
 
 const { Item } = Form;
 

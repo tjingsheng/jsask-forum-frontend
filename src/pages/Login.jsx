@@ -1,4 +1,4 @@
-import { Alert, Card, Modal } from "antd";
+import { Card, Modal } from "antd";
 import React from "react";
 import { useState } from "react";
 import JsaskLogo from "../assets/JsaskLogo";
