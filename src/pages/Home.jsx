@@ -2,7 +2,6 @@ import { Modal, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import JsaskLogo from "../assets/JsaskLogo";
 import JsaskSpin from "../assets/JsaskSpin";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import SortPostCard from "../components/cards/SortPostCard";
