@@ -20,7 +20,9 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
   const [form] = useForm();
   const username = Form.useWatch("username", form);
   useEffect(() => {
-    dispatch(authenticationAction.checkUsername(username));
+    if (username) {
+      dispatch(authenticationAction.checkUsername(username));
+    }
     console.log(username);
   }, [username]);
 
