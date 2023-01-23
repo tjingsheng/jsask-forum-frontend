@@ -46,7 +46,7 @@ const ManagePostForm = ({
           },
         ]}
       >
-        <Input />
+        <Input allowClear />
       </Item>
 
       <Item label="Tags" name="tags">
@@ -55,6 +55,7 @@ const ManagePostForm = ({
 
       <Item label="Content" name="postContent">
         <TextArea
+          allowClear
           placeholder="Text (Optional)"
           showCount
           rows={5}

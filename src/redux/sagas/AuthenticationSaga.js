@@ -72,9 +72,9 @@ function* checkUsername(action) {
     const requestURI = URI.getCurrUser + "/" + action.payload.username;
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     if (response.data === null) {
-      yield put(authenticationAction.checkUsernameSuccess(false));
-    } else {
       yield put(authenticationAction.checkUsernameSuccess(true));
+    } else {
+      yield put(authenticationAction.checkUsernameSuccess(false));
     }
   } catch (e) {
     console.log(e);

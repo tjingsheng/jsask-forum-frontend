@@ -60,11 +60,11 @@ const LoginForm = ({ openCreateUserModal }) => {
             },
           ]}
         >
-          <Input placeholder="Username" />
+          <Input allowClear placeholder="Username" />
         </Item>
 
         <Item name="password">
-          <Input.Password placeholder="Password" />
+          <Input.Password allowClear placeholder="Password" />
         </Item>
 
         <Item
