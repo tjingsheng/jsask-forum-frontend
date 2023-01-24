@@ -6,7 +6,9 @@ import { postPreferenceAction } from "../actions";
 
 function* putPostPreference(action) {
   try {
-    yield axiosRequest(RequestMethod.PUT, URI.putPreference, action.payload);
+    const requestURI = URI.putPostPreference;
+    const payload = action.payload;
+    yield axiosRequest(RequestMethod.PUT, requestURI, payload);
     yield put(postPreferenceAction.putPostPreferenceSuccess());
   } catch (e) {
     console.log(e);

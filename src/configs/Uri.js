@@ -1,17 +1,17 @@
 const URI = {
-  getCurrUser: "/curruser",
-  getCurrPost: "/currpost",
-  getAllPosts: "/posts",
+  getUser: "/user/{username}/{password}",
+  getUserSalt: "/user/{username}",
+  postUser: "/user",
+
+  getCurrPost: "/post/{userId}/{postId}",
+  getAllPosts: "/post/{userId}",
+  postPost: "/post",
+  putPost: "/post",
+  deletePost: "/post/{postId}",
+
   getAllTags: "/tags",
 
-  putPreference: "/postpreference",
-
-  createPost: "/post",
-  createUser: "/curruser",
-
-  deletePost: "/post",
-
-  updatePost: "/post",
+  putPostPreference: "/postpreference",
 };
 
 export default URI;

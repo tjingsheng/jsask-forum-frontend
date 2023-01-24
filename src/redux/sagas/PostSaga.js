@@ -7,7 +7,8 @@ import { postAction } from "../actions";
 function* getAllPosts(action) {
   try {
     if (action.payload.userId !== -1) {
-      const requestURI = URI.getAllPosts + "/" + action.payload.userId;
+      const userId = action.payload.userId;
+      const requestURI = URI.getAllPosts.replace("{userId}", userId);
       const response = yield axiosRequest(RequestMethod.get, requestURI);
       const allPosts = response.data.payload.data;
       yield put(postAction.fetchAllPostsSuccess(allPosts));
@@ -20,12 +21,9 @@ function* getAllPosts(action) {
 
 function* getCurrPost(action) {
   try {
-    const requestURI =
-      URI.getCurrPost +
-      "/" +
-      action.payload.currPostKeys.userId +
-      "/" +
-      action.payload.currPostKeys.postId;
+    const userId = action.payload.currPostKeys.userId;
+    const postId = action.payload.currPostKeys.postId;
+    const requestURI = URI.getCurrPost.replace("{userId}", userId).replace("{postId}", postId);
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     const currPost = response.data.payload.data;
     yield put(postAction.fetchCurrPostSuccess(currPost));
@@ -37,11 +35,9 @@ function* getCurrPost(action) {
 
 function* createPost(action) {
   try {
-    yield axiosRequest(
-      RequestMethod.POST,
-      URI.createPost,
-      action.payload.newPost
-    );
+    const requestURI = URI.postPost;
+    const payload = action.payload.newPost;
+    yield axiosRequest(RequestMethod.POST, requestURI, payload);
     yield put(postAction.createNewPostSuccess());
   } catch (e) {
     console.log(e);
@@ -51,7 +47,8 @@ function* createPost(action) {
 
 function* deletePost(action) {
   try {
-    const requestURI = URI.deletePost + "/" + action.payload.deletePostId;
+    const postId = action.payload.deletePostId;
+    const requestURI = URI.deletePost.replace("{postId}", postId);
     yield axiosRequest(RequestMethod.DELETE, requestURI);
     yield put(postAction.deletePostSuccess());
   } catch (e) {
@@ -62,11 +59,9 @@ function* deletePost(action) {
 
 function* updatePost(action) {
   try {
-    yield axiosRequest(
-      RequestMethod.PUT,
-      URI.updatePost,
-      action.payload.updatePost
-    );
+    const requestURI = URI.putPost;
+    const payload = action.payload.updatePost;
+    yield axiosRequest(RequestMethod.PUT, requestURI, payload);
     yield put(postAction.updatePostSuccess());
   } catch (e) {
     console.log(e);

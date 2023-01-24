@@ -7,11 +7,7 @@ export const RequestMethod = Object.freeze({
   DELETE: "delete",
 });
 
-export async function axiosRequest(
-  method = RequestMethod.GET,
-  resourceIdentifier,
-  payload = null
-) {
+export async function axiosRequest(method = RequestMethod.GET, resourceIdentifier, payload = null) {
   // const baseURL = "http://localhost:8000/";
   const baseURL = "https://jsask-forum-backend.herokuapp.com/";
   axios.defaults.baseURL = baseURL;

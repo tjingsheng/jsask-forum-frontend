@@ -1,5 +1,6 @@
 import { Layout } from "antd";
 import React from "react";
+import { Messages } from "../../constants";
 
 const { Footer } = Layout;
 
@@ -12,7 +13,7 @@ const FooterComponent = () => (
       justifyContent: "center",
     }}
   >
-    Jsask © 2022 Created by Tan Jing Sheng
+    {Messages.FOOTER_MESSAGE}
   </Footer>
 );
 
