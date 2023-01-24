@@ -4,13 +4,7 @@ import React, { useEffect } from "react";
 const { TextArea } = Input;
 const { Item } = Form;
 
-const ManagePostForm = ({
-  submitButtonText = "Post",
-  onFinishForm = () => {},
-  postTitle,
-  tags,
-  postContent,
-}) => {
+const ManagePostForm = ({ submitButtonText = "Post", onFinishForm = () => {}, postTitle, tags, postContent }) => {
   const [form] = useForm();
   useEffect(() => {
     form.setFieldsValue({
@@ -54,13 +48,7 @@ const ManagePostForm = ({
       </Item>
 
       <Item label="Content" name="postContent">
-        <TextArea
-          allowClear
-          placeholder="Text (Optional)"
-          showCount
-          rows={5}
-          maxLength={500}
-        />
+        <TextArea allowClear placeholder="Text (Optional)" showCount rows={5} maxLength={2500} />
       </Item>
 
       <Item
