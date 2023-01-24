@@ -9,7 +9,7 @@ function App() {
   );
 
   return (
-      <RouterProvider router={isAuthenticated ? privateRoutes : publicRoutes} />
+    <RouterProvider router={isAuthenticated ? privateRoutes : publicRoutes} />
   );
 }
 
