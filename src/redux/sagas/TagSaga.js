@@ -6,7 +6,8 @@ import { tagAction } from "../actions";
 
 function* fetchAllTags(action) {
   try {
-    const response = yield axiosRequest(RequestMethod.get, URI.getAllTags);
+    const requestURI = URI.getAllTags;
+    const response = yield axiosRequest(RequestMethod.get, requestURI);
     const allTags = response.data.payload.data;
     yield put(tagAction.fetchAllTagsSuccess(allTags));
   } catch (e) {
