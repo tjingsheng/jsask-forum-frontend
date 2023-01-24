@@ -10,11 +10,12 @@ const { Item } = Form;
 
 const LoginForm = ({ openCreateUserModal }) => {
   const [form] = useForm();
+  const username = Form.useWatch("username", form);
+  const password = Form.useWatch("password", form);
 
   const dispatch = useDispatch();
   const { authentication } = useSelector((state) => state);
-  const { isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials } =
-    authentication;
+  const { isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials } = authentication;
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
@@ -30,7 +31,7 @@ const LoginForm = ({ openCreateUserModal }) => {
     });
   };
   useEffect(() => {
-    if (isInvalidCredentials) {
+    if (isInvalidCredentials && !username && !password) {
       openNotificationWithIcon();
     }
   }, [isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials]);
@@ -70,6 +71,7 @@ const LoginForm = ({ openCreateUserModal }) => {
         >
           <Link onClick={openCreateUserModal}>{Messages.SIGNUP_BUTTON}</Link>
           <Button
+            disabled={!isAuthenticatedSuccess}
             type="primary"
             htmlType="submit"
             style={{

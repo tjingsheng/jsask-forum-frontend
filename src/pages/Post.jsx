@@ -32,7 +32,7 @@ const PostPageContent = () => {
   }, [isPostPosted, isPostDeleted, isPostUpdated, currUserId, newPostId]);
 
   const submitComment = (values) => {
-    if (values.postContent !== undefined) {
+    if (values.postContent) {
       dispatch(
         postAction.createNewPost({
           userId: currUserId,

@@ -1,7 +1,8 @@
 const Messages = {
+  FOOTER_MESSAGE: "Jsask © 2022 Created by Tan Jing Sheng",
+
   INVALID_CREDENTIALS_TITLE: "Invalid Credentials",
-  INVALID_CREDENTIALS_DESCRIPTION:
-    "You have entered an invalid username or password",
+  INVALID_CREDENTIALS_DESCRIPTION: "You have entered an invalid username or password",
 
   INVALID_USERNAME_TITLE: "Invalid Username",
   INVALID_USERNAME_DESCRIPTION: "The username you entered is in use",
@@ -9,11 +10,9 @@ const Messages = {
   NO_POSTS: "There are no posts yet.",
   NO_COMMENTS: "There are no comments yet.",
 
-  DELETE_POST_CONFIRMATION:
-    "Are you sure you want to delete your post? This action is irreversible.",
+  DELETE_POST_CONFIRMATION: "Are you sure you want to delete your post? This action is irreversible.",
   LOGOUT_CONFIRMATION: "  Are you sure you want to logout?",
-  DELETE_COMMENT_CONFIRMATION:
-    "Are you sure you want to delete your comment? This action is irreversible.",
+  DELETE_COMMENT_CONFIRMATION: "Are you sure you want to delete your comment? This action is irreversible.",
 
   YES_BUTTON: "Yes",
   NO_BUTTON: "No",
