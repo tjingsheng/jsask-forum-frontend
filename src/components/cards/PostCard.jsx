@@ -74,7 +74,12 @@ const PostCard = ({
         )}
         <PostCardTags tags={tags} {...props} />
         <PostCardContent postContent={postContent} />
-        <PostCardFooter isCommentButtonVisible={isCommentButtonVisible} currUserId={currUserId} {...props} />
+        <PostCardFooter
+          isCommentButtonVisible={isCommentButtonVisible}
+          currUserId={currUserId}
+          postId={postId}
+          {...props}
+        />
       </Card>
 
       <Modal
