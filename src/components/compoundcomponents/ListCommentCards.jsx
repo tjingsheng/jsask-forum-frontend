@@ -10,15 +10,17 @@ const ListCommentCards = ({ width, currUserId, allComments }) => {
         <NoContentCard width={width} message={Messages.NO_COMMENTS} />
       ) : (
         Array.isArray(allComments) &&
-        allComments.map((comment, idx) => (
-          <CommentCard
-            key={idx}
-            width={width}
-            isCreator={comment.userId === currUserId}
-            currUserId={currUserId}
-            {...comment}
-          />
-        ))
+        allComments
+          .sort((a, b) => new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime())
+          .map((comment, idx) => (
+            <CommentCard
+              key={idx}
+              width={width}
+              isCreator={comment.userId === currUserId}
+              currUserId={currUserId}
+              {...comment}
+            />
+          ))
       )}
       ;
     </>
