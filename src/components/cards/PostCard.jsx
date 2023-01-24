@@ -12,33 +12,28 @@ import PostCardTags from "../cardcomponents/PostCardTags";
 import ManagePostForm from "../forms/ManagePostForm";
 
 const PostCard = ({
-  hoverable = false,
   width,
+  hoverable = false,
   isCommentButtonVisible,
-
-  postTitle,
-  tags,
-  postContent,
-
-  isCreator,
   currUserId,
 
   postId,
+  userId,
+  postTitle,
+  tags,
+  postContent,
   ...props
 }) => {
+  const isCreator = currUserId === userId;
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
-  const [isDeletePostModalVisible, setIsDeletePostModalVisible] =
-    useState(false);
+  const [isDeletePostModalVisible, setIsDeletePostModalVisible] = useState(false);
   const goto = useNavigate();
   const dispatch = useDispatch();
 
   return (
     <>
       <Card
-        onClick={(e) =>
-          !["svg", "path"].includes(e.target.nodeName) &&
-          goto(`${Route.post}/?postId=${postId}`)
-        }
+        onClick={(e) => !["svg", "path", "span"].includes(e.target.nodeName) && goto(`${Route.post}/?postId=${postId}`)}
         hoverable={hoverable}
         style={{
           margin: "10px auto",
@@ -79,12 +74,7 @@ const PostCard = ({
         )}
         <PostCardTags tags={tags} />
         <PostCardContent postContent={postContent} />
-        <PostCardFooter
-          isCommentButtonVisible={isCommentButtonVisible}
-          postId={postId}
-          currUserId={currUserId}
-          {...props}
-        />
+        <PostCardFooter isCommentButtonVisible={isCommentButtonVisible} currUserId={currUserId} {...props} />
       </Card>
 
       <Modal

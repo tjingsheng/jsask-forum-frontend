@@ -49,13 +49,7 @@ const PostPageContent = () => {
       <JsaskSpin spinning={!isCurrPostLoaded}>
         {isCurrPostFetched && (
           <>
-            <PostCard
-              width={PageWidth}
-              isCommentButtonVisible={false}
-              isCreator={true}
-              currUserId={currUserId}
-              {...currPost.post}
-            />
+            <PostCard width={PageWidth} isCommentButtonVisible={false} currUserId={currUserId} {...currPost.post} />
             <CreatePostCard
               width={PageWidth}
               inputPlaceholder="What are your thoughts?"

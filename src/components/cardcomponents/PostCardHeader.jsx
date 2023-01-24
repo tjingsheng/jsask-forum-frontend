@@ -3,7 +3,7 @@ import React from "react";
 
 const { Title } = Typography;
 
-const PostCardHeader = ({ postTitle }) => (
+const PostCardHeader = ({ postTitle = "Unknown Title" }) => (
   <Title
     level={3}
     style={{

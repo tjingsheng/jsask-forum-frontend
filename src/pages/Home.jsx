@@ -25,6 +25,8 @@ const HomePageContent = () => {
   const { allPosts, isAllPostsFetched, isPostPosted, isPostDeleted, isPostUpdated } = post;
   const { allTags } = tag;
 
+  const [tagSelection, setTagSelection] = useState(allTags);
+
   const [queryParams] = useSearchParams(window.location.search);
   const sortKey = queryParams.get("sort");
 
@@ -62,7 +64,7 @@ const HomePageContent = () => {
         handleOnClickCreatePostInput={setIsCreatePostModalVisible}
         handleOnClickCreatePostButton={setIsCreatePostModalVisible}
       />
-      <SortPostCard width={PageWidth} sortKey={sortKey} handleChange={setFilterByTagsArray} allTags={allTags} />
+      <SortPostCard width={PageWidth} sortKey={sortKey} handleChange={setFilterByTagsArray} allTags={tagSelection} />
       <JsaskSpin spinning={!isPostLoaded}>
         <ListPostCards
           width={PageWidth}

@@ -3,7 +3,7 @@ import React from "react";
 
 const { Paragraph } = Typography;
 
-const PostCardContent = ({ postContent }) => (
+const PostCardContent = ({ postContent = "Unknown Content" }) => (
   <Paragraph
     style={{
       margin: "0px",
