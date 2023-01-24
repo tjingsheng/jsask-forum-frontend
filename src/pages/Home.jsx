@@ -22,21 +22,14 @@ const HomePageContent = () => {
   const { post, tag, authentication } = useSelector((state) => state);
   const { user, isAuthenticatedSuccess } = authentication;
   const { id: currUserId } = user;
-  const {
-    allPosts,
-    isAllPostsFetched,
-    isPostPosted,
-    isPostDeleted,
-    isPostUpdated,
-  } = post;
+  const { allPosts, isAllPostsFetched, isPostPosted, isPostDeleted, isPostUpdated } = post;
   const { allTags } = tag;
 
   const [queryParams] = useSearchParams(window.location.search);
   const sortKey = queryParams.get("sort");
 
   const [filterByTagsArray, setFilterByTagsArray] = useState([]);
-  const [isCreatePostModalVisible, setIsCreatePostModalVisible] =
-    useState(false);
+  const [isCreatePostModalVisible, setIsCreatePostModalVisible] = useState(false);
 
   const handleOnFinishForm = (values) => {
     setIsCreatePostModalVisible(false);
@@ -51,21 +44,14 @@ const HomePageContent = () => {
     );
   };
 
-  const isPostLoaded =
-    isPostDeleted && isPostPosted && isPostUpdated && isAllPostsFetched;
+  const isPostLoaded = isPostDeleted && isPostPosted && isPostUpdated && isAllPostsFetched;
 
   useEffect(() => {
     if (isPostLoaded) {
       dispatch(postAction.fetchAllPosts(currUserId));
       dispatch(tagAction.fetchAllTags());
     }
-  }, [
-    isPostDeleted,
-    isPostPosted,
-    isPostUpdated,
-    isAuthenticatedSuccess,
-    currUserId,
-  ]);
+  }, [isPostDeleted, isPostPosted, isPostUpdated, isAuthenticatedSuccess, currUserId]);
 
   return (
     <>
@@ -76,12 +62,7 @@ const HomePageContent = () => {
         handleOnClickCreatePostInput={setIsCreatePostModalVisible}
         handleOnClickCreatePostButton={setIsCreatePostModalVisible}
       />
-      <SortPostCard
-        width={PageWidth}
-        sortKey={sortKey}
-        handleChange={setFilterByTagsArray}
-        allTags={allTags}
-      />
+      <SortPostCard width={PageWidth} sortKey={sortKey} handleChange={setFilterByTagsArray} allTags={allTags} />
       <JsaskSpin spinning={!isPostLoaded}>
         <ListPostCards
           width={PageWidth}
@@ -99,10 +80,7 @@ const HomePageContent = () => {
         onCancel={() => setIsCreatePostModalVisible(false)}
         footer={[]}
       >
-        <ManagePostForm
-          submitButtonText="Post"
-          onFinishForm={handleOnFinishForm}
-        />
+        <ManagePostForm submitButtonText="Post" onFinishForm={handleOnFinishForm} />
       </Modal>
     </>
   );

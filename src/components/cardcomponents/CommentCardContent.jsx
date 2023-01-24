@@ -8,7 +8,6 @@ const { Paragraph } = Typography;
 
 const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
   const dispatch = useDispatch();
-
   const [editableContent, setEditableContent] = useState(postContent);
 
   return (

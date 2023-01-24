@@ -20,23 +20,14 @@ const PostPageContent = () => {
   const { post, authentication } = useSelector((state) => state);
   const { user } = authentication;
   const { id: currUserId } = user;
-  const {
-    currPost,
-    isCurrPostFetched,
-    isPostDeleted,
-    isPostPosted,
-    isPostUpdated,
-  } = post;
-  const isCurrPostLoaded =
-    isPostDeleted && isPostPosted && isPostUpdated && isCurrPostFetched;
+  const { currPost, isCurrPostFetched, isPostDeleted, isPostPosted, isPostUpdated } = post;
+  const isCurrPostLoaded = isPostDeleted && isPostPosted && isPostUpdated && isCurrPostFetched;
   const [queryParams] = useSearchParams(window.location.search);
   const newPostId = queryParams.get("postId");
 
   useEffect(() => {
     if (isCurrPostLoaded) {
-      dispatch(
-        postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
-      );
+      dispatch(postAction.fetchCurrPost({ userId: currUserId, postId: newPostId }));
     }
   }, [isPostPosted, isPostDeleted, isPostUpdated, currUserId, newPostId]);
 
@@ -71,11 +62,7 @@ const PostPageContent = () => {
               buttonText="Comment"
               onFinishFunc={submitComment}
             />
-            <ListCommentCards
-              width={PageWidth}
-              currUserId={currUserId}
-              allComments={currPost.comments}
-            />
+            <ListCommentCards width={PageWidth} currUserId={currUserId} allComments={currPost.comments} />
           </>
         )}
       </JsaskSpin>

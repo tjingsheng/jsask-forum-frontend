@@ -25,12 +25,8 @@ function* loginProcess(action) {
     if (response1.data === null) {
       yield put(authenticationAction.loginFailed());
     } else {
-      const newPassword = SHA512(
-        response1.data.payload.data.salt + action.payload.password
-      ).toString();
-      const requestURI2 = URI.getUser
-        .replace("{username}", username)
-        .replace("{password}", newPassword);
+      const newPassword = SHA512(response1.data.payload.data.salt + action.payload.password).toString();
+      const requestURI2 = URI.getUser.replace("{username}", username).replace("{password}", newPassword);
       const response2 = yield axiosRequest(RequestMethod.get, requestURI2);
       if (response2.data === null) {
         yield put(authenticationAction.loginFailed());
@@ -47,11 +43,7 @@ function* loginProcess(action) {
 
 function* createUser(action) {
   try {
-    const response = yield axiosRequest(
-      RequestMethod.POST,
-      URI.postUser,
-      action.payload.newUser
-    );
+    const response = yield axiosRequest(RequestMethod.POST, URI.postUser, action.payload.newUser);
     if (response.data === null) {
       yield put(authenticationAction.createUserFailed());
     } else {
@@ -65,10 +57,7 @@ function* createUser(action) {
 
 function* checkUsername(action) {
   try {
-    const requestURI = URI.getUserSalt.replace(
-      "{username}",
-      action.payload.username
-    );
+    const requestURI = URI.getUserSalt.replace("{username}", action.payload.username);
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     if (response.data === null) {
       yield put(authenticationAction.checkUsernameSuccess(true));

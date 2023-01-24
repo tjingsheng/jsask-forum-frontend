@@ -23,9 +23,7 @@ function* getCurrPost(action) {
   try {
     const userId = action.payload.currPostKeys.userId;
     const postId = action.payload.currPostKeys.postId;
-    const requestURI = URI.getCurrPost
-      .replace("{userId}", userId)
-      .replace("{postId}", postId);
+    const requestURI = URI.getCurrPost.replace("{userId}", userId).replace("{postId}", postId);
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     const currPost = response.data.payload.data;
     yield put(postAction.fetchCurrPostSuccess(currPost));
