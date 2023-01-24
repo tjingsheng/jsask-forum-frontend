@@ -33,7 +33,7 @@ const PostCard = ({
   return (
     <>
       <Card
-        onClick={(e) => !["svg", "path", "span"].includes(e.target.nodeName) && goto(`${Route.post}/?postId=${postId}`)}
+        onClick={(e) => !["svg", "path", "SPAN"].includes(e.target.nodeName) && goto(`${Route.post}/?postId=${postId}`)}
         hoverable={hoverable}
         style={{
           margin: "10px auto",
@@ -72,7 +72,7 @@ const PostCard = ({
             />
           </Tooltip>
         )}
-        <PostCardTags tags={tags} />
+        <PostCardTags tags={tags} {...props} />
         <PostCardContent postContent={postContent} />
         <PostCardFooter isCommentButtonVisible={isCommentButtonVisible} currUserId={currUserId} {...props} />
       </Card>

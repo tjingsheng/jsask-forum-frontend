@@ -6,7 +6,15 @@ import sortKeyEnums from "../../utils/enums.js";
 import NoContentCard from "../cards/NoContentCard";
 import PostCard from "../cards/PostCard";
 
-const ListPostCards = ({ width, currUserId, allPosts, sortKey, filterByTagsArray, isAllPostsFetched }) => {
+const ListPostCards = ({
+  width,
+  currUserId,
+  allPosts,
+  sortKey,
+  filterByTagsArray,
+  setFilterByTagsArray,
+  isAllPostsFetched,
+}) => {
   const sortComparators = {
     [sortKeyEnums.hot]: (a, b) => b.likes - a.likes,
     [sortKeyEnums.rising]: (a, b) => b.commentCount - a.commentCount,
@@ -30,6 +38,8 @@ const ListPostCards = ({ width, currUserId, allPosts, sortKey, filterByTagsArray
                 width={width}
                 isCommentButtonVisible={true}
                 currUserId={currUserId}
+                setFilterByTagsArray={setFilterByTagsArray}
+                filterByTagsArray={filterByTagsArray}
                 {...post}
               />
             ))

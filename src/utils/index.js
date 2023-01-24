@@ -19,6 +19,12 @@ export const formatDatetime = (strDatetime) => {
   });
 };
 
+export const toggleItemInArray = (arr, item) => {
+  return !arr.includes(item)
+    ? arr.concat([item])
+    : arr.slice(0, arr.indexOf(item)).concat(arr.slice(arr.indexOf(item) + 1));
+};
+
 export const isEmptyArray = (arr) => {
   return Array.isArray(arr) && arr.length === 0;
 };

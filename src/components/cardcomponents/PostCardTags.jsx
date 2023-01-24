@@ -1,13 +1,14 @@
 import { Tag } from "antd";
 import React from "react";
+import { toggleItemInArray } from "../../utils";
 
-const PostCardTags = ({ tags }) => (
+const PostCardTags = ({ tags, filterByTagsArray, setFilterByTagsArray }) => (
   <div style={{ padding: "0px 10px" }}>
     {Array.isArray(tags) &&
       tags.map((tag, idx) => (
         <Tag
-          onClick={() => {
-            console.log(1, tag);
+          onClick={(e) => {
+            setFilterByTagsArray(toggleItemInArray(filterByTagsArray, tag));
           }}
           key={idx}
         >
