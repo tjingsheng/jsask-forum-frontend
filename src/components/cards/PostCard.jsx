@@ -35,7 +35,7 @@ const PostCard = ({
     <>
       <Card
         onClick={(e) =>
-          !["svg", "path", "SPAN"].includes(e.target.nodeName) &&
+          !["svg", "path", "SPAN", "A"].includes(e.target.nodeName) &&
           goto(`${Route.post}/?postId=${postId}`)
         }
         hoverable={hoverable}

@@ -28,7 +28,7 @@ const PostCardTags = ({
                 </Tag>
               </Tooltip>
             ) : (
-              <Tag>{tag}</Tag>
+              <Tag key={idx}>{tag}</Tag>
             )}
           </>
         ))}
