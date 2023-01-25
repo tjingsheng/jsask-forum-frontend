@@ -26,14 +26,18 @@ const PostCard = ({
 }) => {
   const isCreator = currUserId === userId;
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
-  const [isDeletePostModalVisible, setIsDeletePostModalVisible] = useState(false);
+  const [isDeletePostModalVisible, setIsDeletePostModalVisible] =
+    useState(false);
   const goto = useNavigate();
   const dispatch = useDispatch();
 
   return (
     <>
       <Card
-        onClick={(e) => !["svg", "path", "SPAN"].includes(e.target.nodeName) && goto(`${Route.post}/?postId=${postId}`)}
+        onClick={(e) =>
+          !["svg", "path", "SPAN"].includes(e.target.nodeName) &&
+          goto(`${Route.post}/?postId=${postId}`)
+        }
         hoverable={hoverable}
         style={{
           margin: "10px auto",

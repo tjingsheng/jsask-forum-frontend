@@ -15,7 +15,9 @@ const LoginPage = () => {
 };
 
 const LoginPageContent = () => {
-  const isAuthenticatedSuccess = useSelector((state) => state.authentication.isAuthenticatedSuccess);
+  const isAuthenticatedSuccess = useSelector(
+    (state) => state.authentication.isAuthenticatedSuccess
+  );
 
   return (
     <JsaskSpin spinning={!isAuthenticatedSuccess}>
@@ -26,8 +28,14 @@ const LoginPageContent = () => {
           minHeight: `calc(100vh - ${footerHeight}px)`,
         }}
       >
-        <ContentComponent style={{ width: "50%" }} children={<LoginPageLogo />} />
-        <ContentComponent style={{ width: "50%" }} children={<LoginPageForm />} />
+        <ContentComponent
+          style={{ width: "50%" }}
+          children={<LoginPageLogo />}
+        />
+        <ContentComponent
+          style={{ width: "50%" }}
+          children={<LoginPageForm />}
+        />
       </div>
     </JsaskSpin>
   );
@@ -47,12 +55,15 @@ const LoginPageLogo = () => {
 };
 
 const LoginPageForm = () => {
-  const [isCreateUserModalVisible, setIsCreateUserModalVisible] = useState(false);
+  const [isCreateUserModalVisible, setIsCreateUserModalVisible] =
+    useState(false);
 
   return (
     <>
       <Card style={{ width: "50%" }}>
-        <LoginForm openCreateUserModal={() => setIsCreateUserModalVisible(true)} />
+        <LoginForm
+          openCreateUserModal={() => setIsCreateUserModalVisible(true)}
+        />
       </Card>
 
       <Modal
@@ -62,7 +73,9 @@ const LoginPageForm = () => {
         onCancel={() => setIsCreateUserModalVisible(false)}
         footer={[]}
       >
-        <CreateUserForm onFinishForm={() => setIsCreateUserModalVisible(false)} />
+        <CreateUserForm
+          onFinishForm={() => setIsCreateUserModalVisible(false)}
+        />
       </Modal>
     </>
   );

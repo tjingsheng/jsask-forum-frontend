@@ -106,7 +106,9 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
                 if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
-                return Promise.reject(new Error("Your passwords do not match!"));
+                return Promise.reject(
+                  new Error("Your passwords do not match!")
+                );
               },
             }),
           ]}

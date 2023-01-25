@@ -1,4 +1,10 @@
-import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, MessageOutlined } from "@ant-design/icons";
+import {
+  DislikeFilled,
+  DislikeOutlined,
+  LikeFilled,
+  LikeOutlined,
+  MessageOutlined,
+} from "@ant-design/icons";
 import { Col, Row, Space, Tooltip, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -67,7 +73,9 @@ const PostCardFooter = ({
               <LikeFilled
                 onClick={() => {
                   setLike(false);
-                  dispatch(postPreferenceAction.putPostPreference(resetPayload));
+                  dispatch(
+                    postPreferenceAction.putPostPreference(resetPayload)
+                  );
                 }}
                 style={{
                   color: "green",
@@ -104,7 +112,9 @@ const PostCardFooter = ({
               <DislikeFilled
                 onClick={() => {
                   setDislike(false);
-                  dispatch(postPreferenceAction.putPostPreference(resetPayload));
+                  dispatch(
+                    postPreferenceAction.putPostPreference(resetPayload)
+                  );
                 }}
                 style={{
                   color: "red",
@@ -118,7 +128,9 @@ const PostCardFooter = ({
                 onClick={() => {
                   setLike(false);
                   setDislike(true);
-                  dispatch(postPreferenceAction.putPostPreference(dislikePayload));
+                  dispatch(
+                    postPreferenceAction.putPostPreference(dislikePayload)
+                  );
                 }}
                 style={{
                   fontSize: footerHeight,

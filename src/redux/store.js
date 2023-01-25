@@ -28,7 +28,9 @@ const persistedStore = loadStateFromLocalStorage();
 const store = configureStore({
   reducer: rootReducer,
   middleware: () => [sagaMiddleware],
-  devTools: window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  devTools:
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__(),
   preloadedState: persistedStore,
 });
 

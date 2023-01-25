@@ -10,7 +10,8 @@ import PostCardFooter from "../cardcomponents/PostCardFooter";
 
 const CommentCard = ({ width, isCreator, postId, ...props }) => {
   const dispatch = useDispatch();
-  const [isDeleteCommentModalVisible, SetIsDeleteCommentModalVisible] = useState(false);
+  const [isDeleteCommentModalVisible, SetIsDeleteCommentModalVisible] =
+    useState(false);
 
   return (
     <>
@@ -39,7 +40,11 @@ const CommentCard = ({ width, isCreator, postId, ...props }) => {
           </Tooltip>
         )}
         <CommentCardContent isCreator={isCreator} postId={postId} {...props} />
-        <PostCardFooter isCommentButtonVisible={false} postId={postId} {...props} />
+        <PostCardFooter
+          isCommentButtonVisible={false}
+          postId={postId}
+          {...props}
+        />
       </Card>
 
       <Modal
@@ -56,7 +61,10 @@ const CommentCard = ({ width, isCreator, postId, ...props }) => {
           >
             {Messages.YES_BUTTON}
           </Button>,
-          <Button key="No" onClick={() => SetIsDeleteCommentModalVisible(false)}>
+          <Button
+            key="No"
+            onClick={() => SetIsDeleteCommentModalVisible(false)}
+          >
             {Messages.NO_BUTTON}
           </Button>,
         ]}

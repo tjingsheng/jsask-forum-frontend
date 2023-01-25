@@ -11,7 +11,11 @@ const ListCommentCards = ({ width, currUserId, allComments }) => {
       ) : (
         Array.isArray(allComments) &&
         allComments
-          .sort((a, b) => new Date(a.postDatetime).getTime() - new Date(b.postDatetime).getTime())
+          .sort(
+            (a, b) =>
+              new Date(a.postDatetime).getTime() -
+              new Date(b.postDatetime).getTime()
+          )
           .map((comment, idx) => (
             <CommentCard
               key={idx}

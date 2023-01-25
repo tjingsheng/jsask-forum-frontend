@@ -15,7 +15,8 @@ const LoginForm = ({ openCreateUserModal }) => {
 
   const dispatch = useDispatch();
   const { authentication } = useSelector((state) => state);
-  const { isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials } = authentication;
+  const { isAuthenticated, isAuthenticatedSuccess, isInvalidCredentials } =
+    authentication;
 
   const onFinish = (values) => {
     dispatch(authenticationAction.login(values));
