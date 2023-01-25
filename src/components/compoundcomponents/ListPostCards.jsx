@@ -40,6 +40,7 @@ const ListPostCards = ({
                 currUserId={currUserId}
                 setFilterByTagsArray={setFilterByTagsArray}
                 filterByTagsArray={filterByTagsArray}
+                filterable={true}
                 {...post}
               />
             ))

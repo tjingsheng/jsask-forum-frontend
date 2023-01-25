@@ -19,7 +19,7 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
       editable={
         isCreator && {
           enterIcon: null,
-          tooltip: Messages.TOOLTIP_EDIT_COMMENT,
+          tooltip: Messages.TOOLTIP_EDIT,
           onChange: (value) => {
             setEditableContent(value);
             dispatch(

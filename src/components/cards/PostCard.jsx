@@ -45,7 +45,7 @@ const PostCard = ({
       >
         <PostCardHeader postTitle={postTitle} />
         {isCreator && (
-          <Tooltip title={Messages.TOOLTIP_DELETE_POST}>
+          <Tooltip title={Messages.TOOLTIP_DELETE}>
             <DeleteOutlined
               onClick={() => setIsDeletePostModalVisible(true)}
               style={{
@@ -59,7 +59,7 @@ const PostCard = ({
           </Tooltip>
         )}
         {isCreator && (
-          <Tooltip title={Messages.TOOLTIP_EDIT_POST}>
+          <Tooltip title={Messages.TOOLTIP_EDIT}>
             <EditOutlined
               onClick={() => setIsEditPostModalVisible(true)}
               style={{

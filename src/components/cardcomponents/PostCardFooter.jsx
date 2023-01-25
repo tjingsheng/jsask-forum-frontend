@@ -1,15 +1,9 @@
-import {
-  DislikeFilled,
-  DislikeOutlined,
-  LikeFilled,
-  LikeOutlined,
-  MessageOutlined,
-} from "@ant-design/icons";
-import { Col, Row, Space, Typography } from "antd";
+import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, MessageOutlined } from "@ant-design/icons";
+import { Col, Row, Space, Tooltip, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Route } from "../../constants";
+import { Messages, Route } from "../../constants";
 import { postPreferenceAction } from "../../redux/actions";
 import { differenceCalculator, formatDatetime } from "../../utils";
 
@@ -69,27 +63,31 @@ const PostCardFooter = ({
           }}
         >
           {like ? (
-            <LikeFilled
-              onClick={() => {
-                setLike(false);
-                dispatch(postPreferenceAction.putPostPreference(resetPayload));
-              }}
-              style={{
-                color: "green",
-                fontSize: footerHeight,
-              }}
-            />
+            <Tooltip title={Messages.TOOLTIP_UNLIKE}>
+              <LikeFilled
+                onClick={() => {
+                  setLike(false);
+                  dispatch(postPreferenceAction.putPostPreference(resetPayload));
+                }}
+                style={{
+                  color: "green",
+                  fontSize: footerHeight,
+                }}
+              />
+            </Tooltip>
           ) : (
-            <LikeOutlined
-              onClick={() => {
-                setLike(true);
-                setDislike(false);
-                dispatch(postPreferenceAction.putPostPreference(likePayload));
-              }}
-              style={{
-                fontSize: footerHeight,
-              }}
-            />
+            <Tooltip title={Messages.TOOLTIP_LIKE}>
+              <LikeOutlined
+                onClick={() => {
+                  setLike(true);
+                  setDislike(false);
+                  dispatch(postPreferenceAction.putPostPreference(likePayload));
+                }}
+                style={{
+                  fontSize: footerHeight,
+                }}
+              />
+            </Tooltip>
           )}
           <Title
             level={5}
@@ -102,38 +100,42 @@ const PostCardFooter = ({
             {likes + differenceCalculator(like, dislike)}
           </Title>
           {dislike ? (
-            <DislikeFilled
-              onClick={() => {
-                setDislike(false);
-                dispatch(postPreferenceAction.putPostPreference(resetPayload));
-              }}
-              style={{
-                color: "red",
-                fontSize: footerHeight,
-              }}
-            />
+            <Tooltip title={Messages.TOOLTIP_UNDISLIKE}>
+              <DislikeFilled
+                onClick={() => {
+                  setDislike(false);
+                  dispatch(postPreferenceAction.putPostPreference(resetPayload));
+                }}
+                style={{
+                  color: "red",
+                  fontSize: footerHeight,
+                }}
+              />
+            </Tooltip>
           ) : (
-            <DislikeOutlined
-              onClick={() => {
-                setLike(false);
-                setDislike(true);
-                dispatch(
-                  postPreferenceAction.putPostPreference(dislikePayload)
-                );
-              }}
-              style={{
-                fontSize: footerHeight,
-              }}
-            />
-          )}
-          {isCommentButtonVisible && (
-            <>
-              <MessageOutlined
-                onClick={() => goto(`${Route.post}/?postId=${postId}`)}
+            <Tooltip title={Messages.TOOLTIP_DISLIKE}>
+              <DislikeOutlined
+                onClick={() => {
+                  setLike(false);
+                  setDislike(true);
+                  dispatch(postPreferenceAction.putPostPreference(dislikePayload));
+                }}
                 style={{
                   fontSize: footerHeight,
                 }}
               />
+            </Tooltip>
+          )}
+          {isCommentButtonVisible && (
+            <>
+              <Tooltip title={Messages.TOOLTIP_VIEW_COMMENTS}>
+                <MessageOutlined
+                  onClick={() => goto(`${Route.post}/?postId=${postId}`)}
+                  style={{
+                    fontSize: footerHeight,
+                  }}
+                />
+              </Tooltip>
               <Title
                 level={5}
                 style={{

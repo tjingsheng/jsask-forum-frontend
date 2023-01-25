@@ -28,10 +28,15 @@ const Messages = {
 
   NO_CONTENT: "No Content Found",
 
-  TOOLTIP_EDIT_COMMENT: "Click to Edit Comment",
-  TOOLTIP_DELETE_COMMENT: "Click to Delete Comment",
-  TOOLTIP_EDIT_POST: "Click to Edit Post",
-  TOOLTIP_DELETE_POST: "Click to Delete Post",
+  TOOLTIP_LIKE: "Like",
+  TOOLTIP_DISLIKE: "Dislike",
+  TOOLTIP_UNLIKE: "Unlike",
+  TOOLTIP_UNDISLIKE: "Undislike",
+
+  TOOLTIP_EDIT: "Edit",
+  TOOLTIP_DELETE: "Delete",
+  TOOLTIP_VIEW_COMMENTS: "View Comments",
+  TOOLTIP_FILTER_BY_TAG: "Add tag to filter",
   TOOLTIP_HOT: "Sort by Likes",
   TOOLTIP_RISING: "Sort by Comments",
   TOOLTIP_NEW: "Sort by Newest",
