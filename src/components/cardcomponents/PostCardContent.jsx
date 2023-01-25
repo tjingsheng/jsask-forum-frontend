@@ -9,6 +9,10 @@ const PostCardContent = ({ postContent = "Unknown Content" }) => (
       margin: "0px",
       padding: "10px",
     }}
+    ellipsis={{
+      rows: "10",
+      expandable: true,
+    }}
   >
     {postContent}
   </Paragraph>

@@ -16,8 +16,13 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
         margin: "0px",
         padding: "10px",
       }}
+      ellipsis={{
+        rows: "5",
+        expandable: true,
+      }}
       editable={
         isCreator && {
+          maxLength: 2500,
           enterIcon: null,
           tooltip: Messages.TOOLTIP_EDIT,
           onChange: (value) => {

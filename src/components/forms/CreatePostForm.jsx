@@ -25,6 +25,8 @@ const CreatePostForm = ({
         <Input
           placeholder={inputPlaceholder}
           onClick={handleOnClickCreatePostInput}
+          maxLength={2500}
+          showCount
         />
       </Item>
 
