@@ -5,7 +5,7 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 import { Button, Card, Col, Row, Select, Space, Tooltip } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Messages from "../../constants/Messages";
 import sortKeyEnums from "../../utils/enums";
