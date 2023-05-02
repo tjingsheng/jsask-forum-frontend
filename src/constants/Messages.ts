@@ -1,4 +1,49 @@
-const Messages = {
+interface MessagesType {
+  FOOTER_MESSAGE: string;
+
+  INVALID_CREDENTIALS_TITLE: string;
+  INVALID_CREDENTIALS_DESCRIPTION: string;
+
+  INVALID_USERNAME_TITLE: string;
+  INVALID_USERNAME_DESCRIPTION: string;
+
+  NO_POSTS: string;
+  NO_COMMENTS: string;
+
+  DELETE_POST_CONFIRMATION: string;
+  LOGOUT_CONFIRMATION: string;
+  DELETE_COMMENT_CONFIRMATION: string;
+
+  YES_BUTTON: string;
+  NO_BUTTON: string;
+
+  HOT_BUTTON: string;
+  RISING_BUTTON: string;
+  NEW_BUTTON: string;
+  OLD_BUTTON: string;
+
+  LOGIN_BUTTON: string;
+  SIGNUP_BUTTON: string;
+  CREATE_BUTTON: string;
+
+  NO_CONTENT: string;
+
+  TOOLTIP_LIKE: string;
+  TOOLTIP_DISLIKE: string;
+  TOOLTIP_UNLIKE: string;
+  TOOLTIP_UNDISLIKE: string;
+
+  TOOLTIP_EDIT: string;
+  TOOLTIP_DELETE: string;
+  TOOLTIP_VIEW_COMMENTS: string;
+  TOOLTIP_FILTER_BY_TAG: string;
+  TOOLTIP_HOT: string;
+  TOOLTIP_RISING: string;
+  TOOLTIP_NEW: string;
+  TOOLTIP_OLD: string;
+}
+
+const Messages: MessagesType = {
   FOOTER_MESSAGE: "Jsask © 2022 Created by Tan Jing Sheng",
 
   INVALID_CREDENTIALS_TITLE: "Invalid Credentials",
