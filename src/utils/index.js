@@ -1,5 +1,5 @@
 const hasCommonElements = (arrA, arrB) => {
-  if (!Array.isArray(arrA) || !Array.isArray(arrA)) {
+  if (!Array.isArray(arrA) || !Array.isArray(arrB)) {
     return false;
   }
 
