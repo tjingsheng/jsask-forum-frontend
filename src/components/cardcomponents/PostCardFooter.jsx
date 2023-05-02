@@ -34,7 +34,7 @@ const PostCardFooter = ({
   useEffect(() => {
     setLike(isLikeSelected);
     setDislike(isDislikeSelected);
-  }, [postId]);
+  }, [postId, isLikeSelected, isDislikeSelected]);
 
   const likePayload = {
     currUserId: currUserId,
