@@ -34,7 +34,7 @@ const ListPostCards = ({
             .filter((post) =>
               filterByTagsArray.length > 0
                 ? hasCommonElements(post.tags, filterByTagsArray)
-                : true
+                : true,
             )
             .sort(sortComparators[sortKey])
             .map((post, idx) => (

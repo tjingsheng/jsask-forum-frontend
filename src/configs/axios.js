@@ -10,7 +10,7 @@ export const RequestMethod = Object.freeze({
 export async function axiosRequest(
   method = RequestMethod.GET,
   resourceIdentifier,
-  payload = null
+  payload = null,
 ) {
   const baseURL = "/api";
   axios.defaults.baseURL = baseURL;

@@ -16,7 +16,7 @@ const LoginPage = () => {
 
 const LoginPageContent = () => {
   const isAuthenticatedSuccess = useSelector(
-    (state) => state.authentication.isAuthenticatedSuccess
+    (state) => state.authentication.isAuthenticatedSuccess,
   );
 
   return (

@@ -35,7 +35,7 @@ const PostPageContent = () => {
   useEffect(() => {
     if (isCurrPostLoaded) {
       dispatch(
-        postAction.fetchCurrPost({ userId: currUserId, postId: newPostId })
+        postAction.fetchCurrPost({ userId: currUserId, postId: newPostId }),
       );
     }
   }, [isPostPosted, isPostDeleted, isPostUpdated, currUserId, newPostId]);
@@ -48,7 +48,7 @@ const PostPageContent = () => {
           postTitle: "NONE",
           postContent: values.postContent,
           parentPost: currPost.post.postId,
-        })
+        }),
       );
     }
   };

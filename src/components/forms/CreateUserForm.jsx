@@ -107,7 +107,7 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
                   return Promise.resolve();
                 }
                 return Promise.reject(
-                  new Error("Your passwords do not match!")
+                  new Error("Your passwords do not match!"),
                 );
               },
             }),

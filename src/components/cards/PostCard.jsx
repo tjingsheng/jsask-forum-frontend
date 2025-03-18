@@ -102,7 +102,7 @@ const PostCard = ({
                 postTitle: values.postTitle,
                 postContent: values.postContent,
                 tags: values.tags,
-              })
+              }),
             );
           }}
           postTitle={postTitle}

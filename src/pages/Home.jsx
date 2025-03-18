@@ -47,7 +47,7 @@ const HomePageContent = () => {
         postContent: values.postContent,
         tags: values.tags,
         parentPost: 0,
-      })
+      }),
     );
   };
 

@@ -51,11 +51,16 @@ export function WarningCard() {
             border: "1px solid red",
           }}
           title="Security Warning"
-          extra={<Button type="text" onClick={toggleVisibility}>Hide</Button>}
+          extra={
+            <Button type="text" onClick={toggleVisibility}>
+              Hide
+            </Button>
+          }
         >
           <Typography style={{ fontSize: "14px", marginBottom: "10px" }}>
-            This site is no longer actively maintained and may not be secure. Do not enter
-            any sensitive information. Feel free to use the demo account below.
+            This site is no longer actively maintained and may not be secure. Do
+            not enter any sensitive information. Feel free to use the demo
+            account below.
           </Typography>
           <Table
             showHeader={false}

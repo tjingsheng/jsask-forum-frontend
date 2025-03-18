@@ -7,7 +7,7 @@ import { WarningCard } from "./components/cards/WarningCard";
 
 function App() {
   const isAuthenticated = useSelector(
-    (state) => state.authentication.isAuthenticated
+    (state) => state.authentication.isAuthenticated,
   );
   return (
     <>
