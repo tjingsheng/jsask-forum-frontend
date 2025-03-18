@@ -74,7 +74,7 @@ const PostCardFooter = ({
                 onClick={() => {
                   setLike(false);
                   dispatch(
-                    postPreferenceAction.putPostPreference(resetPayload)
+                    postPreferenceAction.putPostPreference(resetPayload),
                   );
                 }}
                 style={{
@@ -113,7 +113,7 @@ const PostCardFooter = ({
                 onClick={() => {
                   setDislike(false);
                   dispatch(
-                    postPreferenceAction.putPostPreference(resetPayload)
+                    postPreferenceAction.putPostPreference(resetPayload),
                   );
                 }}
                 style={{
@@ -129,7 +129,7 @@ const PostCardFooter = ({
                   setLike(false);
                   setDislike(true);
                   dispatch(
-                    postPreferenceAction.putPostPreference(dislikePayload)
+                    postPreferenceAction.putPostPreference(dislikePayload),
                   );
                 }}
                 style={{

@@ -19,7 +19,7 @@ const PostCardTags = ({
                 <Tag
                   onClick={(e) => {
                     setFilterByTagsArray(
-                      toggleItemInArray(filterByTagsArray, tag)
+                      toggleItemInArray(filterByTagsArray, tag),
                     );
                   }}
                   key={idx}

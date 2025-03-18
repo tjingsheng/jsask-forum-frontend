@@ -13,10 +13,10 @@ const ProfileMenu = () => {
   const goto = useNavigate();
   const dispatch = useDispatch();
   const currUserUsername = useSelector(
-    (state) => state.authentication.user.username
+    (state) => state.authentication.user.username,
   );
   const currUserDatetime = useSelector(
-    (state) => state.authentication.user.userDatetime
+    (state) => state.authentication.user.userDatetime,
   );
   const FormattedCurrUserDatetime = formatDatetime(currUserDatetime);
   const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);

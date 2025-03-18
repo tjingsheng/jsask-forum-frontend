@@ -1,20 +1,47 @@
-# Jing Sheng CVWO Winter Assignment
+# Jsask Forum Frontend
 
-## Background
+The frontend of my first web application!
 
-Computing for Voluntary Welfare Organisations (CVWO) is an initiative founded by Dr Ben Leong and spearheaded by undergraduates from the National University of Singapore (NUS) School of Computing (SoC). CVWO's mission is to build IT systems that help their partner VWOs serve the community more effectively.
+## Prerequisites
 
-View more at:
-https://www.comp.nus.edu.sg/~vwo/
+Ensure you have the following installed:
 
-## Introduction
+- [Node.js](https://nodejs.org/) (Recommended: Latest LTS)
+- [npm](https://www.npmjs.com/)
 
-As part of CVWO's AY2022/23 committee recruitment, freshmen from the NUS SOC are tasked to make a simple web forum.
+## Setup
 
-## Designed and Implemented By
+Clone the repository and navigate into the project directory:
 
-Tan Jing Sheng  
-A0253492B  
-First-Year Undergraduate  
-NUS Computer Science  
-2022
+```sh
+git clone https://github.com/tjingsheng/jsask-forum-frontend
+cd jsask-forum-frontend
+```
+
+Install dependencies:
+
+```sh
+npm install
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### Start Development Server
+
+```sh
+npm start
+```
+
+### Build for Production
+
+```sh
+npm run build
+```
+
+### Serve the Build Locally
+
+```sh
+npm run serve
+```

@@ -32,7 +32,7 @@ const CommentCardContent = ({ postContent = "", isCreator, postId }) => {
                 postId: postId,
                 postTitle: "NONE",
                 postContent: value,
-              })
+              }),
             );
           },
         }

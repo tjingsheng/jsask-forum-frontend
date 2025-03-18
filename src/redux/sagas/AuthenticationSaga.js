@@ -26,7 +26,7 @@ function* loginProcess(action) {
       yield put(authenticationAction.loginFailed());
     } else {
       const newPassword = SHA512(
-        response1.data.payload.data.salt + action.payload.password
+        response1.data.payload.data.salt + action.payload.password,
       ).toString();
       const requestURI2 = URI.getUser
         .replace("{username}", username)
@@ -50,7 +50,7 @@ function* createUser(action) {
     const response = yield axiosRequest(
       RequestMethod.POST,
       URI.postUser,
-      action.payload.newUser
+      action.payload.newUser,
     );
     if (response.data === null) {
       yield put(authenticationAction.createUserFailed());
@@ -67,7 +67,7 @@ function* checkUsername(action) {
   try {
     const requestURI = URI.getUserSalt.replace(
       "{username}",
-      action.payload.username
+      action.payload.username,
     );
     const response = yield axiosRequest(RequestMethod.GET, requestURI);
     if (response.data === null) {

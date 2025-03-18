@@ -27,8 +27,10 @@ export const toggleItemInArray = (arr, item) => {
   return !Array.isArray(arr)
     ? []
     : !arr.includes(item)
-    ? arr.concat([item])
-    : arr.slice(0, arr.indexOf(item)).concat(arr.slice(arr.indexOf(item) + 1));
+      ? arr.concat([item])
+      : arr
+          .slice(0, arr.indexOf(item))
+          .concat(arr.slice(arr.indexOf(item) + 1));
 };
 
 export const isEmptyArray = (arr) => {

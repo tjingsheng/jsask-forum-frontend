@@ -67,8 +67,8 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
               message: "Please input your username!",
             },
             {
-              min: 5,
-              message: "Username must be at least 5 characters.",
+              min: 4,
+              message: "Username must be at least 4 characters.",
             },
             {
               max: 32,
@@ -107,7 +107,7 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
                   return Promise.resolve();
                 }
                 return Promise.reject(
-                  new Error("Your passwords do not match!")
+                  new Error("Your passwords do not match!"),
                 );
               },
             }),
