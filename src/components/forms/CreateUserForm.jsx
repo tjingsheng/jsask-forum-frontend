@@ -67,8 +67,8 @@ const CreateUserForm = ({ onFinishForm = () => {} }) => {
               message: "Please input your username!",
             },
             {
-              min: 5,
-              message: "Username must be at least 5 characters.",
+              min: 4,
+              message: "Username must be at least 4 characters.",
             },
             {
               max: 32,
