@@ -5,8 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "serve": "serve -s build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
@@ -23,8 +22,9 @@
     "redux-saga": "^1.2.2"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^3.0.3",
     "react-scripts": "^5.0.1",
-    "http-proxy-middleware": "^3.0.3"
+    "serve": "^14.2.4"
   },
   "eslintConfig": {
     "extends": [
